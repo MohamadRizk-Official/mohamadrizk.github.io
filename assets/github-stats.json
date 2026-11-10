@@ -1,8 +1,8 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-10T06:04:39+00:00",
- "totalCommits": 616,
- "yearCommits": 616,
+ "updated": "2026-11-10T14:57:04+00:00",
+ "totalCommits": 619,
+ "yearCommits": 619,
  "activeDays": 58,
  "longestStreak": 28,
  "currentStreak": 2,
@@ -1493,10 +1493,28 @@
   },
   {
    "d": "2026-11-10",
-   "n": 2
+   "n": 5
   }
  ],
  "recent": [
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/6d5b65c6ba49c7873544cf905e2c77bb08d74a7b",
+   "message": "Phone pass: compact layout, scroll focus, nav edge hints",
+   "date": "2026-11-10T06:32:02Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/40173a27cd911e21f0ea8afba86c8673364ee60a",
+   "message": "Open to full-time roles; solid status badge",
+   "date": "2026-11-10T06:21:33Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/86b3cf865d0b126e0125763e1f603158ac98c737",
+   "message": "Even project rows and animated course boxes",
+   "date": "2026-11-10T06:19:55Z"
+  },
   {
    "repo": "mohamadrizk.github.io",
    "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/8b253f2274b5554937c40b90590afcb371f96da6",
@@ -1718,24 +1736,6 @@
    "url": null,
    "message": null,
    "date": "2026-10-30T01:45:59Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T01:32:33Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T01:16:45Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T01:15:38Z"
   }
  ],
  "privateDays": {
