@@ -288,7 +288,26 @@
   .nav-link:hover { color: var(--text); }
   .nav-link[data-hl="1"], .nav-link[data-hl="1"]:hover { color: var(--accent-ink); }
   .nav-tools { display: flex; align-items: center; gap: 12px; flex: none; }
-  @media (max-width: 1060px) { .nav-links { order: 3; width: 100%; overflow-x: auto; scrollbar-width: none; } .nav-links::-webkit-scrollbar { display: none; } .nav-inner { padding-bottom: 10px; } }
+  .nav-scroll { position: relative; }
+  .nav-edge { display: none; }
+  .hero-bio-short, .xp-more { display: none; }
+  @media (max-width: 1060px) {
+    .nav-scroll { order: 3; width: 100%; }
+    .nav-links { width: 100%; overflow-x: auto; scrollbar-width: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-inner { padding-bottom: 10px; }
+    /* Edge indicators: a short fade from the bar color with a nudging chevron, shown only on the side that has more */
+    .nav-edge { display: flex; position: absolute; z-index: 3; top: 2px; bottom: 2px; width: 46px; align-items: center; border: none; padding: 0 8px; cursor: pointer; color: var(--accent); opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+    .nav-edge[data-side="l"] { left: 2px; justify-content: flex-start; border-radius: 10px 0 0 10px; background: linear-gradient(90deg, var(--surface) 50%, rgba(255,255,255,0)); }
+    .nav-edge[data-side="r"] { right: 2px; justify-content: flex-end; border-radius: 0 10px 10px 0; background: linear-gradient(270deg, var(--surface) 50%, rgba(255,255,255,0)); }
+    [data-theme="dark"] .nav-edge[data-side="l"] { background: linear-gradient(90deg, var(--surface) 50%, rgba(14,21,36,0)); }
+    [data-theme="dark"] .nav-edge[data-side="r"] { background: linear-gradient(270deg, var(--surface) 50%, rgba(14,21,36,0)); }
+    .nav-scroll[data-l="1"] .nav-edge[data-side="l"], .nav-scroll[data-r="1"] .nav-edge[data-side="r"] { opacity: 1; pointer-events: auto; }
+    .nav-edge[data-side="r"] svg { animation: nudgeR 1.5s ease-in-out infinite; }
+    .nav-edge[data-side="l"] svg { animation: nudgeL 1.5s ease-in-out infinite; }
+  }
+  @keyframes nudgeR { 50% { transform: translateX(3px); } }
+  @keyframes nudgeL { 50% { transform: translateX(-3px); } }
 
   /* Icon buttons: color floods up from the bottom, an outer ring blooms, the icon moves */
   .icon-btn { position: relative; isolation: isolate; overflow: hidden; width: 44px; height: 44px; flex: none; display: inline-flex; align-items: center; justify-content: center; border-radius: 11px; border: 2px solid var(--border-strong); background: var(--surface); color: var(--text); cursor: pointer; text-decoration: none; transition: transform 0.3s cubic-bezier(0.2,0.9,0.3,1.4), border-color 0.2s, color 0.25s, box-shadow 0.3s; }
@@ -618,6 +637,10 @@
   .st-tip em { display: block; margin-top: 2px; font: 600 11px 'IBM Plex Mono', monospace; font-style: normal; color: var(--tip-accent); }
   .st-tip span { display: block; margin-top: 7px; font-size: 12.5px; line-height: 1.45; opacity: 0.88; }
   .st-node:hover .st-tip, .st-node:focus-visible .st-tip { opacity: 1; transform: translate(-50%, 0) scale(1); }
+  /* Tooltips on the first and last node of a row open inward so they stay on screen */
+  .st-row .st-node:first-child .st-tip { left: 0; transform: translate(0, 8px) scale(0.94); }
+  .st-row .st-node:last-child .st-tip { left: auto; right: 0; transform: translate(0, 8px) scale(0.94); }
+  .st-row .st-node:first-child:hover .st-tip, .st-row .st-node:last-child:hover .st-tip, .st-row .st-node:first-child:focus-visible .st-tip, .st-row .st-node:last-child:focus-visible .st-tip { transform: none; }
   .st-detail { margin-top: 20px; padding: 22px 24px; border-radius: 14px; border: 2px solid var(--accent); background: var(--surface-2); animation: detailIn 0.5s cubic-bezier(0.16,1,0.3,1); }
   @keyframes detailIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   .st-detail-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 14px; }
@@ -691,7 +714,6 @@
     .nav-inner { padding: 10px 16px; }
     .nav-link { min-height: 40px; display: inline-flex; align-items: center; }
     .sec { scroll-margin-top: 124px; }
-    .btn { min-height: 46px; }
     .ftab { min-height: 44px; }
     .crs-head { min-height: 56px; }
     .mitm-step, .mitm-btn { min-height: 44px; }
@@ -699,6 +721,187 @@
     .m-cta .btn { flex: 1; }
     .contact-inner { padding-bottom: 130px; }
     .toast { bottom: 90px; }
+  }
+  /* ============================================================
+     Phones: same design, tighter. Smaller type and controls, one-line
+     button rows, sideways-scrolling tag rows, and shorter lists.
+     ============================================================ */
+  @media (max-width: 767px) {
+    .hero { padding: 128px 16px 14px; }
+    .hero-grid { flex-wrap: wrap-reverse; gap: 18px; }
+    .hero-photo { width: 100%; display: flex; justify-content: center; }
+    .photo-frame { width: 132px; padding: 5px; border-width: 3px; animation: none; }
+    .photo-frame::before { inset: -10px; }
+    .status { padding: 6px 10px; font-size: 12.5px; margin-bottom: 16px; }
+    .hero h1 { font-size: 46px; }
+    .hero-role { margin-top: 10px; font-size: 15.5px; }
+    .hero-bio { margin-top: 12px; font-size: 15px; line-height: 1.55; }
+    .hero-bio-long { display: none; }
+    .hero-bio-short { display: block; }
+    .hero-btns { flex-wrap: nowrap; gap: 8px; margin-top: 18px; }
+    .hero-btns .btn { flex: 1 1 0; min-width: 0; padding: 10px 6px; gap: 6px; font-size: 13.5px; border-radius: 9px; }
+    .hero-meta { margin-top: 16px; gap: 6px 10px; font-size: 12.5px; }
+
+    .btn { padding: 10px 14px; font-size: 13.5px; }
+    .btn-sm, .ccard .btn-sm { padding: 7px 10px; font-size: 12.5px; gap: 6px; border-radius: 8px; }
+    .btn-sm svg { width: 11px; height: 11px; }
+
+    .sec { padding: 34px 16px 8px; scroll-margin-top: 118px; }
+    .sec-top { gap: 10px; }
+    .sec-num { min-width: 34px; height: 26px; font-size: 11.5px; border-radius: 6px; }
+    .sec-head { font-size: 30px; }
+    .sec-sub { margin-top: 8px; font-size: 14px; line-height: 1.5; }
+
+    /* HR Studios */
+    .studio { margin-top: 18px; padding: 22px 16px 18px; gap: 18px; }
+    .studio-mark { width: 34px; height: 34px; }
+    .studio-word { font-size: 22px; }
+    .studio-role { margin-top: 14px; font-size: 10.5px; }
+    .studio-title { margin-top: 8px; font-size: 21px; }
+    .studio-copy { margin-top: 10px; font-size: 14px; line-height: 1.55; }
+    .studio-stats { margin-top: 16px; gap: 8px; }
+    .studio-stat { padding: 10px; border-radius: 10px; }
+    .studio-stat b { font-size: 24px; }
+    .studio-stat > span { margin-top: 5px; font-size: 11px; }
+    .studio-services { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 14px -16px 0; padding: 0 16px; }
+    .studio-services::-webkit-scrollbar { display: none; }
+    .studio-services span { flex: none; font-size: 11px; padding: 5px 8px; }
+    .studio-ctas { margin-top: 16px; gap: 8px; flex-wrap: nowrap; }
+    .studio-ctas .btn { flex: 1 1 0; min-width: 0; padding: 10px 8px; font-size: 13px; }
+    .rail-item { width: 132px; }
+    .rail-scroll { gap: 10px; padding: 10px; }
+
+    /* Projects: compact cards; the one filling the screen pops forward */
+    .pgrid { gap: 14px; margin-top: 14px; }
+    .pcard { padding: 16px 14px 14px; border-radius: 14px; }
+    .pc-top { gap: 10px; margin-bottom: 10px; }
+    .pc-ico { width: 34px; height: 34px; border-radius: 9px; }
+    .pc-ico svg { width: 17px; height: 17px; }
+    .pc-dom { font-size: 10.5px; }
+    .pc-dom small { font-size: 10.5px; }
+    .stamp { padding: 5px 8px 5px 6px; font-size: 10px; gap: 5px; }
+    .stamp svg { width: 12px; height: 12px; }
+    .pcard h3, .pfeat .pcard h3 { font-size: 19px; }
+    .pc-sum { margin-top: 6px; font-size: 14px; line-height: 1.5; }
+    .pc-metrics { gap: 6px; margin-top: 12px; flex-wrap: nowrap; }
+    .pc-metric { flex: 1 1 0; padding: 8px; border-radius: 8px; }
+    .pc-metric b { font-size: 16px; }
+    .pc-metric > span { font-size: 10.5px; }
+    .pc-tags { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 12px -14px 0; padding: 0 14px; }
+    .pc-tags::-webkit-scrollbar { display: none; }
+    .pc-tags .tag { flex: none; }
+    .pc-actions { gap: 6px; padding-top: 14px; }
+    .pc-points li { font-size: 14px; }
+    .mitm { margin: 14px 0 4px; }
+    .mitm-steps { padding: 8px; gap: 6px; }
+    .mitm-step, .mitm-btn { min-height: 38px; padding: 6px 10px; font-size: 12px; }
+    .mitm-diagram { padding: 10px 6px 4px; }
+    .mitm-log { padding: 12px; font-size: 11px; }
+    .mitm-foot { padding: 10px 12px; gap: 10px; }
+    .mitm-cap { font-size: 13px; }
+    .pgrid .pcard { transition: transform 0.55s cubic-bezier(0.2,0.9,0.3,1.2), opacity 0.45s ease, border-color 0.3s, box-shadow 0.5s; }
+    .pgrid .pcard[data-focus="0"] { transform: scale(0.94); opacity: 0.5; }
+    .pgrid .pcard[data-focus="1"] { transform: translateY(-4px); border-color: rgba(var(--pc-rgb), 0.75); box-shadow: 0 20px 40px -18px rgba(var(--pc-rgb), 0.6); }
+    .pgrid .pcard[data-focus="1"]::before { transform: scaleX(1); }
+    /* The MITM simulation is tall: on phones it opens together with that card's details */
+    .pcard .mitm { display: none; }
+    .pcard:has(.pc-more[data-open="1"]) .mitm { display: block; }
+
+    /* Shipping log */
+    .gh { margin-top: 18px; padding: 16px 14px; border-radius: 14px; }
+    .gh-who svg { width: 30px; height: 30px; }
+    .gh-who b { font-size: 15px; }
+    .gh-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 14px; }
+    .gh-stat { padding: 10px 8px; border-radius: 9px; }
+    .gh-stat b { font-size: 21px; }
+    .gh-stat > span { margin-top: 4px; font-size: 10.5px; line-height: 1.3; }
+    .gh-cal-wrap { margin: 14px -14px 0; padding: 0 14px 6px; }
+    .gh-cal { min-width: 640px; gap: 3px; }
+    .gh-feed-title { margin: 16px 0 8px; }
+    .gh-feed { gap: 6px; }
+    .gh-feed > :nth-child(n+5) { display: none; }
+    .gh-push { padding: 9px 10px; gap: 10px; border-radius: 9px; }
+    .gh-push > i { width: 28px; height: 28px; border-radius: 7px; }
+    .gh-push b { font-size: 13px; }
+    .gh-push b > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .gh-push b em { font-size: 10.5px; }
+    .gh-push p { font-size: 12.5px; }
+
+    /* Experience */
+    .xp-list { margin-top: 18px; }
+    .xp { gap: 10px; }
+    .xp-rail { width: 14px; }
+    .xp-node { width: 14px; height: 14px; border-width: 3px; margin-top: 14px; }
+    .xp-rail::before, .xp-rail::after { width: 3px; top: 24px; }
+    .xp-card { padding: 14px; margin-bottom: 14px; border-left-width: 5px; }
+    .xp-head { gap: 10px 12px; }
+    .xp-logo { width: 40px; height: 40px; font-size: 13px; border-radius: 10px; }
+    .xp-logo svg { width: 22px; height: 22px; }
+    .xp-id { min-width: 0; }
+    .xp-id h3 { font-size: 17px; }
+    .xp-id div { font-size: 13.5px; }
+    .xp-when { flex-direction: row; align-items: center; gap: 8px; width: 100%; }
+    .xp-when b { font-size: 11px; padding: 4px 7px; }
+    .xp-when > span { font-size: 12px; }
+    .xp-tags { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-top: 12px; }
+    .xp-tags::-webkit-scrollbar { display: none; }
+    .xp-tags .tag { flex: none; font-size: 11px; padding: 4px 7px; }
+    .xp-pts { margin-top: 12px; gap: 8px; }
+    .xp-pts li { font-size: 14px; line-height: 1.5; }
+    .xp-pts[data-open="0"] li:nth-child(n+3) { display: none; }
+    .xp-more { display: inline-flex; margin-top: 10px; padding: 6px 10px; border-radius: 7px; border: 2px solid rgba(var(--xc-rgb), 0.45); background: none; color: var(--xc); font: 600 12.5px 'Space Grotesk', system-ui, sans-serif; cursor: pointer; }
+    .xp-more:empty { display: none; }
+
+    /* Certifications */
+    .deck { margin-top: 18px; grid-auto-columns: 200px; gap: 10px; }
+    .ccard { padding: 0 14px 12px; gap: 9px; }
+    .ccard::before { margin: 0 -14px 4px; }
+    .cc-badge { width: 34px; height: 34px; font-size: 12px; }
+    .cc-title { font-size: 14.5px; }
+    .cc-foot { min-height: 44px; padding-top: 9px; }
+
+    /* Skill tree */
+    .st { margin-top: 18px; padding: 12px 10px 14px; border-radius: 14px; }
+    .ftabs { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; scrollbar-width: none; margin: 0 -10px; padding: 2px 10px 4px; }
+    .ftabs::-webkit-scrollbar { display: none; }
+    .ftab { flex: none; min-height: 38px; padding: 7px 11px; font-size: 13px; gap: 7px; }
+    .ftab svg { width: 15px; height: 15px; }
+    .st-tree { margin-top: 12px; padding: 16px 2px 6px; }
+    .st-row { gap: 14px 2px; }
+    .st-row + .st-row { margin-top: 26px; }
+    .st-root .hex { width: 60px; height: 68px; }
+    .st-root .hex-in svg { width: 26px; height: 26px; }
+    .st-root b { font-size: 13.5px; }
+    .st-node { width: 76px; gap: 5px; }
+    .hex { width: 46px; height: 52px; }
+    .hex-in { inset: 3px; font-size: 10.5px; }
+    .st-name { max-width: 76px; font-size: 10.5px; }
+    .st-pips i { width: 8px; height: 4px; }
+    .st-tip { width: 170px; padding: 9px 10px; }
+    .st-detail { margin-top: 12px; padding: 14px; }
+    .st-detail-head h3 { font-size: 17px; }
+    .st-use { font-size: 13.5px; }
+
+    /* Coursework */
+    .crs-hold { min-height: 0; }
+    .crs-panel { margin-top: 18px; padding: 12px 10px; border-radius: 14px; }
+    .crs-list { gap: 7px; margin-top: 12px; }
+    .crs-head { min-height: 0; padding: 8px 12px 8px 8px; gap: 10px; }
+    .crs-code { min-width: 70px; padding: 6px; font-size: 11px; }
+    .crs-name { font-size: 13.5px; }
+    .crs-body { padding: 2px 12px 14px; }
+    .crs-body li { font-size: 13.5px; }
+    .crs-all { width: 100%; margin-top: 10px; }
+
+    /* Contact */
+    .contact { margin-top: 30px; }
+    .contact-inner { padding: 44px 16px 120px; }
+    .contact h2 { font-size: 30px; margin-bottom: 22px; }
+    .contact-grid { gap: 8px; margin-bottom: 22px; }
+    .contact-item { padding: 12px; }
+    .contact-foot { margin-top: 28px; font-size: 12px; }
+    .m-cta { padding: 6px; gap: 6px; }
+    .m-cta .btn { padding: 10px 8px; }
   }
 </style>
 </helmet>
@@ -715,11 +918,15 @@
     <div class="nav-inner">
       <a class="brand" href="#top">Mohamad Rizk</a>
 
-      <div class="nav-links" aria-label="Sections">
-        <span class="nav-ind" aria-hidden="true"></span>
-        <sc-for list="{{ navLinks }}" as="nl" hint-placeholder-count="8">
-          <a class="nav-link" data-active="{{ nl.active }}" href="{{ nl.href }}">{{ nl.label }}</a>
-        </sc-for>
+      <div class="nav-scroll" data-l="0" data-r="0">
+        <button class="nav-edge" data-side="l" aria-label="Scroll sections left" tabindex="-1"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"></path></svg></button>
+        <div class="nav-links" aria-label="Sections">
+          <span class="nav-ind" aria-hidden="true"></span>
+          <sc-for list="{{ navLinks }}" as="nl" hint-placeholder-count="8">
+            <a class="nav-link" data-active="{{ nl.active }}" href="{{ nl.href }}">{{ nl.label }}</a>
+          </sc-for>
+        </div>
+        <button class="nav-edge" data-side="r" aria-label="Scroll sections right" tabindex="-1"><svg width="16" height="16" sc-camel-view-box="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"></path></svg></button>
       </div>
 
       <div class="nav-tools">
@@ -740,7 +947,8 @@
         <div class="status rv" data-reveal="1"><i></i>Open to full-time roles</div>
         <h1 class="rv" data-reveal="1">Mohamad Rizk</h1>
         <p class="hero-role rv" data-reveal="1">Cybersecurity &amp; Information Assurance Student</p>
-        <p class="hero-bio rv" data-reveal="1">I am fascinated by the moment security breaks, the assumption everyone trusted that turns out to be wrong. So I build labs, analyze how systems fail, and document exactly why the failure happened and what would have caught it. I graduate in December 2026 and I am looking for a full-time role in cybersecurity, somewhere I can help find the gap before it becomes an incident.</p>
+        <p class="hero-bio hero-bio-short rv" data-reveal="1">I build labs, break systems on purpose, and document exactly why they failed and what would have caught it. Graduating December 2026 and looking for a full-time role in cybersecurity.</p>
+        <p class="hero-bio hero-bio-long rv" data-reveal="1">I am fascinated by the moment security breaks, the assumption everyone trusted that turns out to be wrong. So I build labs, analyze how systems fail, and document exactly why the failure happened and what would have caught it. I graduate in December 2026 and I am looking for a full-time role in cybersecurity, somewhere I can help find the gap before it becomes an incident.</p>
 
         <div class="hero-btns rv" data-reveal="1">
           <a class="btn btn-gh magnet" href="https://github.com/MohamadRizk-Official" target="_blank" rel="noopener">
@@ -951,11 +1159,12 @@
                 <span class="tag">{{ tag }}</span>
               </sc-for>
             </div>
-            <ul class="xp-pts">
+            <ul class="xp-pts" data-open="{{ exp.open }}">
               <sc-for list="{{ exp.bullets }}" as="bullet" hint-placeholder-count="2">
                 <li><i></i><span><sc-for list="{{ bullet }}" as="seg" hint-placeholder-count="1"><sc-if value="{{ seg.bold }}" hint-placeholder-val="{{ false }}"><strong>{{ seg.t }}</strong></sc-if><sc-if value="{{ seg.plain }}" hint-placeholder-val="{{ true }}"><span>{{ seg.t }}</span></sc-if></sc-for></span></li>
               </sc-for>
             </ul>
+            <button class="xp-more" data-open="{{ exp.open }}" sc-camel-on-click="{{ exp.toggle }}">{{ exp.moreLabel }}</button>
           </article>
         </div>
       </sc-for>
@@ -1044,6 +1253,9 @@
             </div>
           </sc-for>
         </div>
+        <sc-if value="{{ crsMoreLabel }}" hint-placeholder-val="">
+          <button class="btn btn-sm btn-ghost crs-all" sc-camel-on-click="{{ toggleCrsAll }}"><span>{{ crsMoreLabel }}</span></button>
+        </sc-if>
       </div>
     </div>
   </section>
@@ -1270,7 +1482,8 @@ class Component extends DCLogic {
     return stars;
   }
 
-  state = { theme: "light", stars: this.buildStars(), selCat: "Cybersecurity", selSkill: "Browser Security", courseFilter: "All", openCourse: "CIS 316", mitmStep: 0, emailCopied: false, activeSection: "top", openProj: {}, stHover: null, stLines: [], gh: null };
+  state = { theme: "light", stars: this.buildStars(), selCat: "Cybersecurity", selSkill: "Browser Security", courseFilter: "All", openCourse: "CIS 316", mitmStep: 0, emailCopied: false, activeSection: "top", openProj: {}, stHover: null, stLines: [], gh: null, mobile: false, xpOpen: {}, crsAll: false };
+  calRef = React.createRef();
   treeRef = React.createRef();
   ghTipRef = React.createRef();
 
@@ -2238,6 +2451,13 @@ class Component extends DCLogic {
     this.updateActiveSection();
 
     this.setupNav();
+    try {
+      this._mq = window.matchMedia("(max-width: 767px)");
+      const onMq = () => { this.setState({ mobile: this._mq.matches }); this.setupProjectFocus(); };
+      this._mq.addEventListener ? this._mq.addEventListener("change", onMq) : this._mq.addListener(onMq);
+      if (this._mq.matches) this.setState({ mobile: true });
+    } catch (e) {}
+    this.setupProjectFocus();
     this._onResize = () => { this.moveNav(this._navHover || this.activeNavLink()); this.measureTree(); };
     window.addEventListener("resize", this._onResize);
     try { document.fonts.ready.then(() => { this.moveNav(this.activeNavLink()); this.measureTree(); }); } catch (e) {}
@@ -2353,6 +2573,8 @@ class Component extends DCLogic {
     }
     this.measureTree();
     this.lightPath(this._stHover || this.currentSkill());
+    const cal = this.calRef.current;
+    if (cal && !this._calScrolled) { this._calScrolled = true; cal.scrollLeft = cal.scrollWidth; }
   }
 
   navItems = [
@@ -2390,6 +2612,9 @@ class Component extends DCLogic {
     if (!ind) return;
     wrap.querySelectorAll(".nav-link").forEach((a) => a.setAttribute("data-hl", a === link ? "1" : "0"));
     if (!link) { ind.style.setProperty("--o", "0"); return; }
+    if (!this._navHover && wrap.scrollWidth > wrap.clientWidth + 4) {
+      wrap.scrollTo({ left: Math.max(0, link.offsetLeft - wrap.clientWidth / 2 + link.offsetWidth / 2), behavior: "smooth" });
+    }
     ind.style.setProperty("--x", link.offsetLeft + "px");
     ind.style.setProperty("--w", link.offsetWidth + "px");
     ind.style.setProperty("--o", "1");
@@ -2405,6 +2630,52 @@ class Component extends DCLogic {
     });
     wrap.addEventListener("pointerleave", () => { this._navHover = null; this.moveNav(this.activeNavLink()); });
     this.moveNav(this.activeNavLink());
+
+    // When the link row is wider than the screen, small edge buttons show which way
+    // there is more to swipe, and tapping one scrolls that way.
+    const box = wrap.parentNode;
+    const edges = () => {
+      const max = wrap.scrollWidth - wrap.clientWidth;
+      box.setAttribute("data-l", wrap.scrollLeft > 4 ? "1" : "0");
+      box.setAttribute("data-r", wrap.scrollLeft < max - 4 ? "1" : "0");
+    };
+    this._navEdges = edges;
+    wrap.addEventListener("scroll", edges, { passive: true });
+    box.querySelectorAll(".nav-edge").forEach((b) => b.addEventListener("click", () => {
+      wrap.scrollBy({ left: (b.getAttribute("data-side") === "l" ? -1 : 1) * wrap.clientWidth * 0.6, behavior: "smooth" });
+    }));
+    edges();
+  }
+
+  // On phones, the project card filling most of the screen is the "focused" one: it
+  // pops forward while the others settle back. Focus moves once the next card is three
+  // quarters visible (measured against the viewport, so tall cards still qualify).
+  setupProjectFocus() {
+    if (this._focusIO) { this._focusIO.disconnect(); this._focusIO = null; }
+    const root = this.rootRef.current;
+    if (!root) return;
+    const cards = Array.prototype.slice.call(root.querySelectorAll(".pgrid .pcard"));
+    if (!this._mq || !this._mq.matches || !("IntersectionObserver" in window)) {
+      cards.forEach((c) => c.removeAttribute("data-focus"));
+      return;
+    }
+    const seen = new Map();
+    let current = null;
+    const steps = [];
+    for (let i = 0; i <= 20; i++) steps.push(i / 20);
+    this._focusIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const H = (e.rootBounds && e.rootBounds.height) || window.innerHeight;
+        seen.set(e.target, e.intersectionRect.height / Math.min(e.boundingClientRect.height, H));
+      });
+      let best = null, bestV = 0;
+      seen.forEach((v, el) => { if (v > bestV) { best = el; bestV = v; } });
+      const curV = current ? seen.get(current) || 0 : 0;
+      if (best && best !== current && (bestV >= 0.75 || curV < 0.25)) current = best;
+      if (current && (seen.get(current) || 0) === 0) current = null;
+      cards.forEach((c) => c.setAttribute("data-focus", current ? (c === current ? "1" : "0") : ""));
+    }, { threshold: steps });
+    cards.forEach((c) => this._focusIO.observe(c));
   }
 
   copyEmail = () => {
@@ -2559,6 +2830,13 @@ class Component extends DCLogic {
 
   /* ---------------- GitHub activity ---------------- */
 
+  shortAgo(iso) {
+    const s = Math.max(0, (Date.now() - new Date(iso).getTime()) / 1000);
+    const units = [["y", 31536000], ["mo", 2592000], ["w", 604800], ["d", 86400], ["h", 3600], ["m", 60]];
+    for (const [u, n] of units) if (s >= n) return Math.floor(s / n) + u + " ago";
+    return "now";
+  }
+
   timeAgo(iso) {
     const s = Math.max(1, (Date.now() - new Date(iso).getTime()) / 1000);
     const units = [["year", 31536000], ["month", 2592000], ["week", 604800], ["day", 86400], ["hour", 3600], ["minute", 60]];
@@ -2626,7 +2904,7 @@ class Component extends DCLogic {
     return h("div", { className: "gh" },
       head,
       h("div", { className: "gh-stats" }, stats.map(([v, l], i) => h("div", { className: "gh-stat", key: i }, h("b", { "data-count": v }, Number(v).toLocaleString()), h("span", null, l)))),
-      h("div", { className: "gh-cal-wrap" },
+      h("div", { className: "gh-cal-wrap", ref: this.calRef },
         h("div", { className: "gh-cal", "data-reveal": "1", onMouseOver: tip, onMouseLeave: () => { const t = this.ghTipRef.current; if (t) t.setAttribute("data-on", "0"); } }, labels, cells)),
       h("div", { className: "gh-legend" }, "Less", [0, 1, 2, 3, 4].map((l) => h("i", { key: l, style: { background: "var(--heat-" + l + ")" } })), "More"),
       h("div", { className: "gh-feed-title" }, "Latest pushes"),
@@ -2635,7 +2913,7 @@ class Component extends DCLogic {
         const body = [
           h("i", { key: "i" }, priv ? lockIcon : commitIcon),
           h("div", { key: "d" },
-            h("b", null, priv ? "Private client repo" : p.repo, h("em", null, this.timeAgo(p.date))),
+            h("b", null, h("span", null, priv ? "Private client repo" : p.repo), h("em", null, this.shortAgo(p.date))),
             h("p", null, (p.count > 1 ? p.count + " commits · " : "") + (priv ? "Work for a client, kept private" : p.message)))
         ];
         return priv
@@ -2727,7 +3005,17 @@ class Component extends DCLogic {
           toggle: () => this.setState((s) => ({ openProj: Object.assign({}, s.openProj, { [p.id]: !s.openProj[p.id] }) }))
         });
       }),
-      experience: this.experienceData.map((e) => Object.assign({}, e, { hrMark: !!e.hrMark, mono: e.mono || "" })),
+      experience: this.experienceData.map((e) => {
+        const open = !!this.state.xpOpen[e.id];
+        const extra = e.bullets.length - 2;
+        return Object.assign({}, e, {
+          hrMark: !!e.hrMark,
+          mono: e.mono || "",
+          open: open || extra <= 0 ? "1" : "0",
+          moreLabel: extra > 0 ? (open ? "Show less" : "Show " + extra + " more") : "",
+          toggle: () => this.setState((s) => ({ xpOpen: Object.assign({}, s.xpOpen, { [e.id]: !s.xpOpen[e.id] }) }))
+        });
+      }),
       github: this.renderGithub(),
       skillTree: this.renderSkillTree(),
       certs: this.certData.map((c, i) => Object.assign({}, c, { i, credShort: c.credId ? c.credId.slice(0, 12) + "…" : "" })),
@@ -2736,8 +3024,15 @@ class Component extends DCLogic {
         sel: this.state.courseFilter === name ? "1" : "0",
         select: () => this.setState({ courseFilter: name })
       })),
+      crsMoreLabel: (() => {
+        const n = this.courseData.filter((c) => this.state.courseFilter === "All" || c.cat === this.state.courseFilter).length;
+        if (!this.state.mobile || n <= 6) return "";
+        return this.state.crsAll ? "Show fewer courses" : "Show all " + n + " courses";
+      })(),
+      toggleCrsAll: () => this.setState((s) => ({ crsAll: !s.crsAll })),
       courses: this.courseData
         .filter((c) => this.state.courseFilter === "All" || c.cat === this.state.courseFilter)
+        .filter((c, i) => !this.state.mobile || this.state.crsAll || i < 6)
         .map((c) => {
           const open = this.state.openCourse === c.code;
           const [color, rgb] = this.courseColors[c.cat] || this.courseColors.Cybersecurity;
