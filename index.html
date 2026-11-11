@@ -2916,7 +2916,7 @@ class Component extends DCLogic {
   // young pine, a tall pine, or a blossom tree. The wheel, a drag, or the Older/Newer
   // buttons travel along it.
   forestPal = {
-    light: { sky: 0xeef3fa, tile: 0xc9d3e1, trunk: 0x8c6a4f, kinds: [0x8fd14f, 0x43b968, 0x23874d, 0xff86bf], blossom2: 0xffbedd, hemiSky: 0xffffff, hemiGround: 0xc2cfdf, hemi: 0.9, sun: 0.85 },
+    light: { sky: 0xe3ebf7, tile: 0x7f9ccd, trunk: 0x8c6a4f, kinds: [0x8fd14f, 0x43b968, 0x23874d, 0xff86bf], blossom2: 0xffbedd, hemiSky: 0xffffff, hemiGround: 0xc2cfdf, hemi: 0.9, sun: 0.85 },
     dark: { sky: 0x070b14, tile: 0x1c2945, trunk: 0x7a5c44, kinds: [0xa8e05f, 0x52c978, 0x34a565, 0xff92c9], blossom2: 0xffc6e3, hemiSky: 0xa9c2f2, hemiGround: 0x0b1424, hemi: 0.75, sun: 0.7 }
   };
   forestKinds = ["Sapling", "Young pine", "Pine", "Blossom"];
@@ -2976,7 +2976,7 @@ class Component extends DCLogic {
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xffffff, small ? 16 : 20, small ? 34 : 42);
+    scene.fog = new THREE.Fog(0xffffff, small ? 16 : 19, small ? 36 : 44);
     const camera = new THREE.PerspectiveCamera(small ? 50 : 38, 1, 0.1, 200);
     const hemi = new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.8);
     const sun = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -2989,8 +2989,8 @@ class Component extends DCLogic {
     // from the front edge (u = 0 is nearest the camera, front right). The ribbon runs left
     // and away for STRAIGHT weeks, then rolls downward over a cylinder of radius CURL.
     const W = Math.ceil(days.length / 7);
-    const ROW = 0.95, COL = 1.05, STRAIGHT = small ? 11 : 19, CURL = 2.2, DROP = 9;
-    const A = new THREE.Vector3(small ? 5 : 7, 0, small ? 4 : 5);
+    const ROW = 0.95, COL = 1.05, STRAIGHT = small ? 8 : 14, CURL = small ? 5 : 7, DROP = small ? 4 : 5;
+    const A = new THREE.Vector3(small ? 3.4 : 4.4, 0, small ? 2.6 : 3.2);
     const F = new THREE.Vector3(-1, 0, -0.62).normalize();
     const U = new THREE.Vector3(0, 1, 0);
     const NB = new THREE.Vector3().crossVectors(U, F).negate().normalize(); // toward the back
@@ -3069,7 +3069,7 @@ class Component extends DCLogic {
     // The far weeks shrink and sink into the fog over the last FADE weeks instead of
     // stopping at a hard edge. Tree height follows commits directly; width grows more
     // slowly so tall trees do not swallow their neighbors.
-    const FADE = DROP + 2;
+    const FADE = DROP + 5;
     const fadeAt = (u) => Math.max(0, Math.min(1, (UMAX - u) / FADE, (u + 10) / 3));
     const layout = () => {
       tiles.forEach((t, k) => {
@@ -3146,8 +3146,8 @@ class Component extends DCLogic {
     const setCamera = () => {
       // Viewed from the front at an angle, so the ribbon sweeps from the bottom right corner
       // diagonally up to the top left, where it rolls over and drops away.
-      if (small) { camera.position.set(0.6, 10.5, 14); camera.lookAt(-0.4, -1, 0.2); }
-      else { camera.position.set(-0.2, 7.6, 12.6); camera.lookAt(-1.5, -1.3, -0.6); }
+      if (small) { camera.position.set(-0.2, 9.6, 12.6); camera.lookAt(-1.3, -0.2, -0.6); }
+      else { camera.position.set(-1.2, 7.2, 12); camera.lookAt(-2.6, 0.1, -1.4); }
     };
     const frame = () => {
       raf = 0;
