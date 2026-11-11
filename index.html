@@ -433,7 +433,7 @@
   .pc-metric b { display: block; font-size: 22px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; color: var(--pc); }
   .pc-metric > span { display: block; margin-top: 4px; font-size: 12px; font-weight: 500; line-height: 1.3; color: var(--text-muted); }
   .pc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-  .pc-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.75s cubic-bezier(0.65,0,0.25,1); }
+  .pc-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.5s cubic-bezier(0.4,0,0.2,1); }
   .pc-more[data-open="1"] { grid-template-rows: 1fr; }
   .pc-more > div { overflow: hidden; min-height: 0; }
   .pc-points { margin: 18px 0 0; padding: 16px 0 0; list-style: none; display: flex; flex-direction: column; gap: 10px; border-top: 2px dashed var(--border); }
@@ -502,20 +502,29 @@
   .gh-stat:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 14px 26px -14px var(--glow); }
   .gh-stat b { display: block; font-size: 32px; font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
   .gh-stat > span { display: block; margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
-  .gh-cal-wrap { margin-top: 24px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
-  .gh-cal { position: relative; display: grid; grid-template-columns: repeat(53, minmax(0, 1fr)); grid-template-rows: 18px repeat(7, auto); gap: 4px; width: 100%; min-width: 700px; }
-  .gh-month { grid-row: 1; font: 500 11px 'IBM Plex Mono', monospace; color: var(--text-faint); white-space: nowrap; }
-  .gh-day { width: 100%; aspect-ratio: 1; border-radius: 3px; background: var(--heat-0); border: 2px solid transparent; transform: scale(0); transition: transform 0.45s cubic-bezier(0.2,0.9,0.3,1.5), border-color 0.15s; transition-delay: calc(var(--c) * 14ms); }
-  .gh-cal[data-in] .gh-day { transform: scale(1); }
-  .gh-day[data-l="1"] { background: var(--heat-1); }
-  .gh-day[data-l="2"] { background: var(--heat-2); }
-  .gh-day[data-l="3"] { background: var(--heat-3); }
-  .gh-day[data-l="4"] { background: var(--heat-4); }
-  .gh-cal[data-in] .gh-day:hover { transform: scale(1.5); border-color: var(--text); transition-delay: 0s; transition-duration: 0.15s; }
   .gh-tip { position: fixed; z-index: 70; pointer-events: none; padding: 7px 10px; border-radius: 7px; background: var(--text); color: var(--bg); font: 600 12px 'IBM Plex Mono', monospace; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); opacity: 0; transition: opacity 0.12s; }
   .gh-tip[data-on="1"] { opacity: 1; }
-  .gh-legend { display: flex; align-items: center; justify-content: flex-end; gap: 5px; margin-top: 10px; font: 500 11px 'IBM Plex Mono', monospace; color: var(--text-faint); }
-  .gh-legend i { width: 12px; height: 12px; border-radius: 3px; }
+  /* Commit City */
+  .city-card { margin-top: 22px; border-radius: 14px; border: 2px solid var(--border); background: var(--city-sky); overflow: hidden; }
+  .city-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 16px 18px 0; }
+  .city-head b { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+  .city-head span { font-size: 13.5px; color: var(--text-muted); }
+  .city-wrap { overflow-x: auto; scrollbar-width: thin; padding: 6px 12px 10px; }
+  .city { display: block; width: 100%; min-width: 760px; height: auto; --p: 0; }
+  .city-bld, .city-flag { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(clamp(0, calc((var(--p) - var(--d)) * 2.6), 1)); }
+  .city-flag { transform-origin: 50% 50%; transform: none; opacity: clamp(0, calc((var(--p) - 0.8) * 6), 1); }
+  .city-b1 { fill: var(--city-b1); }
+  .city-b2 { fill: var(--city-b2); }
+  .city-stub { fill: var(--city-stub); }
+  .city-roof { fill: var(--city-roof); }
+  .city-win { fill: var(--city-win); }
+  .city-lit { fill: var(--city-lit); }
+  .city-ground { fill: var(--text); }
+  .city-month { font: 600 11px 'IBM Plex Mono', monospace; fill: var(--text-faint); }
+  .city-top { font: 700 12px 'Space Grotesk', system-ui, sans-serif; fill: var(--text); text-anchor: middle; }
+  .city-beacon { fill: #ff4d4d; animation: blink 1.2s steps(2, end) infinite; }
+  .city-bld rect:first-child { transition: fill 0.2s; }
+  .city-bld:hover .city-b1, .city-bld:hover .city-b2, .city-bld:hover .city-stub { fill: var(--accent); }
   .gh-feed-title { margin: 26px 0 12px; font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
   .gh-feed { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .gh-push { display: flex; align-items: flex-start; gap: 12px; padding: 13px 14px; border-radius: 11px; border: 2px solid var(--border); background: var(--surface-2); text-decoration: none; color: inherit; transition: transform 0.3s cubic-bezier(0.2,0.9,0.3,1.4), border-color 0.2s, box-shadow 0.3s; }
@@ -528,7 +537,7 @@
   .gh-push b em { flex: none; font: 500 11.5px 'IBM Plex Mono', monospace; color: var(--text-faint); font-style: normal; }
   .gh-push p { margin: 4px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--text-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   @media (max-width: 900px) { .gh-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } .gh-feed { grid-template-columns: minmax(0, 1fr); } }
-  @media (max-width: 560px) { .gh { padding: 20px 16px; } .gh-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gh-stat b { font-size: 26px; } .gh-cal { gap: 3px; } }
+  @media (max-width: 560px) { .gh { padding: 20px 16px; } .gh-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } .gh-stat b { font-size: 26px; } }
 
   /* ---------- Experience ---------- */
   .xp-list { margin-top: 34px; display: flex; flex-direction: column; }
@@ -575,7 +584,9 @@
   .ccard:hover { transform: translateY(-12px) rotate(-1.5deg) scale(1.03); border-color: var(--cc); box-shadow: 0 26px 40px -18px rgba(var(--cc-rgb), 0.6); }
   .ccard:hover::after { transform: skewX(-20deg) translateX(700%); }
   .cc-top { display: flex; align-items: center; gap: 10px; }
-  .cc-badge { flex: none; width: 40px; height: 40px; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; background: var(--cc); color: #ffffff; font: 700 13px 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; transition: transform 0.45s cubic-bezier(0.2,0.9,0.3,1.4); }
+  .cc-badge { flex: none; width: 44px; height: 44px; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; background: #ffffff; border: 2px solid var(--border); box-shadow: 0 3px 0 rgba(var(--cc-rgb), 0.35); transition: transform 0.45s cubic-bezier(0.2,0.9,0.3,1.4), border-color 0.25s; }
+  .cc-badge svg { width: 24px; height: 24px; display: block; }
+  .ccard:hover .cc-badge { border-color: var(--cc); }
   .ccard:hover .cc-badge { transform: rotate(-8deg) scale(1.08); }
   .cc-issuer { flex: 1; min-width: 0; font-size: 12.5px; font-weight: 600; line-height: 1.3; color: var(--text-muted); }
   .cc-title { margin: 0; flex: 1; font-size: 16px; font-weight: 700; letter-spacing: -0.015em; line-height: 1.3; color: var(--text); text-wrap: pretty; }
@@ -669,11 +680,11 @@
   .crs-cat { flex: none; font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.03em; padding: 5px 8px; border-radius: 5px; border: 2px solid rgba(var(--cc-rgb), 0.3); color: var(--cc); }
   .crs-chev { flex: none; display: inline-flex; color: var(--text-faint); transition: transform 0.35s cubic-bezier(0.2,0.9,0.3,1.4), color 0.2s; }
   .crs-row[data-open="1"] .crs-chev { transform: rotate(180deg); color: var(--cc); }
-  .crs-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.7s cubic-bezier(0.65,0,0.25,1); }
+  .crs-more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.38s cubic-bezier(0.4,0,0.2,1); }
   .crs-more[data-open="1"] { grid-template-rows: 1fr; }
   .crs-more > div { overflow: hidden; min-height: 0; }
-  .crs-body { padding: 4px 20px 20px; opacity: 0; transform: translateY(-8px); transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-  .crs-more[data-open="1"] .crs-body { opacity: 1; transform: none; transition: opacity 0.5s ease 0.2s, transform 0.6s cubic-bezier(0.16,1,0.3,1) 0.2s; }
+  .crs-body { padding: 4px 20px 20px; opacity: 0; transform: translateY(-6px); transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+  .crs-more[data-open="1"] .crs-body { opacity: 1; transform: none; transition: opacity 0.3s ease 0.1s, transform 0.35s cubic-bezier(0.16,1,0.3,1) 0.1s; }
   .crs-body ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px; }
   .crs-body li { display: flex; gap: 12px; font-size: 14.5px; line-height: 1.6; color: var(--text-mono); text-wrap: pretty; }
   .crs-body li > i { flex: none; margin-top: 8px; width: 8px; height: 8px; border-radius: 2px; background: var(--cc); transform: rotate(45deg); }
@@ -727,7 +738,7 @@
      button rows, sideways-scrolling tag rows, and shorter lists.
      ============================================================ */
   @media (max-width: 767px) {
-    .hero { padding: 128px 16px 14px; }
+    .hero { padding: calc(var(--nav-h, 128px) + 28px) 16px 14px; }
     .hero-grid { flex-wrap: wrap-reverse; gap: 18px; }
     .hero-photo { width: 100%; display: flex; justify-content: center; }
     .photo-frame { width: 132px; padding: 5px; border-width: 3px; animation: none; }
@@ -815,9 +826,13 @@
     .gh-stat { padding: 10px 8px; border-radius: 9px; }
     .gh-stat b { font-size: 21px; }
     .gh-stat > span { margin-top: 4px; font-size: 10.5px; line-height: 1.3; }
-    .gh-cal-wrap { margin: 14px -14px 0; padding: 0 14px 6px; }
-    .gh-cal { min-width: 640px; gap: 3px; }
     .gh-feed-title { margin: 16px 0 8px; }
+    .city-card { margin: 14px -14px 0; border-radius: 0; border-left: none; border-right: none; }
+    .city-head { padding: 12px 14px 0; }
+    .city-head b { font-size: 15px; }
+    .city-head span { font-size: 12px; }
+    .city-wrap { padding: 4px 8px 8px; }
+    .city { min-width: 680px; }
     .gh-feed { gap: 6px; }
     .gh-feed > :nth-child(n+5) { display: none; }
     .gh-push { padding: 9px 10px; gap: 10px; border-radius: 9px; }
@@ -856,7 +871,8 @@
     .deck { margin-top: 18px; grid-auto-columns: 200px; gap: 10px; }
     .ccard { padding: 0 14px 12px; gap: 9px; }
     .ccard::before { margin: 0 -14px 4px; }
-    .cc-badge { width: 34px; height: 34px; font-size: 12px; }
+    .cc-badge { width: 38px; height: 38px; }
+    .cc-badge svg { width: 20px; height: 20px; }
     .cc-title { font-size: 14.5px; }
     .cc-foot { min-height: 44px; padding-top: 9px; }
 
@@ -1181,7 +1197,7 @@
         <div id="cert-{{ cert.id }}" class="ccard-wrap" style="--i: {{ cert.i }}; scroll-margin-top: 100px;">
           <div class="ccard" style="--cc: {{ cert.color }}; --cc-rgb: {{ cert.rgb }};">
             <div class="cc-top">
-              <span class="cc-badge">{{ cert.initial }}</span>
+              <span class="cc-badge" aria-hidden="true">{{ cert.logoEl }}</span>
               <span class="cc-issuer">{{ cert.issuer }}</span>
             </div>
             <h3 class="cc-title">{{ cert.title }}</h3>
@@ -1368,6 +1384,13 @@ class Component extends DCLogic {
       "--heat-2": "#6c98ec",
       "--heat-3": "#3a72e2",
       "--heat-4": "#1446b8",
+      "--city-sky": "#f2f6fc",
+      "--city-b1": "#2c66d6",
+      "--city-b2": "#1f55c0",
+      "--city-stub": "#b6c4da",
+      "--city-roof": "#123a8c",
+      "--city-win": "#1a4aa8",
+      "--city-lit": "#e3eeff",
       "--tree-bg": "#f2f6fc",
       "--tree-dot": "#c9d6ea",
       "--tree-line": "#c3cfe2",
@@ -1432,6 +1455,13 @@ class Component extends DCLogic {
       "--heat-2": "#2a5fc4",
       "--heat-3": "#4d8dff",
       "--heat-4": "#9cc4ff",
+      "--city-sky": "#060b16",
+      "--city-b1": "#1b2c50",
+      "--city-b2": "#22375f",
+      "--city-stub": "#26375a",
+      "--city-roof": "#3a5a9a",
+      "--city-win": "#121d36",
+      "--city-lit": "#ffcf5c",
       "--tree-bg": "#0a1120",
       "--tree-dot": "#1b2742",
       "--tree-line": "#26375a",
@@ -1484,6 +1514,7 @@ class Component extends DCLogic {
 
   state = { theme: "light", stars: this.buildStars(), selCat: "Cybersecurity", selSkill: "Browser Security", courseFilter: "All", openCourse: "CIS 316", mitmStep: 0, emailCopied: false, activeSection: "top", openProj: {}, stHover: null, stLines: [], gh: null, mobile: false, xpOpen: {}, crsAll: false };
   calRef = React.createRef();
+  cityRef = React.createRef();
   treeRef = React.createRef();
   ghTipRef = React.createRef();
 
@@ -1507,10 +1538,22 @@ class Component extends DCLogic {
     { name: "Michigan Orthopaedic", kind: "Healthcare", url: "https://michigan-orthopaedic-rehabilitation.vercel.app/", img: "assets/work/9711096c-ac57-5ec1-af4d-d36c37b6ea75.jpg" }
   ];
 
+  // Issuer marks. Google is its four color G; the rest are Simple Icons paths (CC0) in brand color.
+  certLogos = {
+    google: [["#4285F4", "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"],
+      ["#34A853", "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"],
+      ["#FBBC05", "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"],
+      ["#EA4335", "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"]],
+    freecodecamp: [["#0A0A23", "M19.885 3.906a.621.621 0 00-.354.12c-.08.08-.161.196-.161.313 0 .2.236.474.673.923 1.822 1.754 2.738 3.903 2.732 6.494-.007 2.867-.97 5.17-2.844 6.954-.394.353-.556.63-.557.867 0 .116.08.237.16.353.076.08.237.162.353.162.434 0 1.04-.512 1.833-1.509 1.542-1.89 2.24-3.978 2.279-6.824.036-2.847-.857-4.777-2.603-6.77-.63-.712-1.153-1.082-1.511-1.083zm-15.769.002c-.358 0-.882.37-1.51 1.083C.858 6.984-.035 8.914.001 11.761c.04 2.846.737 4.933 2.28 6.824.791.997 1.398 1.51 1.832 1.509a.573.573 0 00.352-.162c.08-.116.16-.237.16-.353 0-.237-.162-.514-.556-.866-1.873-1.785-2.837-4.087-2.844-6.955-.006-2.591.91-4.74 2.732-6.494.437-.449.674-.722.673-.923 0-.117-.08-.233-.161-.313a.621.621 0 00-.354-.12zm7.056.895s.655 2.081-2.649 6.727c-3.156 4.433 1.045 7.15 1.432 7.386-.281-.18-2.001-1.5.402-5.423.466-.77 1.076-1.47 1.834-3.041 0 0 .67.946.32 2.998-.523 3.101 2.271 2.214 2.314 2.257.976 1.15-.808 3.17-.917 3.233-.108.061 5.096-3.13 1.399-7.935-.253.253-.582 1.442-1.267 1.266-.684-.174 2.125-3.494-2.868-7.468zM9.955 18.916c.023.016.038.024.038.024l-.038-.024z"]],
+    tryhackme: [["#212C42", "M10.705 0C7.54 0 4.902 2.285 4.349 5.291a4.525 4.525 0 0 0-4.107 4.5 4.525 4.525 0 0 0 4.52 4.52h6.761a.625.625 0 1 0 0-1.25H4.761a3.273 3.273 0 0 1-3.27-3.27A3.273 3.273 0 0 1 6.59 7.08a.625.625 0 0 0 .7-1.035 4.488 4.488 0 0 0-1.68-.69 5.223 5.223 0 0 1 5.096-4.104 5.221 5.221 0 0 1 5.174 4.57 4.489 4.489 0 0 0-.488.305.625.625 0 1 0 .731 1.013 3.245 3.245 0 0 1 1.912-.616 3.278 3.278 0 0 1 3.203 2.61.625.625 0 0 0 1.225-.251 4.533 4.533 0 0 0-4.428-3.61 4.54 4.54 0 0 0-.958.105C16.556 2.328 13.9 0 10.705 0zm5.192 10.64a.925.925 0 0 0-.462.108.913.913 0 0 0-.313.29 1.27 1.27 0 0 0-.175.427 2.39 2.39 0 0 0-.054.514c0 .181.018.353.054.517.036.164.095.307.175.43a.899.899 0 0 0 .313.297c.127.073.281.11.462.11.18 0 .334-.037.46-.11a.897.897 0 0 0 .309-.296c.08-.124.137-.267.173-.431.036-.164.054-.336.054-.517 0-.18-.018-.352-.054-.514a1.271 1.271 0 0 0-.173-.426.901.901 0 0 0-.309-.291.917.917 0 0 0-.46-.108zm6.486 0a.925.925 0 0 0-.462.108.913.913 0 0 0-.313.29 1.27 1.27 0 0 0-.175.427 2.39 2.39 0 0 0-.053.514c0 .181.017.353.053.517.036.164.095.307.175.43a.899.899 0 0 0 .313.297c.127.073.281.11.462.11.18 0 .334-.037.46-.11a.897.897 0 0 0 .31-.296c.078-.124.136-.267.172-.431.036-.164.054-.336.054-.517 0-.18-.018-.352-.054-.514a1.271 1.271 0 0 0-.173-.426.901.901 0 0 0-.308-.291.916.916 0 0 0-.461-.108zm-8.537.068l-.84.618.313.43.476-.368v1.877h.603v-2.557zm6.486 0l-.841.618.314.43.477-.368v1.877h.603v-2.557zm-4.435.445c.08 0 .143.028.193.084.05.057.087.127.114.21.026.083.044.173.054.269a2.541 2.541 0 0 1 0 .533c-.01.097-.028.187-.054.27a.584.584 0 0 1-.114.21.243.243 0 0 1-.193.085.248.248 0 0 1-.195-.086.584.584 0 0 1-.118-.209 1.245 1.245 0 0 1-.056-.27 2.645 2.645 0 0 1 0-.533c.01-.096.029-.186.056-.27a.583.583 0 0 1 .118-.209.25.25 0 0 1 .195-.084zm6.486 0c.08 0 .144.028.193.084.05.057.087.127.114.21.027.083.044.173.054.269a2.541 2.541 0 0 1 0 .533c-.01.097-.027.187-.054.27a.584.584 0 0 1-.114.21.243.243 0 0 1-.193.085.249.249 0 0 1-.195-.086.581.581 0 0 1-.117-.209 1.245 1.245 0 0 1-.056-.27 2.642 2.642 0 0 1 0-.533c.01-.096.028-.186.056-.27a.58.58 0 0 1 .117-.209.25.25 0 0 1 .195-.084zm-2.191 3.51a.93.93 0 0 0-.463.109.908.908 0 0 0-.312.291c-.08.122-.139.263-.175.426a2.383 2.383 0 0 0-.054.514c0 .18.018.353.054.516.036.164.094.308.175.432a.91.91 0 0 0 .312.296.92.92 0 0 0 .463.11c.18 0 .333-.037.46-.11a.892.892 0 0 0 .308-.296 1.32 1.32 0 0 0 .174-.432c.036-.163.054-.335.054-.516 0-.18-.018-.352-.054-.514a1.274 1.274 0 0 0-.174-.426.89.89 0 0 0-.309-.291.918.918 0 0 0-.46-.108zm-6.402.07l-.841.617.314.43.476-.369v1.878h.604v-2.557zm2.125 0l-.841.617.314.43.477-.369v1.878h.603v-2.557zm2.116 0l-.84.617.313.43.477-.369v1.878h.603v-2.557zm2.16.443c.08 0 .144.028.194.085a.605.605 0 0 1 .114.21c.026.083.044.172.053.269a2.639 2.639 0 0 1 0 .532 1.28 1.28 0 0 1-.053.27.585.585 0 0 1-.114.21.244.244 0 0 1-.193.085.25.25 0 0 1-.196-.085.589.589 0 0 1-.117-.21 1.245 1.245 0 0 1-.056-.27 2.597 2.597 0 0 1 0-.532c.01-.097.028-.186.056-.27a.589.589 0 0 1 .117-.209.249.249 0 0 1 .196-.085zm-6.729 3.073a.676.676 0 0 0-.335.078.661.661 0 0 0-.227.211.91.91 0 0 0-.127.31c-.027.118-.04.242-.04.373s.013.256.04.375a.93.93 0 0 0 .127.313.65.65 0 0 0 .227.215c.092.053.204.08.335.08a.655.655 0 0 0 .334-.08.65.65 0 0 0 .225-.215c.057-.09.1-.194.125-.313a1.75 1.75 0 0 0 .04-.375c0-.13-.014-.255-.04-.373a.931.931 0 0 0-.125-.31.658.658 0 0 0-.225-.21.667.667 0 0 0-.334-.08zm3.086 0a.675.675 0 0 0-.336.078.661.661 0 0 0-.226.211.907.907 0 0 0-.127.31 1.69 1.69 0 0 0-.04.373c0 .131.013.256.04.375a.928.928 0 0 0 .127.313c.058.09.134.162.226.215.093.053.205.08.336.08a.655.655 0 0 0 .334-.08.65.65 0 0 0 .224-.215c.058-.09.1-.194.126-.313a1.752 1.752 0 0 0 0-.748.94.94 0 0 0-.126-.31.657.657 0 0 0-.224-.21.667.667 0 0 0-.334-.08zm5.108 0a.675.675 0 0 0-.336.078.661.661 0 0 0-.226.211.91.91 0 0 0-.127.31c-.027.118-.04.242-.04.373s.013.256.04.375a.931.931 0 0 0 .127.313c.058.09.134.162.226.215.093.053.205.08.336.08.13 0 .243-.027.334-.08a.65.65 0 0 0 .224-.215c.058-.09.1-.194.126-.313a1.75 1.75 0 0 0 .04-.375c0-.13-.014-.255-.04-.373a.943.943 0 0 0-.126-.31.657.657 0 0 0-.224-.21.668.668 0 0 0-.334-.08zm-6.658.05l-.61.448.227.311.346-.266v1.362h.438v-1.856zm3.068 0l-.61.448.227.311.346-.266v1.362h.438v-1.856zm5.108 0l-.611.448.228.311.346-.266v1.362h.438v-1.856zm-9.712.322c.058 0 .105.02.14.062a.421.421 0 0 1 .083.151.96.96 0 0 1 .04.196 1.932 1.932 0 0 1 0 .386.954.954 0 0 1-.04.197.421.421 0 0 1-.083.152.176.176 0 0 1-.14.061.18.18 0 0 1-.141-.06.427.427 0 0 1-.085-.153.887.887 0 0 1-.041-.197 1.96 1.96 0 0 1 0-.386.893.893 0 0 1 .04-.196.42.42 0 0 1 .086-.151.181.181 0 0 1 .141-.062zm3.086 0c.058 0 .104.02.14.062a.421.421 0 0 1 .082.151.94.94 0 0 1 .04.196 1.906 1.906 0 0 1 0 .386.93.93 0 0 1-.04.197.421.421 0 0 1-.082.152.176.176 0 0 1-.14.061.18.18 0 0 1-.141-.06.42.42 0 0 1-.086-.153.846.846 0 0 1-.04-.197 1.965 1.965 0 0 1-.011-.195c0-.057.004-.121.01-.191a.849.849 0 0 1 .041-.196.42.42 0 0 1 .086-.151.182.182 0 0 1 .141-.062zm5.108 0c.058 0 .104.02.14.062a.421.421 0 0 1 .082.151.92.92 0 0 1 .04.196 1.963 1.963 0 0 1 0 .386.943.943 0 0 1-.04.197.421.421 0 0 1-.082.152.177.177 0 0 1-.14.061.18.18 0 0 1-.142-.06.437.437 0 0 1-.085-.153.95.95 0 0 1-.04-.197 1.965 1.965 0 0 1-.011-.195c0-.057.004-.121.01-.191a.959.959 0 0 1 .04-.196.47.47 0 0 1 .086-.151.181.181 0 0 1 .142-.062zm-1.684 1.814a.675.675 0 0 0-.336.079.66.66 0 0 0-.227.21.91.91 0 0 0-.127.31 1.731 1.731 0 0 0 0 .748.939.939 0 0 0 .127.314c.059.09.134.162.227.215.093.053.205.08.336.08a.66.66 0 0 0 .334-.08.648.648 0 0 0 .224-.215c.058-.09.1-.195.126-.314a1.737 1.737 0 0 0-.001-.747.928.928 0 0 0-.125-.31.65.65 0 0 0-.224-.211.668.668 0 0 0-.334-.079zm3.063 0a.676.676 0 0 0-.336.079.664.664 0 0 0-.227.21.906.906 0 0 0-.127.31 1.74 1.74 0 0 0 0 .748.936.936 0 0 0 .127.314.66.66 0 0 0 .227.215c.092.053.204.08.336.08a.654.654 0 0 0 .334-.08.648.648 0 0 0 .223-.215c.058-.09.1-.195.126-.314a1.74 1.74 0 0 0 0-.747.928.928 0 0 0-.126-.31.65.65 0 0 0-.223-.211.666.666 0 0 0-.334-.079zm-1.545.05l-.611.448.228.312.346-.267v1.363h.438v-1.856zm-1.518.323c.057 0 .104.02.14.061a.42.42 0 0 1 .082.152.91.91 0 0 1 .04.195 1.966 1.966 0 0 1 0 .387.951.951 0 0 1-.04.197.421.421 0 0 1-.082.152.177.177 0 0 1-.14.06.18.18 0 0 1-.142-.06.428.428 0 0 1-.085-.152.914.914 0 0 1-.04-.197 1.96 1.96 0 0 1-.011-.195c0-.058.003-.122.01-.192a.923.923 0 0 1 .041-.195c.02-.06.048-.11.085-.152a.181.181 0 0 1 .142-.061zm3.063 0c.057 0 .104.02.14.061a.42.42 0 0 1 .082.152.94.94 0 0 1 .04.195 1.91 1.91 0 0 1 0 .387.93.93 0 0 1-.04.197.422.422 0 0 1-.083.152.175.175 0 0 1-.14.06.18.18 0 0 1-.141-.06.423.423 0 0 1-.085-.152.907.907 0 0 1-.04-.197 1.95 1.95 0 0 1 0-.387.915.915 0 0 1 .04-.195c.02-.06.048-.11.085-.152a.182.182 0 0 1 .142-.061zm-9.713.185a.465.465 0 0 0-.232.055.456.456 0 0 0-.157.146.627.627 0 0 0-.089.215 1.168 1.168 0 0 0-.027.259c0 .09.009.177.027.26a.648.648 0 0 0 .089.216c.04.063.093.112.157.149a.459.459 0 0 0 .232.056c.09 0 .168-.02.231-.056a.45.45 0 0 0 .156-.149.67.67 0 0 0 .087-.217 1.218 1.218 0 0 0 0-.518.647.647 0 0 0-.087-.215.448.448 0 0 0-.156-.146.458.458 0 0 0-.23-.055zm1.052.035l-.423.31.158.217.24-.185v.944h.303v-1.286zm-1.052.224c.04 0 .073.014.097.042a.284.284 0 0 1 .057.105.69.69 0 0 1 .028.136c.004.049.007.092.007.133 0 .04-.003.086-.007.135a.684.684 0 0 1-.028.136.285.285 0 0 1-.057.105.123.123 0 0 1-.097.043.125.125 0 0 1-.098-.043.298.298 0 0 1-.059-.105.612.612 0 0 1-.028-.136 1.39 1.39 0 0 1 0-.268.62.62 0 0 1 .028-.136.297.297 0 0 1 .06-.105.125.125 0 0 1 .097-.042zm3.775 1.394a.463.463 0 0 0-.232.054.452.452 0 0 0-.157.146.621.621 0 0 0-.088.214 1.19 1.19 0 0 0 0 .519.641.641 0 0 0 .088.217.46.46 0 0 0 .157.15.458.458 0 0 0 .232.054.454.454 0 0 0 .232-.055.45.45 0 0 0 .155-.149.664.664 0 0 0 .087-.217 1.189 1.189 0 0 0 0-.519.642.642 0 0 0-.087-.214.446.446 0 0 0-.155-.146.459.459 0 0 0-.232-.054zm1.052.034l-.423.31.158.216.24-.185v.945h.303V22.68zm-1.052.223c.04 0 .073.014.098.043a.3.3 0 0 1 .057.105.643.643 0 0 1 .027.135 1.31 1.31 0 0 1 0 .268.654.654 0 0 1-.027.137.307.307 0 0 1-.057.105.124.124 0 0 1-.098.042.125.125 0 0 1-.098-.042.293.293 0 0 1-.059-.105.618.618 0 0 1-.028-.137 1.364 1.364 0 0 1 0-.268.612.612 0 0 1 .028-.135.287.287 0 0 1 .06-.105.123.123 0 0 1 .097-.043z"]],
+    udemy: [["#A435F0", "M12 0L5.81 3.573v3.574l6.189-3.574 6.191 3.574V3.573zM5.81 10.148v8.144c0 1.85.589 3.243 1.741 4.234S10.177 24 11.973 24s3.269-.482 4.448-1.474c1.179-.991 1.768-2.439 1.768-4.314v-8.064h-3.242v7.85c0 2.036-1.509 3.055-2.948 3.055-1.428 0-2.947-.991-2.947-3.027v-7.878z"]],
+    linkedin: [["#0A66C2", "M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"]]
+  };
+
   certData = [
     {
       id: "google-cyber",
-      color: "#2f6fe4", rgb: "47,111,228", initial: "G",
+      color: "#2f6fe4", rgb: "47,111,228", initial: "G", logo: "google",
       title: "Google Cybersecurity Professional Certificate",
       issuer: "Google / Coursera",
       date: "Jul 2025",
@@ -1518,7 +1561,7 @@ class Component extends DCLogic {
     },
     {
       id: "fcc-python",
-      color: "#0f9d8a", rgb: "15,157,138", initial: "fCC",
+      color: "#0f9d8a", rgb: "15,157,138", initial: "fCC", logo: "freecodecamp",
       title: "Scientific Computing with Python",
       issuer: "freeCodeCamp",
       date: "Sep 2025",
@@ -1526,7 +1569,7 @@ class Component extends DCLogic {
     },
     {
       id: "thm-presec",
-      color: "#c11111", rgb: "193,17,17", initial: "THM",
+      color: "#c11111", rgb: "193,17,17", initial: "THM", logo: "tryhackme",
       title: "Pre-Security Learning Path",
       issuer: "TryHackMe",
       date: "Apr 2025",
@@ -1534,7 +1577,7 @@ class Component extends DCLogic {
     },
     {
       id: "udemy-cpp",
-      color: "#4a5263", rgb: "74,82,99", initial: "U",
+      color: "#4a5263", rgb: "74,82,99", initial: "U", logo: "udemy",
       title: "The Complete C++ Developer Course",
       issuer: "Udemy",
       date: "Feb 2025",
@@ -1542,7 +1585,7 @@ class Component extends DCLogic {
     },
     {
       id: "spss",
-      color: "#0a66c2", rgb: "10,102,194", initial: "in",
+      color: "#0a66c2", rgb: "10,102,194", initial: "in", logo: "linkedin",
       title: "SPSS Statistics Essential Training",
       issuer: "LinkedIn Learning",
       date: "May 2025",
@@ -2440,6 +2483,7 @@ class Component extends DCLogic {
       if (this.starRef.current) {
         this.starRef.current.style.transform = "translateY(" + (window.scrollY * 0.15) + "px)";
       }
+      this.riseCity();
     };
     window.addEventListener("scroll", this._onScroll, { passive: true });
 
@@ -2451,6 +2495,14 @@ class Component extends DCLogic {
     this.updateActiveSection();
 
     this.setupNav();
+    // The header wraps to two rows on narrow screens; the hero reads its real height
+    // from --nav-h so the photo never slides under it.
+    const nav = this.rootRef.current && this.rootRef.current.querySelector(".nav");
+    if (nav) {
+      const setNavH = () => this.rootRef.current && this.rootRef.current.style.setProperty("--nav-h", nav.offsetHeight + "px");
+      setNavH();
+      if ("ResizeObserver" in window) new ResizeObserver(setNavH).observe(nav);
+    }
     try {
       this._mq = window.matchMedia("(max-width: 767px)");
       const onMq = () => { this.setState({ mobile: this._mq.matches }); this.setupProjectFocus(); };
@@ -2546,6 +2598,17 @@ class Component extends DCLogic {
     }
   }
 
+  // 0 when the skyline's top edge enters the bottom of the screen, 1 once it has
+  // climbed about two thirds of the way up; reduced motion shows it fully built.
+  riseCity() {
+    const c = this.cityRef.current;
+    if (!c) return;
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const r = c.getBoundingClientRect(), H = window.innerHeight;
+    const p = reduce ? 1 : Math.max(0, Math.min(1, (H - r.top) / (H * 0.66)));
+    c.style.setProperty("--p", p.toFixed(3));
+  }
+
   countUp(el) {
     if (el._counted) return;
     el._counted = true;
@@ -2575,6 +2638,7 @@ class Component extends DCLogic {
     this.lightPath(this._stHover || this.currentSkill());
     const cal = this.calRef.current;
     if (cal && !this._calScrolled) { this._calScrolled = true; cal.scrollLeft = cal.scrollWidth; }
+    this.riseCity();
   }
 
   navItems = [
@@ -2844,6 +2908,81 @@ class Component extends DCLogic {
     return "just now";
   }
 
+  // Commit City: one building per week, height from that week's commits (a gentle
+  // curve so quiet weeks still read), lit windows grow with activity, and the busiest
+  // week gets an antenna. Buildings rise with page scroll through --p (set in onScroll).
+  renderCity(gh) {
+    const h = React.createElement;
+    const weeks = [];
+    for (let i = 0; i < gh.year.length; i += 7) {
+      const days = gh.year.slice(i, i + 7);
+      weeks.push({ d: days[0].d, n: days.reduce((a, x) => a + x.n, 0) });
+    }
+    // The city starts the week before the first commit, so it is all neighborhood, no empty lots.
+    const first = weeks.findIndex((w) => w.n > 0);
+    if (first > 1) weeks.splice(0, first - 1);
+    const max = Math.max(1, ...weeks.map((w) => w.n));
+    const top = weeks.reduce((b, w, i) => (w.n > weeks[b].n ? i : b), 0);
+    const BW = 16, GAP = 5, SKY = 300, MAXH = 228, W = weeks.length * (BW + GAP) + GAP, H = SKY + 34;
+    const rand = (a, b) => { const x = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return x - Math.floor(x); };
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    let lastMonth = -1;
+    const labels = [], bld = [];
+    weeks.forEach((w, i) => {
+      const x = GAP + i * (BW + GAP);
+      const date = new Date(w.d + "T00:00:00");
+      if (date.getMonth() !== lastMonth && i < weeks.length - 2) {
+        lastMonth = date.getMonth();
+        labels.push(h("text", { key: "m" + i, x, y: SKY + 24, className: "city-month" }, months[lastMonth]));
+      }
+      const ht = w.n ? 22 + (MAXH - 22) * Math.pow(w.n / max, 0.62) : 7;
+      const y = SKY - ht;
+      const parts = [h("rect", { key: "b", x, y, width: BW, height: ht, className: w.n ? (i % 2 ? "city-b2" : "city-b1") : "city-stub", "data-w": w.d, "data-n": w.n })];
+      if (w.n) {
+        parts.push(h("rect", { key: "r", x: x - 1, y: y - 3, width: BW + 2, height: 4, className: "city-roof" }));
+        const lit = 0.18 + 0.8 * (w.n / max);
+        for (let r = 0, wy = y + 7; wy + 5 < SKY - 4; r++, wy += 9) {
+          for (let c = 0; c < 2; c++) {
+            parts.push(h("rect", { key: r + "-" + c, x: x + 3 + c * 6, y: wy, width: 4, height: 5, className: rand(i, r * 2 + c) < lit ? "city-lit" : "city-win" }));
+          }
+        }
+      }
+      if (i === top && w.n) {
+        parts.push(h("rect", { key: "ant", x: x + BW / 2 - 1.5, y: y - 26, width: 3, height: 24, className: "city-roof" }));
+        parts.push(h("circle", { key: "beacon", cx: x + BW / 2, cy: y - 28, r: 3.5, className: "city-beacon" }));
+      }
+      bld.push(h("g", { key: w.d, className: "city-bld", style: { "--d": (i / weeks.length * 0.45).toFixed(3) } }, parts));
+    });
+    const tx = GAP + top * (BW + GAP) + BW / 2;
+    const tTop = SKY - (22 + (MAXH - 22) * Math.pow(weeks[top].n / max, 0.62)) - 40;
+    const tip = (e) => {
+      const t = this.ghTipRef.current, el = e.target;
+      if (!t) return;
+      if (!el.getAttribute || !el.getAttribute("data-w")) { t.setAttribute("data-on", "0"); return; }
+      const n = Number(el.getAttribute("data-n"));
+      const day = new Date(el.getAttribute("data-w") + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
+      t.textContent = "Week of " + day + " · " + (n ? n + (n === 1 ? " commit" : " commits") : "no commits");
+      const r = el.getBoundingClientRect();
+      t.style.left = (r.left + r.width / 2) + "px";
+      t.style.top = r.top + "px";
+      t.setAttribute("data-on", "1");
+    };
+    return h("div", { className: "city-card" },
+      h("div", { className: "city-head" },
+        h("b", null, "Commit City"),
+        h("span", null, "Each building is one week. The more I shipped, the taller it stands.")),
+      h("div", { className: "city-wrap", ref: this.calRef },
+        h("svg", { className: "city", ref: this.cityRef, viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Weekly commits over the last year drawn as a city skyline",
+          onMouseOver: tip, onMouseLeave: () => { const t = this.ghTipRef.current; if (t) t.setAttribute("data-on", "0"); } },
+          bld,
+          h("rect", { x: 0, y: SKY, width: W, height: 4, className: "city-ground" }),
+          labels,
+          h("g", { className: "city-flag", style: { "--d": "0.5" } },
+            h("text", { x: Math.min(Math.max(tx, 70), W - 70), y: Math.max(tTop, 14), className: "city-top" }, "Busiest week · " + weeks[top].n + " commits"))
+        ))
+    );
+  }
+
   renderGithub() {
     const h = React.createElement;
     const gh = this.state.gh;
@@ -2865,31 +3004,7 @@ class Component extends DCLogic {
       [gh.publicRepos + gh.privateRepos, "repositories built"]
     ];
 
-    const level = (n) => (n <= 0 ? 0 : n <= 2 ? 1 : n <= 6 ? 2 : n <= 14 ? 3 : 4);
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const cells = [], labels = [];
-    let lastMonth = -1;
-    gh.year.forEach((d, i) => {
-      const col = Math.floor(i / 7);
-      const date = new Date(d.d + "T00:00:00");
-      if (i % 7 === 0 && date.getMonth() !== lastMonth) {
-        lastMonth = date.getMonth();
-        if (col < 51) labels.push(h("span", { key: "m" + col, className: "gh-month", style: { gridColumn: (col + 1) + " / span 3", gridRow: 1 } }, months[lastMonth]));
-      }
-      cells.push(h("i", { key: d.d, className: "gh-day", "data-l": level(d.n), "data-d": d.d, "data-n": d.n, style: { gridColumn: col + 1, gridRow: (i % 7) + 2, "--c": col } }));
-    });
-    const tip = (e) => {
-      const t = this.ghTipRef.current, cell = e.target;
-      if (!t) return;
-      if (!cell.getAttribute || !cell.getAttribute("data-d")) { t.setAttribute("data-on", "0"); return; }
-      const n = Number(cell.getAttribute("data-n"));
-      const day = new Date(cell.getAttribute("data-d") + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
-      t.textContent = (n ? n + (n === 1 ? " commit" : " commits") : "No commits") + " · " + day;
-      const r = cell.getBoundingClientRect();
-      t.style.left = (r.left + r.width / 2) + "px";
-      t.style.top = r.top + "px";
-      t.setAttribute("data-on", "1");
-    };
+    const city = this.renderCity(gh);
 
     // Consecutive commits to the same repo on the same day read as one push.
     const pushes = [];
@@ -2904,9 +3019,7 @@ class Component extends DCLogic {
     return h("div", { className: "gh" },
       head,
       h("div", { className: "gh-stats" }, stats.map(([v, l], i) => h("div", { className: "gh-stat", key: i }, h("b", { "data-count": v }, Number(v).toLocaleString()), h("span", null, l)))),
-      h("div", { className: "gh-cal-wrap", ref: this.calRef },
-        h("div", { className: "gh-cal", "data-reveal": "1", onMouseOver: tip, onMouseLeave: () => { const t = this.ghTipRef.current; if (t) t.setAttribute("data-on", "0"); } }, labels, cells)),
-      h("div", { className: "gh-legend" }, "Less", [0, 1, 2, 3, 4].map((l) => h("i", { key: l, style: { background: "var(--heat-" + l + ")" } })), "More"),
+      city,
       h("div", { className: "gh-feed-title" }, "Latest pushes"),
       h("div", { className: "gh-feed" }, pushes.slice(0, 6).map((p, i) => {
         const priv = !p.repo;
@@ -3018,7 +3131,12 @@ class Component extends DCLogic {
       }),
       github: this.renderGithub(),
       skillTree: this.renderSkillTree(),
-      certs: this.certData.map((c, i) => Object.assign({}, c, { i, credShort: c.credId ? c.credId.slice(0, 12) + "…" : "" })),
+      certs: this.certData.map((c, i) => Object.assign({}, c, {
+        i,
+        credShort: c.credId ? c.credId.slice(0, 12) + "…" : "",
+        logoEl: React.createElement("svg", { viewBox: "0 0 24 24", width: 24, height: 24 },
+          (this.certLogos[c.logo] || []).map(([fill, d], k) => React.createElement("path", { key: k, fill, d })))
+      })),
       courseFilters: ["All", "Cybersecurity", "Systems", "Web Development", "Programming", "Data / AI", "Professional"].map((name) => ({
         name,
         sel: this.state.courseFilter === name ? "1" : "0",
