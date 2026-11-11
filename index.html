@@ -504,27 +504,31 @@
   .gh-stat > span { display: block; margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
   .gh-tip { position: fixed; z-index: 70; pointer-events: none; padding: 7px 10px; border-radius: 7px; background: var(--text); color: var(--bg); font: 600 12px 'IBM Plex Mono', monospace; white-space: nowrap; transform: translate(-50%, calc(-100% - 10px)); opacity: 0; transition: opacity 0.12s; }
   .gh-tip[data-on="1"] { opacity: 1; }
-  /* Commit City */
-  .city-card { margin-top: 22px; border-radius: 14px; border: 2px solid var(--border); background: var(--city-sky); overflow: hidden; }
-  .city-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; padding: 16px 18px 0; }
-  .city-head b { font-size: 17px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
-  .city-head span { font-size: 13.5px; color: var(--text-muted); }
-  .city-wrap { overflow-x: auto; scrollbar-width: thin; padding: 6px 12px 10px; }
-  .city { display: block; width: 100%; min-width: 760px; height: auto; --p: 0; }
-  .city-bld, .city-flag { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(clamp(0, calc((var(--p) - var(--d)) * 2.6), 1)); }
-  .city-flag { transform-origin: 50% 50%; transform: none; opacity: clamp(0, calc((var(--p) - 0.8) * 6), 1); }
-  .city-b1 { fill: var(--city-b1); }
-  .city-b2 { fill: var(--city-b2); }
-  .city-stub { fill: var(--city-stub); }
-  .city-roof { fill: var(--city-roof); }
-  .city-win { fill: var(--city-win); }
-  .city-lit { fill: var(--city-lit); }
-  .city-ground { fill: var(--text); }
-  .city-month { font: 600 11px 'IBM Plex Mono', monospace; fill: var(--text-faint); }
-  .city-top { font: 700 12px 'Space Grotesk', system-ui, sans-serif; fill: var(--text); text-anchor: middle; }
-  .city-beacon { fill: #ff4d4d; animation: blink 1.2s steps(2, end) infinite; }
-  .city-bld rect:first-child { transition: fill 0.2s; }
-  .city-bld:hover .city-b1, .city-bld:hover .city-b2, .city-bld:hover .city-stub { fill: var(--accent); }
+  /* Commit Forest: a sticky 3D stage; the tall wrapper is the scroll distance of the walk */
+  .forest-scroll { --stage-h: min(76vh, 720px); position: relative; height: calc(var(--stage-h) + 240vh); margin-top: 22px; }
+  .forest-stage { position: sticky; top: calc(var(--nav-h, 70px) + 14px); height: var(--stage-h); border-radius: 16px; overflow: hidden; border: 2px solid var(--border); background: var(--forest-sky); }
+  .forest-gl, .forest-gl canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .forest-labels { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .forest-label { position: absolute; left: 0; top: 0; padding: 6px 9px; border-radius: 7px; background: var(--surface); border: 2px solid var(--accent); color: var(--text); white-space: nowrap; opacity: 0; box-shadow: 0 8px 18px -10px rgba(0,0,0,0.5); will-change: transform; }
+  .forest-label b { display: block; font: 700 13px 'Space Grotesk', system-ui, sans-serif; }
+  .forest-label small { display: block; font: 500 10.5px 'IBM Plex Mono', monospace; color: var(--text-muted); }
+  .forest-label[data-top="1"] { background: #ffc83d; border-color: #ffc83d; color: #2a1a00; }
+  .forest-label[data-top="1"] small { color: #5a4100; }
+  .forest-head { position: absolute; z-index: 2; left: 16px; top: 16px; max-width: 360px; padding: 12px 14px; border-radius: 12px; border: 2px solid var(--border); background: var(--surface); box-shadow: var(--shadow); pointer-events: none; }
+  .forest-head b { display: block; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+  .forest-head span { display: block; margin-top: 4px; font-size: 13.5px; line-height: 1.45; color: var(--text-2); }
+  .forest-hud { position: absolute; z-index: 2; right: 18px; top: 16px; min-width: 150px; padding: 12px 14px; border-radius: 12px; border: 2px solid var(--border); background: var(--surface); text-align: right; box-shadow: var(--shadow); }
+  .forest-hud small { display: block; font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-faint); }
+  .forest-hud b { display: block; margin-top: 2px; font-size: 15px; font-weight: 700; color: var(--text); }
+  .forest-hud div { margin-top: 4px; }
+  .forest-hud strong { font-size: 34px; font-weight: 700; letter-spacing: -0.04em; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .forest-hud div span { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+  .forest-track { position: absolute; z-index: 2; left: 20px; right: 20px; bottom: 14px; height: 30px; pointer-events: none; }
+  .forest-track::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 6px; border-radius: 3px; background: var(--surface); border: 2px solid var(--border); box-sizing: content-box; margin-top: -2px; }
+  .forest-track i { position: absolute; left: 0; top: 0; height: 6px; width: 0; border-radius: 3px; background: var(--accent); }
+  .forest-track span { position: absolute; top: 12px; transform: translateX(-2px); font: 600 11px 'IBM Plex Mono', monospace; color: var(--text); }
+  .forest-fallback { display: none; position: absolute; inset: 0; align-items: center; justify-content: center; padding: 24px; text-align: center; font-size: 15px; color: var(--text-muted); }
+  .forest-stage[data-nogl="1"] .forest-fallback { display: flex; }
   .gh-feed-title { margin: 26px 0 12px; font: 600 12px 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-faint); }
   .gh-feed { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
   .gh-push { display: flex; align-items: flex-start; gap: 12px; padding: 13px 14px; border-radius: 11px; border: 2px solid var(--border); background: var(--surface-2); text-decoration: none; color: inherit; transition: transform 0.3s cubic-bezier(0.2,0.9,0.3,1.4), border-color 0.2s, box-shadow 0.3s; }
@@ -827,12 +831,17 @@
     .gh-stat b { font-size: 21px; }
     .gh-stat > span { margin-top: 4px; font-size: 10.5px; line-height: 1.3; }
     .gh-feed-title { margin: 16px 0 8px; }
-    .city-card { margin: 14px -14px 0; border-radius: 0; border-left: none; border-right: none; }
-    .city-head { padding: 12px 14px 0; }
-    .city-head b { font-size: 15px; }
-    .city-head span { font-size: 12px; }
-    .city-wrap { padding: 4px 8px 8px; }
-    .city { min-width: 680px; }
+    .forest-scroll { --stage-h: calc(100svh - var(--nav-h, 136px) - 100px); height: calc(var(--stage-h) + 200vh); margin: 14px -14px 0; }
+    .forest-stage { top: calc(var(--nav-h, 136px) + 8px); border-radius: 0; border-left: none; border-right: none; }
+    .forest-head { left: 10px; top: 10px; max-width: 56%; padding: 8px 10px; }
+    .forest-head b { font-size: 17px; }
+    .forest-head span { font-size: 11.5px; }
+    .forest-hud { right: 10px; top: 10px; min-width: 0; padding: 8px 10px; }
+    .forest-hud strong { font-size: 24px; }
+    .forest-hud b { font-size: 13px; }
+    .forest-track { left: 14px; right: 14px; }
+    .forest-label { padding: 4px 7px; }
+    .forest-label b { font-size: 11.5px; }
     .gh-feed { gap: 6px; }
     .gh-feed > :nth-child(n+5) { display: none; }
     .gh-push { padding: 9px 10px; gap: 10px; border-radius: 9px; }
@@ -1384,13 +1393,7 @@ class Component extends DCLogic {
       "--heat-2": "#6c98ec",
       "--heat-3": "#3a72e2",
       "--heat-4": "#1446b8",
-      "--city-sky": "#f2f6fc",
-      "--city-b1": "#2c66d6",
-      "--city-b2": "#1f55c0",
-      "--city-stub": "#b6c4da",
-      "--city-roof": "#123a8c",
-      "--city-win": "#1a4aa8",
-      "--city-lit": "#e3eeff",
+      "--forest-sky": "#dce8f7",
       "--tree-bg": "#f2f6fc",
       "--tree-dot": "#c9d6ea",
       "--tree-line": "#c3cfe2",
@@ -1455,13 +1458,7 @@ class Component extends DCLogic {
       "--heat-2": "#2a5fc4",
       "--heat-3": "#4d8dff",
       "--heat-4": "#9cc4ff",
-      "--city-sky": "#060b16",
-      "--city-b1": "#1b2c50",
-      "--city-b2": "#22375f",
-      "--city-stub": "#26375a",
-      "--city-roof": "#3a5a9a",
-      "--city-win": "#121d36",
-      "--city-lit": "#ffcf5c",
+      "--forest-sky": "#060a12",
       "--tree-bg": "#0a1120",
       "--tree-dot": "#1b2742",
       "--tree-line": "#26375a",
@@ -1513,8 +1510,10 @@ class Component extends DCLogic {
   }
 
   state = { theme: "light", stars: this.buildStars(), selCat: "Cybersecurity", selSkill: "Browser Security", courseFilter: "All", openCourse: "CIS 316", mitmStep: 0, emailCopied: false, activeSection: "top", openProj: {}, stHover: null, stLines: [], gh: null, mobile: false, xpOpen: {}, crsAll: false };
-  calRef = React.createRef();
-  cityRef = React.createRef();
+  forestRef = React.createRef();
+  forestGlRef = React.createRef();
+  forestHudRef = React.createRef();
+  forestLabelsRef = React.createRef();
   treeRef = React.createRef();
   ghTipRef = React.createRef();
 
@@ -2465,6 +2464,7 @@ class Component extends DCLogic {
   toggleTheme = () => {
     const next = this.state.theme === "dark" ? "light" : "dark";
     this.applyTheme(next);
+    if (this._forest) this._forest.theme(next === "dark");
     try { localStorage.setItem("mr-portfolio-theme", next); } catch (e) {}
     this.setState({ theme: next });
   };
@@ -2472,7 +2472,7 @@ class Component extends DCLogic {
   componentDidMount() {
     const theme = this.readTheme();
     this.applyTheme(theme);
-    if (theme !== this.state.theme) this.setState({ theme });
+    if (theme !== this.state.theme) this.setState({ theme }, () => { if (this._forest) this._forest.theme(theme === "dark"); });
 
     // Called directly, not inside rAF: a page opened in a background tab has
     // rAF paused, and content must not stay invisible until it is focused.
@@ -2483,7 +2483,6 @@ class Component extends DCLogic {
       if (this.starRef.current) {
         this.starRef.current.style.transform = "translateY(" + (window.scrollY * 0.15) + "px)";
       }
-      this.riseCity();
     };
     window.addEventListener("scroll", this._onScroll, { passive: true });
 
@@ -2598,17 +2597,6 @@ class Component extends DCLogic {
     }
   }
 
-  // 0 when the skyline's top edge enters the bottom of the screen, 1 once it has
-  // climbed about two thirds of the way up; reduced motion shows it fully built.
-  riseCity() {
-    const c = this.cityRef.current;
-    if (!c) return;
-    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const r = c.getBoundingClientRect(), H = window.innerHeight;
-    const p = reduce ? 1 : Math.max(0, Math.min(1, (H - r.top) / (H * 0.66)));
-    c.style.setProperty("--p", p.toFixed(3));
-  }
-
   countUp(el) {
     if (el._counted) return;
     el._counted = true;
@@ -2636,9 +2624,7 @@ class Component extends DCLogic {
     }
     this.measureTree();
     this.lightPath(this._stHover || this.currentSkill());
-    const cal = this.calRef.current;
-    if (cal && !this._calScrolled) { this._calScrolled = true; cal.scrollLeft = cal.scrollWidth; }
-    this.riseCity();
+    this.mountForest();
   }
 
   navItems = [
@@ -2908,79 +2894,304 @@ class Component extends DCLogic {
     return "just now";
   }
 
-  // Commit City: one building per week, height from that week's commits (a gentle
-  // curve so quiet weeks still read), lit windows grow with activity, and the busiest
-  // week gets an antenna. Buildings rise with page scroll through --p (set in onScroll).
-  renderCity(gh) {
-    const h = React.createElement;
+  // Commit Forest: one tree per week since the first commit, planted along a path that
+  // runs away from the viewer. Scrolling the page walks the camera forward through it,
+  // so trees grow from specks in the fog to full size as you pass. Tree size follows
+  // that week's commits; the busiest week carries a gold star.
+  forestWeeks() {
+    const gh = this.state.gh;
+    if (!gh) return [];
     const weeks = [];
     for (let i = 0; i < gh.year.length; i += 7) {
       const days = gh.year.slice(i, i + 7);
       weeks.push({ d: days[0].d, n: days.reduce((a, x) => a + x.n, 0) });
     }
-    // The city starts the week before the first commit, so it is all neighborhood, no empty lots.
     const first = weeks.findIndex((w) => w.n > 0);
     if (first > 1) weeks.splice(0, first - 1);
+    return weeks;
+  }
+
+  renderForest() {
+    const h = React.createElement;
+    const weeks = this.forestWeeks();
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const ticks = [];
+    let last = -1;
+    weeks.forEach((w, i) => {
+      const m = new Date(w.d + "T00:00:00").getMonth();
+      if (m !== last && i < weeks.length - 1) { last = m; ticks.push(h("span", { key: i, style: { left: (i / Math.max(1, weeks.length - 1) * 100) + "%" } }, months[m])); }
+    });
+    return h("div", { className: "forest-scroll", ref: this.forestRef },
+      h("div", { className: "forest-stage" },
+        h("div", { className: "forest-gl", ref: this.forestGlRef }),
+        h("div", { className: "forest-labels", ref: this.forestLabelsRef, "aria-hidden": true }),
+        h("div", { className: "forest-head" },
+          h("b", null, "Commit Forest"),
+          h("span", null, "Scroll to walk through every week I shipped. The bigger the tree, the more I committed.")),
+        h("div", { className: "forest-hud", ref: this.forestHudRef, "aria-live": "polite" },
+          h("small", null, "Week of"),
+          h("b", { "data-f": "date" }, "…"),
+          h("div", null, h("strong", { "data-f": "n" }, "0"), h("span", null, " commits"))),
+        h("div", { className: "forest-track", "aria-hidden": true }, h("i", { "data-f": "fill" }), ticks),
+        h("div", { className: "forest-fallback" }, "3D is not available in this browser, but every number above is live."))
+    );
+  }
+
+  mountForest() {
+    if (this._forest || !this.state.gh || !this.forestGlRef.current) return;
+    if (!window.THREE) {
+      if (!this._forestWait) this._forestWait = setTimeout(() => { this._forestWait = null; this.mountForest(); }, 250);
+      return;
+    }
+    this._forest = this.buildForest() || { theme() {} };
+  }
+
+  buildForest() {
+    const THREE = window.THREE;
+    const mount = this.forestGlRef.current, stage = mount.parentNode, wrap = this.forestRef.current;
+    const hud = this.forestHudRef.current, labelsBox = this.forestLabelsRef.current;
+    const weeks = this.forestWeeks();
+    if (!weeks.length) return null;
+    const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const small = window.innerWidth < 768;
+
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
+    } catch (e) { stage.setAttribute("data-nogl", "1"); return null; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, small ? 1.5 : 2));
+    mount.appendChild(renderer.domElement);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(small ? 62 : 52, 1, 0.1, 260);
+    scene.fog = new THREE.Fog(0xffffff, 16, small ? 70 : 85);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0x88aa77, 1.0);
+    const sun = new THREE.DirectionalLight(0xffffff, 0.9);
+    sun.position.set(-20, 30, 10);
+    scene.add(hemi, sun);
+
+    const SP = 9, N = weeks.length, LEN = N * SP + 80;
     const max = Math.max(1, ...weeks.map((w) => w.n));
     const top = weeks.reduce((b, w, i) => (w.n > weeks[b].n ? i : b), 0);
-    const BW = 16, GAP = 5, SKY = 300, MAXH = 228, W = weeks.length * (BW + GAP) + GAP, H = SKY + 34;
     const rand = (a, b) => { const x = Math.sin(a * 127.1 + b * 311.7) * 43758.5453; return x - Math.floor(x); };
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    let lastMonth = -1;
-    const labels = [], bld = [];
-    weeks.forEach((w, i) => {
-      const x = GAP + i * (BW + GAP);
-      const date = new Date(w.d + "T00:00:00");
-      if (date.getMonth() !== lastMonth && i < weeks.length - 2) {
-        lastMonth = date.getMonth();
-        labels.push(h("text", { key: "m" + i, x, y: SKY + 24, className: "city-month" }, months[lastMonth]));
+
+    const groundMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(400, LEN + 200), groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.z = -LEN / 2 + 40;
+    const pathMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
+    const path = new THREE.Mesh(new THREE.PlaneGeometry(3.2, LEN + 60), pathMat);
+    path.rotation.x = -Math.PI / 2;
+    path.position.set(0, 0.02, -LEN / 2 + 40);
+    scene.add(ground, path);
+
+    const cone = new THREE.ConeGeometry(1, 1.7, 7);
+    const trunkGeo = new THREE.CylinderGeometry(0.16, 0.24, 1, 6);
+    const crown = new THREE.IcosahedronGeometry(1, 0);
+    const leafMats = [0, 1, 2, 3].map(() => new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true, shininess: 6 }));
+    const trunkMat = new THREE.MeshPhongMaterial({ color: 0x7a5236, flatShading: true, shininess: 2 });
+    const starMat = new THREE.MeshBasicMaterial({ color: 0xffc83d });
+
+    // One tree per week. Size follows a soft curve so quiet weeks are saplings and the
+    // biggest weeks tower; bigger trees stand further from the path so it stays open.
+    const trees = weeks.map((w, i) => {
+      const s = w.n ? 0.5 + 3.3 * Math.pow(w.n / max, 0.6) : 0.24;
+      const side = i % 2 ? 1 : -1;
+      const g = new THREE.Group();
+      const leaf = leafMats[Math.floor(rand(i, 3) * 4)];
+      const trunk = new THREE.Mesh(trunkGeo, trunkMat);
+      trunk.scale.set(s, s * 1.3, s);
+      trunk.position.y = s * 0.65;
+      g.add(trunk);
+      let height;
+      if (rand(i, 9) < 0.3 && w.n) {
+        const c = new THREE.Mesh(crown, leaf);
+        c.scale.set(s * 1.35, s * 1.55, s * 1.35);
+        c.position.y = s * 2.4;
+        g.add(c);
+        height = s * 3.9;
+      } else {
+        for (let k = 0; k < 4; k++) {
+          const c = new THREE.Mesh(cone, leaf);
+          const r = s * (1.45 - k * 0.3);
+          c.scale.set(r, s * (1.35 - k * 0.18), r);
+          c.position.y = s * (1.5 + k * 1.05);
+          g.add(c);
+        }
+        height = s * 5.6;
       }
-      const ht = w.n ? 22 + (MAXH - 22) * Math.pow(w.n / max, 0.62) : 7;
-      const y = SKY - ht;
-      const parts = [h("rect", { key: "b", x, y, width: BW, height: ht, className: w.n ? (i % 2 ? "city-b2" : "city-b1") : "city-stub", "data-w": w.d, "data-n": w.n })];
-      if (w.n) {
-        parts.push(h("rect", { key: "r", x: x - 1, y: y - 3, width: BW + 2, height: 4, className: "city-roof" }));
-        const lit = 0.18 + 0.8 * (w.n / max);
-        for (let r = 0, wy = y + 7; wy + 5 < SKY - 4; r++, wy += 9) {
-          for (let c = 0; c < 2; c++) {
-            parts.push(h("rect", { key: r + "-" + c, x: x + 3 + c * 6, y: wy, width: 4, height: 5, className: rand(i, r * 2 + c) < lit ? "city-lit" : "city-win" }));
-          }
+      let star = null;
+      if (i === top && w.n) {
+        star = new THREE.Mesh(new THREE.OctahedronGeometry(0.55, 0), starMat);
+        star.position.y = height + 0.7;
+        g.add(star);
+      }
+      g.position.set(side * (2.6 + s * 0.9 + rand(i, 5) * 1.6), 0, -i * SP);
+      g.rotation.y = rand(i, 7) * Math.PI;
+      scene.add(g);
+      return { g, star, w, top: height, phase: rand(i, 11) * 6.28, i };
+    });
+
+    // Background woods (decoration only): instanced pines that make it read as a forest.
+    const DECO = small ? 140 : 260;
+    const decoCones = new THREE.InstancedMesh(cone, leafMats[2], DECO * 2);
+    const decoTrunks = new THREE.InstancedMesh(trunkGeo, trunkMat, DECO);
+    const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), v = new THREE.Vector3(), sc = new THREE.Vector3();
+    for (let i = 0; i < DECO; i++) {
+      const side = rand(i, 21) < 0.5 ? -1 : 1;
+      const x = side * (12 + rand(i, 22) * 42), z = 30 - rand(i, 23) * (LEN + 40), s = 0.7 + rand(i, 24) * 1.4;
+      sc.set(s, s * 1.3, s); v.set(x, s * 0.65, z); m4.compose(v, q, sc); decoTrunks.setMatrixAt(i, m4);
+      for (let k = 0; k < 2; k++) {
+        const r = s * (1.4 - k * 0.45);
+        sc.set(r, s * 1.3, r); v.set(x, s * (1.5 + k * 1.2), z); m4.compose(v, q, sc); decoCones.setMatrixAt(i * 2 + k, m4);
+      }
+    }
+    scene.add(decoCones, decoTrunks);
+
+    // Fireflies for the night forest.
+    const FF = small ? 90 : 160;
+    const ffGeo = new THREE.BufferGeometry();
+    const ffPos = new Float32Array(FF * 3), ffBase = [];
+    for (let i = 0; i < FF; i++) {
+      ffBase.push([(rand(i, 31) - 0.5) * 22, 0.6 + rand(i, 32) * 5, 10 - rand(i, 33) * (N * SP + 20), rand(i, 34) * 6.28]);
+    }
+    ffGeo.setAttribute("position", new THREE.BufferAttribute(ffPos, 3));
+    const fireflies = new THREE.Points(ffGeo, new THREE.PointsMaterial({ color: 0xffd36b, size: small ? 0.22 : 0.16, transparent: true, opacity: 0.95 }));
+    scene.add(fireflies);
+
+    const PAL = {
+      light: { sky: 0xdce8f7, ground: 0x6f9e5c, path: 0xcdbb92, leaves: [0x24753f, 0x2d8a4a, 0x1b6235, 0x379655], hemiSky: 0xffffff, hemiGround: 0x5f7f50, hemi: 0.7, sun: 0.5, ff: false },
+      dark: { sky: 0x060a12, ground: 0x0c1912, path: 0x16233a, leaves: [0x1d6a44, 0x26805a, 0x175a39, 0x2d8f63], hemiSky: 0x6f8fd6, hemiGround: 0x0b1a10, hemi: 0.55, sun: 0.35, ff: true }
+    };
+    const theme = (dark) => {
+      const p = dark ? PAL.dark : PAL.light;
+      renderer.setClearColor(p.sky);
+      scene.fog.color.setHex(p.sky);
+      groundMat.color.setHex(p.ground);
+      pathMat.color.setHex(p.path);
+      leafMats.forEach((m, i) => m.color.setHex(p.leaves[i]));
+      hemi.color.setHex(p.hemiSky); hemi.groundColor.setHex(p.hemiGround); hemi.intensity = p.hemi;
+      sun.intensity = p.sun;
+      fireflies.visible = p.ff;
+      needsFrame = true;
+      if (visible && !raf) raf = requestAnimationFrame(frame);
+    };
+
+    // Floating tags over the nearest trees, kept in a small pool of DOM nodes.
+    const POOL = small ? 4 : 7;
+    const tags = [];
+    for (let i = 0; i < POOL; i++) {
+      const el = document.createElement("div");
+      el.className = "forest-label";
+      el.innerHTML = "<b></b><small></small>";
+      labelsBox.appendChild(el);
+      tags.push(el);
+    }
+    const fmt = (d) => new Date(d + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    const hudDate = hud.querySelector('[data-f="date"]'), hudN = hud.querySelector('[data-f="n"]');
+    const fill = stage.querySelector('[data-f="fill"]');
+
+    const START = 10, END = -(N - 1) * SP + 3;
+    let W = 1, H = 1, target = START, needsFrame = true, visible = false, raf = 0, mx = 0, my = 0;
+    camera.position.set(0, 2.3, START);
+    const resize = () => {
+      W = stage.clientWidth; H = stage.clientHeight;
+      renderer.setSize(W, H, false);
+      camera.aspect = W / Math.max(1, H);
+      camera.updateProjectionMatrix();
+      needsFrame = true;
+    };
+    const onScroll = () => {
+      const r = wrap.getBoundingClientRect();
+      const span = Math.max(1, r.height - stage.offsetHeight);
+      const p = Math.max(0, Math.min(1, -r.top / span));
+      target = START + (END - START) * p;
+      if (fill) fill.style.width = (p * 100).toFixed(2) + "%";
+      updateHud(target);
+      needsFrame = true;
+      // Do not rely on the observer alone: a jump (anchor link, restored scroll) can land
+      // mid-walk before it reports, so check the stage's position directly too.
+      const sr = stage.getBoundingClientRect();
+      if (sr.bottom > 0 && sr.top < window.innerHeight) visible = true;
+      if (visible && !raf) raf = requestAnimationFrame(frame);
+    };
+    const proj = new THREE.Vector3();
+    let lastHud = -1;
+    // Week panel: the next tree ahead of the walker.
+    const updateHud = (z) => {
+      let cur = trees.length - 1;
+      for (let i = 0; i < trees.length; i++) { if (trees[i].g.position.z < z - 1.5) { cur = i; break; } }
+      if (cur === lastHud) return;
+      lastHud = cur;
+      hudDate.textContent = fmt(trees[cur].w.d);
+      hudN.textContent = trees[cur].w.n;
+    };
+    const frame = (now) => {
+      raf = 0;
+      const t = now / 1000;
+      const dz = target - camera.position.z;
+      camera.position.z += reduce ? dz : dz * 0.085;
+      camera.position.x += ((small ? 0 : mx * 1.2) - camera.position.x) * 0.05;
+      camera.position.y += (2.3 + (small ? 0 : -my * 0.5) - camera.position.y) * 0.05;
+      camera.lookAt(camera.position.x * 0.3, 2.1, camera.position.z - 14);
+      const moving = Math.abs(dz) > 0.01 || Math.abs(mx * 1.2 - camera.position.x) > 0.01;
+
+      if (!reduce) {
+        trees.forEach((tr) => { tr.g.rotation.z = Math.sin(t * 0.7 + tr.phase) * 0.018; if (tr.star) tr.star.rotation.y = t * 1.6; });
+        if (fireflies.visible) {
+          const a = ffGeo.attributes.position.array;
+          ffBase.forEach((b, i) => { a[i * 3] = b[0] + Math.sin(t * 0.6 + b[3]) * 0.6; a[i * 3 + 1] = b[1] + Math.sin(t * 1.3 + b[3]) * 0.35; a[i * 3 + 2] = b[2]; });
+          ffGeo.attributes.position.needsUpdate = true;
         }
       }
-      if (i === top && w.n) {
-        parts.push(h("rect", { key: "ant", x: x + BW / 2 - 1.5, y: y - 26, width: 3, height: 24, className: "city-roof" }));
-        parts.push(h("circle", { key: "beacon", cx: x + BW / 2, cy: y - 28, r: 3.5, className: "city-beacon" }));
-      }
-      bld.push(h("g", { key: w.d, className: "city-bld", style: { "--d": (i / weeks.length * 0.45).toFixed(3) } }, parts));
-    });
-    const tx = GAP + top * (BW + GAP) + BW / 2;
-    const tTop = SKY - (22 + (MAXH - 22) * Math.pow(weeks[top].n / max, 0.62)) - 40;
-    const tip = (e) => {
-      const t = this.ghTipRef.current, el = e.target;
-      if (!t) return;
-      if (!el.getAttribute || !el.getAttribute("data-w")) { t.setAttribute("data-on", "0"); return; }
-      const n = Number(el.getAttribute("data-n"));
-      const day = new Date(el.getAttribute("data-w") + "T00:00:00").toLocaleDateString(undefined, { month: "short", day: "numeric" });
-      t.textContent = "Week of " + day + " · " + (n ? n + (n === 1 ? " commit" : " commits") : "no commits");
-      const r = el.getBoundingClientRect();
-      t.style.left = (r.left + r.width / 2) + "px";
-      t.style.top = r.top + "px";
-      t.setAttribute("data-on", "1");
+
+      const cz = camera.position.z;
+      updateHud(cz);
+
+      // Tags over the closest trees ahead, fading with distance.
+      const near = trees.filter((tr) => tr.w.n && cz - tr.g.position.z > 3 && cz - tr.g.position.z < 70).slice(0, POOL);
+      tags.forEach((el, k) => {
+        const tr = near[k];
+        if (!tr) { el.style.opacity = "0"; return; }
+        proj.set(tr.g.position.x, tr.top + 0.9, tr.g.position.z).project(camera);
+        const x = (proj.x + 1) / 2 * W, y = (1 - proj.y) / 2 * H, dist = cz - tr.g.position.z;
+        el.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) translate(-50%,-100%)";
+        el.style.opacity = String(Math.max(0, Math.min(1, (70 - dist) / 30)));
+        el.setAttribute("data-top", tr.i === top ? "1" : "0");
+        const key = tr.w.d;
+        if (el._key !== key) { el._key = key; el.firstChild.textContent = tr.w.n + (tr.w.n === 1 ? " commit" : " commits"); el.lastChild.textContent = fmt(tr.w.d); }
+      });
+
+      renderer.render(scene, camera);
+      needsFrame = false;
+      if (visible && (moving || !reduce)) raf = requestAnimationFrame(frame);
     };
-    return h("div", { className: "city-card" },
-      h("div", { className: "city-head" },
-        h("b", null, "Commit City"),
-        h("span", null, "Each building is one week. The more I shipped, the taller it stands.")),
-      h("div", { className: "city-wrap", ref: this.calRef },
-        h("svg", { className: "city", ref: this.cityRef, viewBox: "0 0 " + W + " " + H, role: "img", "aria-label": "Weekly commits over the last year drawn as a city skyline",
-          onMouseOver: tip, onMouseLeave: () => { const t = this.ghTipRef.current; if (t) t.setAttribute("data-on", "0"); } },
-          bld,
-          h("rect", { x: 0, y: SKY, width: W, height: 4, className: "city-ground" }),
-          labels,
-          h("g", { className: "city-flag", style: { "--d": "0.5" } },
-            h("text", { x: Math.min(Math.max(tx, 70), W - 70), y: Math.max(tTop, 14), className: "city-top" }, "Busiest week · " + weeks[top].n + " commits"))
-        ))
-    );
+
+    const onMove = (e) => {
+      const r = stage.getBoundingClientRect();
+      mx = ((e.clientX - r.left) / r.width - 0.5) * 2;
+      my = ((e.clientY - r.top) / r.height - 0.5) * 2;
+      if (visible && !raf) raf = requestAnimationFrame(frame);
+    };
+    stage.addEventListener("pointermove", onMove, { passive: true });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    if ("ResizeObserver" in window) new ResizeObserver(resize).observe(stage);
+    window.addEventListener("resize", resize);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver((es) => {
+        visible = es[0].isIntersecting;
+        if (visible && !raf) raf = requestAnimationFrame(frame);
+      }, { rootMargin: "100px" }).observe(stage);
+    } else { visible = true; }
+
+    theme(this.state.theme === "dark");
+    resize();
+    onScroll();
+    camera.position.z = target;
+    frame(performance.now());
+    // Layout can still be settling (fonts, reveals, restored scroll): re-read the position twice.
+    [300, 1200].forEach((ms) => setTimeout(onScroll, ms));
+    return { theme };
   }
 
   renderGithub() {
@@ -3004,7 +3215,7 @@ class Component extends DCLogic {
       [gh.publicRepos + gh.privateRepos, "repositories built"]
     ];
 
-    const city = this.renderCity(gh);
+    const forest = this.renderForest();
 
     // Consecutive commits to the same repo on the same day read as one push.
     const pushes = [];
@@ -3019,7 +3230,7 @@ class Component extends DCLogic {
     return h("div", { className: "gh" },
       head,
       h("div", { className: "gh-stats" }, stats.map(([v, l], i) => h("div", { className: "gh-stat", key: i }, h("b", { "data-count": v }, Number(v).toLocaleString()), h("span", null, l)))),
-      city,
+      forest,
       h("div", { className: "gh-feed-title" }, "Latest pushes"),
       h("div", { className: "gh-feed" }, pushes.slice(0, 6).map((p, i) => {
         const priv = !p.repo;
