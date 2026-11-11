@@ -2976,8 +2976,8 @@ class Component extends DCLogic {
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xffffff, small ? 13 : 17, small ? 28 : 33);
-    const camera = new THREE.PerspectiveCamera(small ? 50 : 34, 1, 0.1, 200);
+    scene.fog = new THREE.Fog(0xffffff, small ? 16 : 20, small ? 34 : 42);
+    const camera = new THREE.PerspectiveCamera(small ? 50 : 38, 1, 0.1, 200);
     const hemi = new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.8);
     const sun = new THREE.DirectionalLight(0xffffff, 0.8);
     sun.position.set(5, 12, 9);
@@ -2989,23 +2989,28 @@ class Component extends DCLogic {
     // from the front edge (u = 0 is nearest the camera, front right). The ribbon runs left
     // and away for STRAIGHT weeks, then rolls downward over a cylinder of radius CURL.
     const W = Math.ceil(days.length / 7);
-    const ROW = 0.95, COL = 1.05, STRAIGHT = small ? 9 : 16, CURL = 3;
-    const A = new THREE.Vector3(small ? 3 : 6.5, 0, small ? 1.5 : 2);
-    const F = new THREE.Vector3(-1, 0, -0.16).normalize();
+    const ROW = 0.95, COL = 1.05, STRAIGHT = small ? 11 : 19, CURL = 2.2, DROP = 9;
+    const A = new THREE.Vector3(small ? 5 : 7, 0, small ? 4 : 5);
+    const F = new THREE.Vector3(-1, 0, -0.62).normalize();
     const U = new THREE.Vector3(0, 1, 0);
     const NB = new THREE.Vector3().crossVectors(U, F).negate().normalize(); // toward the back
     const qCurl = new THREE.Quaternion();
     const tiltSign = (() => { const t = U.clone().applyQuaternion(qCurl.setFromAxisAngle(NB, 0.5)); return t.dot(F) > 0 ? 1 : -1; })();
-    const UMAX = STRAIGHT + (Math.PI * 0.95 * CURL) / COL;
+    const BEND = (Math.PI / 2) * CURL / COL;            // weeks spent going over the edge
+    const UMAX = STRAIGHT + BEND + DROP;
     const frameAt = (u, row, outPos, outQ) => {
       const along = u * COL, back = (3 - row) * ROW;
       if (u <= STRAIGHT) {
         outPos.copy(A).addScaledVector(F, along).addScaledVector(NB, back);
         outQ.identity();
-      } else {
+      } else if (u <= STRAIGHT + BEND) {   // rolling over the far edge
         const phi = ((u - STRAIGHT) * COL) / CURL;
         outPos.copy(A).addScaledVector(F, STRAIGHT * COL + CURL * Math.sin(phi)).addScaledVector(U, -CURL * (1 - Math.cos(phi))).addScaledVector(NB, back);
         outQ.setFromAxisAngle(NB, tiltSign * phi);
+      } else {                             // then dropping straight down, fading as it goes
+        const d = (u - STRAIGHT - BEND) * COL;
+        outPos.copy(A).addScaledVector(F, STRAIGHT * COL + CURL).addScaledVector(U, -CURL - d).addScaledVector(NB, back);
+        outQ.setFromAxisAngle(NB, tiltSign * Math.PI / 2);
       }
     };
 
@@ -3064,7 +3069,7 @@ class Component extends DCLogic {
     // The far weeks shrink and sink into the fog over the last FADE weeks instead of
     // stopping at a hard edge. Tree height follows commits directly; width grows more
     // slowly so tall trees do not swallow their neighbors.
-    const FADE = 7;
+    const FADE = DROP + 2;
     const fadeAt = (u) => Math.max(0, Math.min(1, (UMAX - u) / FADE, (u + 10) / 3));
     const layout = () => {
       tiles.forEach((t, k) => {
@@ -3139,8 +3144,10 @@ class Component extends DCLogic {
     const btnOlder = stage.querySelector('.forest-nav [data-step="8"]'), btnNewer = stage.querySelector('.forest-nav [data-step="-8"]');
     let lastBadge = "";
     const setCamera = () => {
-      if (small) { camera.position.set(0.6, 7.6, 12); camera.lookAt(-1.4, 0.4, -0.6); }
-      else { camera.position.set(-0.4, 7.4, 15.5); camera.lookAt(-2.6, 0.6, -0.6); }
+      // Viewed from the front at an angle, so the ribbon sweeps from the bottom right corner
+      // diagonally up to the top left, where it rolls over and drops away.
+      if (small) { camera.position.set(0.6, 10.5, 14); camera.lookAt(-0.4, -1, 0.2); }
+      else { camera.position.set(-0.2, 7.6, 12.6); camera.lookAt(-1.5, -1.3, -0.6); }
     };
     const frame = () => {
       raf = 0;
