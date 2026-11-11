@@ -2910,13 +2910,14 @@ class Component extends DCLogic {
   }
 
   // Commit Forest: every day since the first commit sits on a ribbon of 7 rows (Sun at
-  // the back, Sat at the front) by weeks. Time runs right to left: the newest week is on
-  // the right and the ribbon bends gently away into the fog on the left. What grows on a
-  // day depends on its commits: a sapling, a young pine, a full pine, or a blossom tree.
-  // The wheel, a drag, or the Older/Newer buttons travel along it.
+  // the back, Sat at the front) by weeks. The newest days are at the front right; the
+  // ribbon runs left and away, then rolls down over its far edge, and the history slides
+  // along it as you travel. What grows on a day depends on its commits: a sapling, a
+  // young pine, a tall pine, or a blossom tree. The wheel, a drag, or the Older/Newer
+  // buttons travel along it.
   forestPal = {
-    light: { sky: 0xe6eef9, tile: 0xd3dde9, trunk: 0x8a6446, kinds: [0x9ccc3c, 0x3fae5a, 0x1f7d47, 0xff7ab8], blossom2: 0xffb0d6, hemiSky: 0xffffff, hemiGround: 0xb7c6d8, hemi: 0.85, sun: 0.75 },
-    dark: { sky: 0x070b14, tile: 0x1a2640, trunk: 0x6b4f38, kinds: [0xb5e35a, 0x4cc36d, 0x2e9a5c, 0xff8fc8], blossom2: 0xffc2e0, hemiSky: 0x9db8ee, hemiGround: 0x0b1424, hemi: 0.65, sun: 0.6 }
+    light: { sky: 0xeef3fa, tile: 0xc9d3e1, trunk: 0x8c6a4f, kinds: [0x8fd14f, 0x43b968, 0x23874d, 0xff86bf], blossom2: 0xffbedd, hemiSky: 0xffffff, hemiGround: 0xc2cfdf, hemi: 0.9, sun: 0.85 },
+    dark: { sky: 0x070b14, tile: 0x1c2945, trunk: 0x7a5c44, kinds: [0xa8e05f, 0x52c978, 0x34a565, 0xff92c9], blossom2: 0xffc6e3, hemiSky: 0xa9c2f2, hemiGround: 0x0b1424, hemi: 0.75, sun: 0.7 }
   };
   forestKinds = ["Sapling", "Young pine", "Pine", "Blossom"];
 
@@ -2937,7 +2938,7 @@ class Component extends DCLogic {
     return h("div", { className: "forest-card" },
       h("div", { className: "forest-stage", ref: this.forestRef },
         h("div", { className: "forest-gl", ref: this.forestGlRef }),
-        h("div", { className: "forest-hint" }, h("span", { className: "fh-desk" }, "Scroll inside to travel back in time"), h("span", { className: "fh-touch" }, "Swipe to travel in time")),
+        h("div", { className: "forest-hint" }, h("span", { className: "fh-desk" }, "Scroll here to travel through time"), h("span", { className: "fh-touch" }, "Swipe to travel in time")),
         h("div", { className: "forest-month", ref: this.forestHudRef }, "…"),
         h("div", { className: "forest-legend", "aria-hidden": true }, "Fewer",
           pal.kinds.map((c, i) => h("i", { key: i, title: this.forestKinds[i], style: { background: hex(c), width: 9 + i * 2, height: 9 + i * 2 } })), "More"),
@@ -2975,21 +2976,37 @@ class Component extends DCLogic {
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xffffff, 17, 42);
-    const camera = new THREE.PerspectiveCamera(small ? 52 : 38, 1, 0.1, 200);
-    const hemi = new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.85);
-    const sun = new THREE.DirectionalLight(0xffffff, 0.75);
-    sun.position.set(6, 14, 10);
-    scene.add(hemi, sun);
+    scene.fog = new THREE.Fog(0xffffff, small ? 15 : 17, small ? 34 : 40);
+    const camera = new THREE.PerspectiveCamera(small ? 50 : 36, 1, 0.1, 200);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.8);
+    const sun = new THREE.DirectionalLight(0xffffff, 0.8);
+    sun.position.set(5, 12, 9);
+    const rim = new THREE.DirectionalLight(0xffffff, 0.25);
+    rim.position.set(-8, 6, -6);
+    scene.add(hemi, sun, rim);
 
-    // Week s = 0 is the newest, on the right; older weeks run left and bend away (-z).
+    // The ribbon's shape is fixed; the history slides along it. u is a week's distance
+    // from the front edge (u = 0 is nearest the camera, front right). The ribbon runs left
+    // and away for STRAIGHT weeks, then rolls downward over a cylinder of radius CURL.
     const W = Math.ceil(days.length / 7);
-    const R = 55, ROW = 0.95, COL = 1.05;
-    const at = (s, row) => {
-      const a = (s * COL) / R;
-      const cx = -R * Math.sin(a), cz = -R * (1 - Math.cos(a));
-      const back = (3 - row) * ROW; // Sunday at the back, Saturday at the front
-      return [cx + Math.sin(a) * back, cz - Math.cos(a) * back, a];
+    const ROW = 0.95, COL = 1.05, STRAIGHT = small ? 9 : 13, CURL = 2.6;
+    const A = new THREE.Vector3(small ? 3.5 : 6.5, 0, small ? 2.5 : 3.5);
+    const F = new THREE.Vector3(-1, 0, -0.42).normalize();
+    const U = new THREE.Vector3(0, 1, 0);
+    const NB = new THREE.Vector3().crossVectors(U, F).negate().normalize(); // toward the back
+    const qCurl = new THREE.Quaternion();
+    const tiltSign = (() => { const t = U.clone().applyQuaternion(qCurl.setFromAxisAngle(NB, 0.5)); return t.dot(F) > 0 ? 1 : -1; })();
+    const UMAX = STRAIGHT + (Math.PI * 0.85 * CURL) / COL;
+    const frameAt = (u, row, outPos, outQ) => {
+      const along = u * COL, back = (3 - row) * ROW;
+      if (u <= STRAIGHT) {
+        outPos.copy(A).addScaledVector(F, along).addScaledVector(NB, back);
+        outQ.identity();
+      } else {
+        const phi = ((u - STRAIGHT) * COL) / CURL;
+        outPos.copy(A).addScaledVector(F, STRAIGHT * COL + CURL * Math.sin(phi)).addScaledVector(U, -CURL * (1 - Math.cos(phi))).addScaledVector(NB, back);
+        outQ.setFromAxisAngle(NB, tiltSign * phi);
+      }
     };
 
     // Four kinds of growth, each clearly bigger than the last.
@@ -2997,79 +3014,102 @@ class Component extends DCLogic {
     const kindOf = (n) => { const f = Math.sqrt(n / max); return n <= 2 ? 0 : f < 0.35 ? 1 : f < 0.65 ? 2 : 3; };
     const tiles = [], trees = [];
     days.forEach((d, i) => {
-      const s = W - 1 - Math.floor(i / 7), row = i % 7;
-      const [x, z, a] = at(s, row);
-      const item = { d, s, row, x, z, a };
+      const item = { d, s: W - 1 - Math.floor(i / 7), row: i % 7 };
       tiles.push(item);
       if (d.n > 0) { item.kind = kindOf(d.n); item.f = Math.min(1, Math.sqrt(d.n / max)); trees.push(item); }
     });
-
     const count = (k) => trees.filter((t) => t.kind === k).length;
-    const tileMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
-    const tileMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.84, 0.08, 0.84), tileMat, tiles.length);
-    const flat = (shininess) => new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true, shininess });
-    const trunkMat = flat(2), coneMat = flat(6), ballMat = flat(10);
-    const trunkMesh = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.06, 0.1, 1, 6), trunkMat, Math.max(1, trees.length));
-    const coneMesh = new THREE.InstancedMesh(new THREE.ConeGeometry(0.5, 1, 7), coneMat, Math.max(1, count(1) + count(2) * 2));
-    const ballMesh = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.5, 1), ballMat, Math.max(1, count(0) + count(3) * 4));
-    const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), v = new THREE.Vector3(), sc = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
-    const set = (mesh, idx, x, y, z, sx, sy, sz, rot) => { q.setFromAxisAngle(up, rot); v.set(x, y, z); sc.set(sx, sy, sz); m4.compose(v, q, sc); mesh.setMatrixAt(idx, m4); };
 
-    tiles.forEach((t, k) => set(tileMesh, k, t.x, 0, t.z, 1, 1, 1, t.a));
-    let ci = 0, bi = 0;
+    // Smooth, rounded shapes with soft lighting (no flat facets).
+    const soft = (rough) => new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: rough, metalness: 0 });
+    const tileMat = soft(0.95), trunkMat = soft(0.9), leafMat = soft(0.75), bloomMat = soft(0.6);
+    const tileGeo = new THREE.BoxGeometry(0.72, 0.06, 0.72);
+    const trunkGeo = new THREE.CylinderGeometry(0.05, 0.08, 1, 12);
+    const coneGeo = new THREE.ConeGeometry(0.5, 1, 24, 1);
+    const ballGeo = new THREE.SphereGeometry(0.5, 20, 14);
+    const tileMesh = new THREE.InstancedMesh(tileGeo, tileMat, tiles.length);
+    const trunkMesh = new THREE.InstancedMesh(trunkGeo, trunkMat, Math.max(1, trees.length));
+    const coneMesh = new THREE.InstancedMesh(coneGeo, leafMat, Math.max(1, count(1) + count(2) * 2));
+    const leafBallMesh = new THREE.InstancedMesh(ballGeo, leafMat, Math.max(1, count(0)));
+    const bloomMesh = new THREE.InstancedMesh(ballGeo, bloomMat, Math.max(1, count(3) * 3));
+    [tileMesh, trunkMesh, coneMesh, leafBallMesh, bloomMesh].forEach((m) => m.instanceMatrix.setUsage(THREE.DynamicDrawUsage));
+
+    let ci = 0, li = 0, bi = 0;
     trees.forEach((t, k) => {
-      t.parts = [];
-      t.trunk = k;
-      t.cones = []; t.balls = [];
-      const r = t.row + t.s;
-      if (t.kind === 0) {          // sapling: a thin stem and one small leaf
-        t.cones = []; t.balls = [bi++];
-      } else if (t.kind === 1) {   // young pine
-        t.cones = [ci++];
-      } else if (t.kind === 2) {   // full pine, two tiers
-        t.cones = [ci++, ci++];
-      } else {                     // blossom tree: a crown of four pink clusters
-        t.balls = [bi++, bi++, bi++, bi++];
-      }
-      t.rot = r * 1.7;
+      t.trunk = k; t.cones = []; t.leaf = []; t.blooms = [];
+      if (t.kind === 0) t.leaf = [li++];
+      else if (t.kind === 1) t.cones = [ci++];
+      else if (t.kind === 2) t.cones = [ci++, ci++];
+      else t.blooms = [bi++, bi++, bi++];
+      t.yaw = (t.row * 1.3 + t.s * 0.7) % 6.28;
     });
-    const placeTree = (t, grow) => {
-      const g = grow * (0.85 + 0.3 * (t.f || 0));
-      if (t.kind === 0) {
-        set(trunkMesh, t.trunk, t.x, 0.17 * g, t.z, 0.5 * g, 0.3 * g, 0.5 * g, t.rot);
-        set(ballMesh, t.balls[0], t.x + 0.05, 0.36 * g, t.z, 0.26 * g, 0.2 * g, 0.26 * g, t.rot);
-      } else if (t.kind === 1) {
-        set(trunkMesh, t.trunk, t.x, 0.15 * g, t.z, 0.8 * g, 0.3 * g, 0.8 * g, t.rot);
-        set(coneMesh, t.cones[0], t.x, 0.62 * g, t.z, 0.85 * g, 0.85 * g, 0.85 * g, t.rot);
-      } else if (t.kind === 2) {
-        set(trunkMesh, t.trunk, t.x, 0.2 * g, t.z, 1.1 * g, 0.4 * g, 1.1 * g, t.rot);
-        set(coneMesh, t.cones[0], t.x, 0.85 * g, t.z, 1.15 * g, 1.1 * g, 1.15 * g, t.rot);
-        set(coneMesh, t.cones[1], t.x, 1.4 * g, t.z, 0.82 * g, 0.9 * g, 0.82 * g, t.rot);
-      } else {
-        set(trunkMesh, t.trunk, t.x, 0.5 * g, t.z, 1.6 * g, 1.0 * g, 1.6 * g, t.rot);
-        const spots = [[0, 1.25, 0, 0.95], [0.3, 1.05, 0.2, 0.7], [-0.28, 1.1, -0.15, 0.72], [0.05, 1.6, -0.05, 0.62]];
-        spots.forEach(([dx, dy, dz, s], j) => set(ballMesh, t.balls[j], t.x + dx * g, dy * g, t.z + dz * g, s * g, s * g * 0.9, s * g, t.rot));
-      }
-    };
-    trees.forEach((t) => placeTree(t, 1));
-    scene.add(tileMesh, trunkMesh, coneMesh, ballMesh);
 
-    // Lookups for hover: which tree owns an instance of each mesh.
-    const ownerCone = [], ownerBall = [];
-    trees.forEach((t, k) => { t.cones.forEach((c) => (ownerCone[c] = k)); t.balls.forEach((b) => (ownerBall[b] = k)); });
+    const pos = new THREE.Vector3(), qBase = new THREE.Quaternion(), qYaw = new THREE.Quaternion(), qAll = new THREE.Quaternion();
+    const off = new THREE.Vector3(), v = new THREE.Vector3(), sc = new THREE.Vector3(), m4 = new THREE.Matrix4();
+    const put = (mesh, idx, lx, ly, lz, sx, sy, sz) => {
+      off.set(lx, ly, lz).applyQuaternion(qAll);
+      v.copy(pos).add(off);
+      sc.set(sx, sy, sz);
+      m4.compose(v, qAll, sc);
+      mesh.setMatrixAt(idx, m4);
+    };
+    const hideAll = (t) => {
+      sc.set(0, 0, 0); m4.compose(pos, qAll, sc);
+      trunkMesh.setMatrixAt(t.trunk, m4);
+      t.cones.forEach((c) => coneMesh.setMatrixAt(c, m4));
+      t.leaf.forEach((c) => leafBallMesh.setMatrixAt(c, m4));
+      t.blooms.forEach((c) => bloomMesh.setMatrixAt(c, m4));
+    };
+    let hovered = -1, offset = 0;
+    const layout = () => {
+      tiles.forEach((t, k) => {
+        const u = t.s - offset;
+        if (u < -10 || u > UMAX) { sc.set(0, 0, 0); m4.compose(pos, qAll, sc); tileMesh.setMatrixAt(k, m4); return; }
+        frameAt(u, t.row, pos, qBase);
+        qAll.copy(qBase);
+        put(tileMesh, k, 0, 0, 0, 1, 1, 1);
+      });
+      trees.forEach((t, k) => {
+        const u = t.s - offset;
+        frameAt(u, t.row, pos, qBase);
+        qAll.copy(qBase).multiply(qYaw.setFromAxisAngle(U, t.yaw));
+        if (u < -10 || u > UMAX) { hideAll(t); return; }
+        const g = (k === hovered ? 1.15 : 1) * (0.85 + 0.3 * (t.f || 0));
+        if (t.kind === 0) {          // sapling: thin stem, one round bud
+          put(trunkMesh, t.trunk, 0, 0.14 * g, 0, 0.6 * g, 0.28 * g, 0.6 * g);
+          put(leafBallMesh, t.leaf[0], 0, 0.36 * g, 0, 0.32 * g, 0.3 * g, 0.32 * g);
+        } else if (t.kind === 1) {   // young pine
+          put(trunkMesh, t.trunk, 0, 0.15 * g, 0, 0.9 * g, 0.3 * g, 0.9 * g);
+          put(coneMesh, t.cones[0], 0, 0.7 * g, 0, 0.8 * g, 1.0 * g, 0.8 * g);
+        } else if (t.kind === 2) {   // tall pine, two soft tiers
+          put(trunkMesh, t.trunk, 0, 0.2 * g, 0, 1.1 * g, 0.4 * g, 1.1 * g);
+          put(coneMesh, t.cones[0], 0, 0.85 * g, 0, 1.05 * g, 1.15 * g, 1.05 * g);
+          put(coneMesh, t.cones[1], 0, 1.45 * g, 0, 0.78 * g, 0.95 * g, 0.78 * g);
+        } else {                     // blossom tree: trunk and a puffy pink crown
+          put(trunkMesh, t.trunk, 0, 0.5 * g, 0, 1.5 * g, 1.0 * g, 1.5 * g);
+          put(bloomMesh, t.blooms[0], 0, 1.3 * g, 0, 1.05 * g, 0.92 * g, 1.05 * g);
+          put(bloomMesh, t.blooms[1], 0.32 * g, 1.12 * g, 0.12 * g, 0.7 * g, 0.62 * g, 0.7 * g);
+          put(bloomMesh, t.blooms[2], -0.3 * g, 1.16 * g, -0.12 * g, 0.72 * g, 0.64 * g, 0.72 * g);
+        }
+      });
+      [tileMesh, trunkMesh, coneMesh, leafBallMesh, bloomMesh].forEach((m) => { m.instanceMatrix.needsUpdate = true; });
+    };
+    scene.add(tileMesh, trunkMesh, coneMesh, leafBallMesh, bloomMesh);
+
+    // Lookups for hover: which tree owns each instance.
+    const ownerCone = [], ownerLeaf = [], ownerBloom = [];
+    trees.forEach((t, k) => { t.cones.forEach((c) => (ownerCone[c] = k)); t.leaf.forEach((c) => (ownerLeaf[c] = k)); t.blooms.forEach((c) => (ownerBloom[c] = k)); });
 
     const color = new THREE.Color();
-    let pal = this.forestPal.light, hovered = -1;
+    let pal = this.forestPal.light;
     const paintTree = (k, hot) => {
       const t = trees[k];
       const base = hot ? 0x1f5fe0 : pal.kinds[t.kind];
       t.cones.forEach((c) => coneMesh.setColorAt(c, color.setHex(base)));
-      t.balls.forEach((b, j) => ballMesh.setColorAt(b, color.setHex(!hot && t.kind === 3 && j % 2 ? pal.blossom2 : base)));
+      t.leaf.forEach((c) => leafBallMesh.setColorAt(c, color.setHex(base)));
+      t.blooms.forEach((c, j) => bloomMesh.setColorAt(c, color.setHex(!hot && j ? pal.blossom2 : base)));
     };
-    const flush = () => {
-      [coneMesh, ballMesh].forEach((m) => { if (m.instanceColor) m.instanceColor.needsUpdate = true; m.instanceMatrix.needsUpdate = true; });
-      trunkMesh.instanceMatrix.needsUpdate = true;
-    };
+    const flushColors = () => { [coneMesh, leafBallMesh, bloomMesh].forEach((m) => { if (m.instanceColor) m.instanceColor.needsUpdate = true; }); };
     const theme = (dark) => {
       pal = this.forestPal[dark ? "dark" : "light"];
       renderer.setClearColor(pal.sky);
@@ -3079,36 +3119,34 @@ class Component extends DCLogic {
       hemi.color.setHex(pal.hemiSky); hemi.groundColor.setHex(pal.hemiGround); hemi.intensity = pal.hemi;
       sun.intensity = pal.sun;
       trees.forEach((t, k) => paintTree(k, k === hovered));
-      flush();
+      flushColors();
       kick();
     };
 
-    // Travel. offset = weeks the view has moved back from the newest; the view spans
-    // about 2 * FOC weeks, centered FOC weeks back from the right edge.
-    const FOC = small ? 4.5 : 8;
-    const MAXOFF = Math.max(0, W - 1 - Math.round(FOC * 1.6));
-    let offset = 0, target = 0, raf = 0;
+    // Travel: the wheel only moves the timeline while the pointer is over it, and simply
+    // stops at either end (the page scrolls again once the pointer leaves the graph).
+    // Stop once the oldest week reaches the far end of the visible stretch, so the view stays full.
+    const MAXOFF = Math.max(0, W - 1 - Math.round(STRAIGHT * 0.85));
+    let target = 0, raf = 0, laid = -1;
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const fmtFull = (d) => new Date(d + "T00:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" });
     const btnOlder = stage.querySelector('.forest-nav [data-step="8"]'), btnNewer = stage.querySelector('.forest-nav [data-step="-8"]');
     let lastBadge = "";
-    const place = () => {
-      const [fx, fz, fa] = at(offset + FOC, 3);
-      const D = small ? 10.5 : 11.5, H = small ? 6.6 : 5.6;
-      camera.position.set(fx - Math.sin(fa) * D, H, fz + Math.cos(fa) * D);
-      camera.lookAt(fx, 1.1, fz);
-      const wk = Math.max(0, Math.min(W - 1, Math.round(offset + FOC)));
-      const idx = Math.min(days.length - 1, (W - 1 - wk) * 7 + 3);
-      const dt = new Date(days[idx].d + "T00:00:00");
-      const label = months[dt.getMonth()] + " " + dt.getFullYear();
-      if (label !== lastBadge) { lastBadge = label; badge.textContent = label; }
+    const setCamera = () => {
+      if (small) { camera.position.set(5.2, 7.2, 9.8); camera.lookAt(-1.2, -0.6, -1.6); }
+      else { camera.position.set(7.6, 6.1, 10.2); camera.lookAt(-1.4, -0.5, -1.6); }
     };
     const frame = () => {
       raf = 0;
       const dz = target - offset;
       offset += reduce ? dz : dz * 0.14;
       if (Math.abs(target - offset) < 0.002) offset = target;
-      place();
+      if (offset !== laid) { laid = offset; layout(); }
+      const wk = Math.max(0, Math.min(W - 1, Math.round(offset + 2)));
+      const idx = Math.min(days.length - 1, (W - 1 - wk) * 7 + 3);
+      const dt = new Date(days[idx].d + "T00:00:00");
+      const label = months[dt.getMonth()] + " " + dt.getFullYear();
+      if (label !== lastBadge) { lastBadge = label; badge.textContent = label; }
       renderer.render(scene, camera);
       if (offset !== target) raf = requestAnimationFrame(frame);
     };
@@ -3120,16 +3158,13 @@ class Component extends DCLogic {
       kick();
     };
 
-    // Wheel inside the stage travels; at either end the page is allowed to scroll on.
     stage.addEventListener("wheel", (e) => {
-      const d = (Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : -e.deltaX) * (e.deltaMode === 1 ? 16 : 1);
-      const next = Math.max(0, Math.min(MAXOFF, target + d * 0.012));
-      if (next === target) return;
       e.preventDefault();
-      go(next);
+      const d = (Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : -e.deltaX) * (e.deltaMode === 1 ? 16 : 1);
+      go(target + d * 0.012);
       tip.setAttribute("data-on", "0");
     }, { passive: false });
-    // Dragging right pulls older weeks in from the left; vertical swipes still scroll the page.
+    // Dragging right pulls older weeks forward; vertical swipes still scroll the page on phones.
     let drag = null;
     stage.addEventListener("pointerdown", (e) => { if (e.target.closest("button")) return; drag = { x: e.clientX, y: e.clientY, start: target, horiz: e.pointerType === "mouse" }; });
     window.addEventListener("pointermove", (e) => {
@@ -3146,10 +3181,12 @@ class Component extends DCLogic {
     const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
     const setHover = (k) => {
       if (k === hovered) return;
-      if (hovered >= 0) { paintTree(hovered, false); placeTree(trees[hovered], 1); }
+      const prev = hovered;
       hovered = k;
-      if (hovered >= 0) { paintTree(hovered, true); placeTree(trees[hovered], 1.18); }
-      flush();
+      if (prev >= 0) paintTree(prev, false);
+      if (hovered >= 0) paintTree(hovered, true);
+      flushColors();
+      laid = -1;
       kick();
     };
     stage.addEventListener("pointermove", (e) => {
@@ -3157,13 +3194,16 @@ class Component extends DCLogic {
       const r = stage.getBoundingClientRect();
       ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       ray.setFromCamera(ndc, camera);
-      const hit = ray.intersectObjects([ballMesh, coneMesh, trunkMesh, tileMesh], false)[0];
-      let item = null, k = -1;
-      if (hit && hit.object === coneMesh) k = ownerCone[hit.instanceId];
-      else if (hit && hit.object === ballMesh) k = ownerBall[hit.instanceId];
-      else if (hit && hit.object === trunkMesh) k = hit.instanceId;
-      if (k >= 0 && k !== undefined) item = trees[k];
-      else if (hit && hit.object === tileMesh) { item = tiles[hit.instanceId]; k = trees.indexOf(item); }
+      const hit = ray.intersectObjects([bloomMesh, coneMesh, leafBallMesh, trunkMesh, tileMesh], false)[0];
+      let k = -1, item = null;
+      if (hit) {
+        if (hit.object === coneMesh) k = ownerCone[hit.instanceId];
+        else if (hit.object === leafBallMesh) k = ownerLeaf[hit.instanceId];
+        else if (hit.object === bloomMesh) k = ownerBloom[hit.instanceId];
+        else if (hit.object === trunkMesh) k = hit.instanceId;
+        if (k >= 0) item = trees[k];
+        else if (hit.object === tileMesh) { item = tiles[hit.instanceId]; k = trees.indexOf(item); }
+      }
       setHover(k === undefined ? -1 : k);
       if (!item) { tip.setAttribute("data-on", "0"); return; }
       tip.innerHTML = "<b></b><small></small>";
@@ -3184,10 +3224,11 @@ class Component extends DCLogic {
     if ("ResizeObserver" in window) new ResizeObserver(resize).observe(stage);
     window.addEventListener("resize", resize);
 
+    setCamera();
     theme(this.state.theme === "dark");
     resize();
     go(0);
-    place();
+    layout(); laid = 0;
     renderer.render(scene, camera);
     return { theme };
   }
