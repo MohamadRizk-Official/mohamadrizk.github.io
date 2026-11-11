@@ -1,11 +1,11 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-10T14:57:04+00:00",
- "totalCommits": 619,
- "yearCommits": 619,
- "activeDays": 58,
+ "updated": "2026-11-11T14:26:55+00:00",
+ "totalCommits": 632,
+ "yearCommits": 632,
+ "activeDays": 59,
  "longestStreak": 28,
- "currentStreak": 2,
+ "currentStreak": 3,
  "publicRepos": 9,
  "privateRepos": 9,
  "busiestDay": {
@@ -1494,9 +1494,91 @@
   {
    "d": "2026-11-10",
    "n": 5
+  },
+  {
+   "d": "2026-11-11",
+   "n": 13
   }
  ],
  "recent": [
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/dfe9e101a3c688ae7721d2a0c123139da1281646",
+   "message": "Link preview: simpler card and a one-line description",
+   "date": "2026-11-11T03:54:18Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/2a0626c72135ff54610953fd60292d601246697f",
+   "message": "Link preview: centered card that survives WhatsApp's square crop",
+   "date": "2026-11-11T03:41:23Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/3255103f9db4b30ade149c0c8030c855f1a1ea5c",
+   "message": "Forest: frame the newest edge center right like the reference",
+   "date": "2026-11-11T03:19:52Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/75c7c2a0e17e111c9042014ecf8e7043df0efc7e",
+   "message": "Forest: centered front, gradual far bend, bluish light-mode tiles",
+   "date": "2026-11-11T03:16:36Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/15a48441997cc25afb059c3809d18e7479617685",
+   "message": "Forest: reference shape, diagonal sweep that rolls over and drops",
+   "date": "2026-11-11T03:07:06Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/31957f982ce35e983fbe9cb7a4359b947d98efba",
+   "message": "Forest: commit-driven heights, gradual far fade, fuller framing",
+   "date": "2026-11-11T03:02:12Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/d0c541100ea3625332b2b9837b7491f421bc0977",
+   "message": "Forest: stretch the ribbon sideways and shrink the trees",
+   "date": "2026-11-11T02:56:26Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/941c75e7cd11b59fb92ce210a46f2929eff750d6",
+   "message": "Forest: reference-style curling ribbon, smooth trees, wheel stays put",
+   "date": "2026-11-11T02:53:25Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/2eac09ecf01bb37e2d4c51466e825c0df08513c0",
+   "message": "Forest: saplings, pines and blossoms; right-to-left time; Covision logo",
+   "date": "2026-11-11T02:40:59Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/beae971bcb02a65bb3ca5195291be98de4c1e95f",
+   "message": "Link preview: title, description, Open Graph image, favicon",
+   "date": "2026-11-11T01:48:33Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/dace5a70b8949e0054f52635130369d05e97b4a5",
+   "message": "Commit Forest as a ribbon of daily trees you travel with the wheel",
+   "date": "2026-11-11T01:46:51Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/99c7932b4a61ebacbfbb68e336ffd4c7c3b605a3",
+   "message": "Commit Forest: walk through a 3D forest of weekly commits",
+   "date": "2026-11-11T01:15:46Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/e51d7af6001432633ef02818fc0818d8ff878811",
+   "message": "Commit City skyline, real issuer logos, faster course boxes",
+   "date": "2026-11-11T01:07:08Z"
+  },
   {
    "repo": "mohamadrizk.github.io",
    "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/6d5b65c6ba49c7873544cf905e2c77bb08d74a7b",
@@ -1508,30 +1590,6 @@
    "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/40173a27cd911e21f0ea8afba86c8673364ee60a",
    "message": "Open to full-time roles; solid status badge",
    "date": "2026-11-10T06:21:33Z"
-  },
-  {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/86b3cf865d0b126e0125763e1f603158ac98c737",
-   "message": "Even project rows and animated course boxes",
-   "date": "2026-11-10T06:19:55Z"
-  },
-  {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/8b253f2274b5554937c40b90590afcb371f96da6",
-   "message": "Add daily GitHub stats workflow",
-   "date": "2026-11-10T05:59:29Z"
-  },
-  {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/05257eb791c0986c9ad441cdb048d84079991372",
-   "message": "Redesign: static build, blue system, skill tree, GitHub activity",
-   "date": "2026-11-10T05:57:00Z"
-  },
-  {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/9f3ae221e1a428a557ca12d14da541651f6da444",
-   "message": "HR Studios feature section and resume refresh",
-   "date": "2026-11-09T16:22:38Z"
   },
   {
    "repo": "sparkscribe",
@@ -1682,60 +1740,6 @@
    "url": null,
    "message": null,
    "date": "2026-10-30T16:37:10Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T16:20:56Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T16:20:08Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/839ff13fb199c98a3e5a2bd6b4feb859a0d54070",
-   "message": "Background: big book outlines in the side margins on every page (a stack with an open book, a shelf with a mug",
-   "date": "2026-10-30T14:35:50Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T02:40:16Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T02:27:32Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T02:22:23Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T02:17:57Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T02:15:47Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-10-30T01:45:59Z"
   }
  ],
  "privateDays": {
