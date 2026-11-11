@@ -534,9 +534,10 @@
   .forest-hint .fh-touch { display: none; }
   .forest-month { right: 14px; top: 14px; padding: 8px 14px; font-size: 15px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); }
   .forest-legend { left: 14px; bottom: 14px; display: flex; align-items: center; gap: 7px; padding: 7px 11px; font-size: 12px; font-weight: 600; color: var(--text-muted); }
-  .forest-legend i { width: 13px; height: 13px; border-radius: 3px; }
+  .forest-legend i { border-radius: 3px; flex: none; }
   .forest-nav { position: absolute; z-index: 2; right: 14px; bottom: 14px; display: flex; gap: 8px; }
   .forest-nav .btn { box-shadow: var(--shadow); }
+  .forest-nav .btn:disabled { opacity: 0.45; pointer-events: none; }
   .forest-tip { position: absolute; z-index: 3; left: 0; top: 0; pointer-events: none; padding: 8px 11px; border-radius: 9px; background: var(--tip-bg); color: var(--tip-ink); white-space: nowrap; transform: translate(-50%, calc(-100% - 16px)); opacity: 0; transition: opacity 0.12s; box-shadow: 0 12px 24px -12px rgba(0,0,0,0.5); }
   .forest-tip[data-on="1"] { opacity: 1; }
   .forest-tip b { display: block; font-size: 13.5px; font-weight: 700; }
@@ -577,6 +578,8 @@
   .xp-head { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 16px; }
   .xp-logo { flex: none; width: 52px; height: 52px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center; background: var(--xc); color: #ffffff; font: 700 16px 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.02em; box-shadow: 0 4px 0 rgba(var(--xc-rgb), 0.45); transition: transform 0.45s cubic-bezier(0.2,0.9,0.3,1.4); }
   .xp-logo svg { width: 28px; height: 28px; }
+  .xp-logo img { width: 36px; height: 36px; display: block; }
+  .xp-logo:has(img) { background: #ffffff; border: 2px solid rgba(var(--xc-rgb), 0.45); }
   .xp-card:hover .xp-logo { transform: rotate(-6deg) scale(1.06); }
   .xp-id { flex: 1; min-width: 180px; }
   .xp-id h3 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: var(--xc); }
@@ -851,7 +854,6 @@
     .forest-hint { left: 10px; top: 10px; max-width: calc(100% - 120px); padding: 5px 8px; font-size: 10.5px; }
     .forest-month { right: 10px; top: 10px; padding: 6px 10px; font-size: 13px; }
     .forest-legend { left: 10px; bottom: 10px; padding: 5px 8px; font-size: 11px; gap: 5px; }
-    .forest-legend i { width: 11px; height: 11px; }
     .forest-nav { right: 10px; bottom: 10px; gap: 6px; }
     .gh-feed { gap: 6px; }
     .gh-feed > :nth-child(n+5) { display: none; }
@@ -872,6 +874,7 @@
     .xp-head { gap: 10px 12px; }
     .xp-logo { width: 40px; height: 40px; font-size: 13px; border-radius: 10px; }
     .xp-logo svg { width: 22px; height: 22px; }
+    .xp-logo img { width: 28px; height: 28px; }
     .xp-id { min-width: 0; }
     .xp-id h3 { font-size: 17px; }
     .xp-id div { font-size: 13.5px; }
@@ -1183,6 +1186,7 @@
                   <svg sc-camel-view-box="0 0 96 96" fill="currentColor" aria-hidden="true"><path d="M15 6 H34 V90 H15 Q6 90 6 81 V15 Q6 6 15 6 Z"></path><path d="M40 6 H61 C78 6 89 16 89 31 C89 46 78 56 61 56 H40 Z"></path><path d="M53 63 H72 L90 90 H71 Z"></path></svg>
                 </sc-if>
                 <sc-if value="{{ exp.mono }}" hint-placeholder-val="">{{ exp.mono }}</sc-if>
+                <sc-if value="{{ exp.logoImg }}" hint-placeholder-val=""><img src="{{ exp.logoImg }}" alt="{{ exp.role }} logo"></sc-if>
               </span>
               <div class="xp-id">
                 <h3>{{ exp.role }}</h3>
@@ -1806,7 +1810,7 @@ class Component extends DCLogic {
           id: "covision",
           role: "Covision Performance",
           company: "Security Analyst Intern",
-          color: "#1e9cc4", rgb: "30,156,196", mono: "CP",
+          color: "#39b3d8", rgb: "57,179,216", logoImg: "assets/logos/covision.png",
           period: "Jun 2026 — Aug 2026",
           location: "In-person",
           tags: ["Compliance", "WAF", "Incident Response", "API Security"],
@@ -2905,14 +2909,16 @@ class Component extends DCLogic {
     return "just now";
   }
 
-  // Commit Forest: every day since the first commit is a small tree on a ribbon of
-  // 7 rows (Sun to Sat) by weeks, laid along a curve that sweeps away into the fog.
-  // The newest week sits up front; scrolling the wheel (or swiping sideways) inside the
-  // stage travels back in time along the ribbon. Tree size and shade follow commits.
+  // Commit Forest: every day since the first commit sits on a ribbon of 7 rows (Sun at
+  // the back, Sat at the front) by weeks. Time runs right to left: the newest week is on
+  // the right and the ribbon bends gently away into the fog on the left. What grows on a
+  // day depends on its commits: a sapling, a young pine, a full pine, or a blossom tree.
+  // The wheel, a drag, or the Older/Newer buttons travel along it.
   forestPal = {
-    light: { sky: 0xe6eef9, ground: 0xdfe8f3, tile: 0xc9d4e3, trunk: 0x8a6446, levels: [0xa6dcae, 0x63c27c, 0x2f9e57, 0x17713b], hemiSky: 0xffffff, hemiGround: 0xb7c6d8, hemi: 0.8, sun: 0.75 },
-    dark: { sky: 0x070b14, ground: 0x0a1120, tile: 0x1a2640, trunk: 0x5c4532, levels: [0x2a5c45, 0x2f8a5c, 0x3cae6f, 0x5fd394], hemiSky: 0x8fb0e8, hemiGround: 0x0b1424, hemi: 0.6, sun: 0.55 }
+    light: { sky: 0xe6eef9, tile: 0xd3dde9, trunk: 0x8a6446, kinds: [0x9ccc3c, 0x3fae5a, 0x1f7d47, 0xff7ab8], blossom2: 0xffb0d6, hemiSky: 0xffffff, hemiGround: 0xb7c6d8, hemi: 0.85, sun: 0.75 },
+    dark: { sky: 0x070b14, tile: 0x1a2640, trunk: 0x6b4f38, kinds: [0xb5e35a, 0x4cc36d, 0x2e9a5c, 0xff8fc8], blossom2: 0xffc2e0, hemiSky: 0x9db8ee, hemiGround: 0x0b1424, hemi: 0.65, sun: 0.6 }
   };
+  forestKinds = ["Sapling", "Young pine", "Pine", "Blossom"];
 
   forestDays() {
     const gh = this.state.gh;
@@ -2927,15 +2933,17 @@ class Component extends DCLogic {
     const h = React.createElement;
     const pal = this.forestPal[this.state.theme === "dark" ? "dark" : "light"];
     const hex = (n) => "#" + n.toString(16).padStart(6, "0");
+    const arrow = (d) => h("svg", { width: 13, height: 13, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 3, strokeLinecap: "round", strokeLinejoin: "round" }, h("path", { d }));
     return h("div", { className: "forest-card" },
       h("div", { className: "forest-stage", ref: this.forestRef },
         h("div", { className: "forest-gl", ref: this.forestGlRef }),
         h("div", { className: "forest-hint" }, h("span", { className: "fh-desk" }, "Scroll inside to travel back in time"), h("span", { className: "fh-touch" }, "Swipe to travel in time")),
         h("div", { className: "forest-month", ref: this.forestHudRef }, "…"),
-        h("div", { className: "forest-legend", "aria-hidden": true }, "Fewer", pal.levels.map((c, i) => h("i", { key: i, style: { background: hex(c), transform: "scale(" + (0.55 + i * 0.15) + ")" } })), "More"),
+        h("div", { className: "forest-legend", "aria-hidden": true }, "Fewer",
+          pal.kinds.map((c, i) => h("i", { key: i, title: this.forestKinds[i], style: { background: hex(c), width: 9 + i * 2, height: 9 + i * 2 } })), "More"),
         h("div", { className: "forest-nav" },
-          h("button", { className: "btn btn-sm btn-ghost", "data-step": "-4", "aria-label": "Newer weeks" }, h("span", null, "Newer")),
-          h("button", { className: "btn btn-sm btn-ghost", "data-step": "4", "aria-label": "Older weeks" }, h("span", null, "Older"))),
+          h("button", { className: "btn btn-sm btn-ghost", "data-step": "8", "aria-label": "Older weeks" }, arrow("M15 6l-6 6 6 6"), h("span", null, "Older")),
+          h("button", { className: "btn btn-sm btn-ghost", "data-step": "-8", "aria-label": "Newer weeks" }, h("span", null, "Newer"), arrow("M9 6l6 6-6 6"))),
         h("div", { className: "forest-tip", ref: this.forestLabelsRef, "aria-hidden": true }),
         h("div", { className: "forest-fallback" }, "3D is not available in this browser, but every number above is live."))
     );
@@ -2967,63 +2975,100 @@ class Component extends DCLogic {
     mount.appendChild(renderer.domElement);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0xffffff, 14, 52);
-    const camera = new THREE.PerspectiveCamera(small ? 60 : 50, 1, 0.1, 200);
-    const hemi = new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.8);
+    scene.fog = new THREE.Fog(0xffffff, 17, 42);
+    const camera = new THREE.PerspectiveCamera(small ? 52 : 38, 1, 0.1, 200);
+    const hemi = new THREE.HemisphereLight(0xffffff, 0xcccccc, 0.85);
     const sun = new THREE.DirectionalLight(0xffffff, 0.75);
-    sun.position.set(-8, 14, 6);
+    sun.position.set(6, 14, 10);
     scene.add(hemi, sun);
 
-    // Weeks run from newest (s = 0, nearest the camera) to oldest. The ribbon is a
-    // circular arc, so it sweeps right in front and curls left into the distance.
+    // Week s = 0 is the newest, on the right; older weeks run left and bend away (-z).
     const W = Math.ceil(days.length / 7);
-    const R = 26, ROW = 0.95, COL = 1.05;
+    const R = 55, ROW = 0.95, COL = 1.05;
     const at = (s, row) => {
       const a = (s * COL) / R;
-      const cx = -R * (1 - Math.cos(a)), cz = -R * Math.sin(a);
-      const off = (row - 3) * ROW;
-      return [cx + Math.cos(a) * off, cz - Math.sin(a) * off, a];
+      const cx = -R * Math.sin(a), cz = -R * (1 - Math.cos(a));
+      const back = (3 - row) * ROW; // Sunday at the back, Saturday at the front
+      return [cx + Math.sin(a) * back, cz - Math.cos(a) * back, a];
     };
 
+    // Four kinds of growth, each clearly bigger than the last.
     const max = Math.max(1, ...days.map((d) => d.n));
-    const level = (n) => (n <= 0 ? -1 : Math.min(3, Math.floor(Math.pow(n / max, 0.5) * 4)));
-    const trees = [], tiles = [];
+    const kindOf = (n) => { const f = Math.sqrt(n / max); return n <= 2 ? 0 : f < 0.35 ? 1 : f < 0.65 ? 2 : 3; };
+    const tiles = [], trees = [];
     days.forEach((d, i) => {
       const s = W - 1 - Math.floor(i / 7), row = i % 7;
       const [x, z, a] = at(s, row);
       const item = { d, s, row, x, z, a };
       tiles.push(item);
-      if (d.n > 0) { item.size = 0.32 + 0.68 * Math.pow(d.n / max, 0.55); item.lv = level(d.n); trees.push(item); }
+      if (d.n > 0) { item.kind = kindOf(d.n); item.f = Math.min(1, Math.sqrt(d.n / max)); trees.push(item); }
     });
 
-    const tileGeo = new THREE.BoxGeometry(0.82, 0.08, 0.82);
+    const count = (k) => trees.filter((t) => t.kind === k).length;
     const tileMat = new THREE.MeshLambertMaterial({ color: 0xffffff });
-    const tileMesh = new THREE.InstancedMesh(tileGeo, tileMat, tiles.length);
-    const coneGeo = new THREE.ConeGeometry(0.42, 0.9, 7);
-    const trunkGeo = new THREE.CylinderGeometry(0.07, 0.1, 0.4, 6);
-    const leafMat = new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true, shininess: 6 });
-    const trunkMat = new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true, shininess: 2 });
-    const coneMesh = new THREE.InstancedMesh(coneGeo, leafMat, Math.max(1, trees.length * 2));
-    const trunkMesh = new THREE.InstancedMesh(trunkGeo, trunkMat, Math.max(1, trees.length));
+    const tileMesh = new THREE.InstancedMesh(new THREE.BoxGeometry(0.84, 0.08, 0.84), tileMat, tiles.length);
+    const flat = (shininess) => new THREE.MeshPhongMaterial({ color: 0xffffff, flatShading: true, shininess });
+    const trunkMat = flat(2), coneMat = flat(6), ballMat = flat(10);
+    const trunkMesh = new THREE.InstancedMesh(new THREE.CylinderGeometry(0.06, 0.1, 1, 6), trunkMat, Math.max(1, trees.length));
+    const coneMesh = new THREE.InstancedMesh(new THREE.ConeGeometry(0.5, 1, 7), coneMat, Math.max(1, count(1) + count(2) * 2));
+    const ballMesh = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(0.5, 1), ballMat, Math.max(1, count(0) + count(3) * 4));
     const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), v = new THREE.Vector3(), sc = new THREE.Vector3(), up = new THREE.Vector3(0, 1, 0);
-    const placeTree = (t, k, grow) => {
-      const g = t.size * grow;
-      q.setFromAxisAngle(up, t.a + t.row);
-      sc.set(g, g, g); v.set(t.x, 0.2 * g + 0.04, t.z); m4.compose(v, q, sc); trunkMesh.setMatrixAt(k, m4);
-      sc.set(g, g, g); v.set(t.x, 0.75 * g + 0.04, t.z); m4.compose(v, q, sc); coneMesh.setMatrixAt(k * 2, m4);
-      sc.set(g * 0.72, g * 0.8, g * 0.72); v.set(t.x, 1.15 * g + 0.04, t.z); m4.compose(v, q, sc); coneMesh.setMatrixAt(k * 2 + 1, m4);
-    };
-    tiles.forEach((t, k) => {
-      q.setFromAxisAngle(up, t.a); sc.set(1, 1, 1); v.set(t.x, 0, t.z); m4.compose(v, q, sc); tileMesh.setMatrixAt(k, m4);
+    const set = (mesh, idx, x, y, z, sx, sy, sz, rot) => { q.setFromAxisAngle(up, rot); v.set(x, y, z); sc.set(sx, sy, sz); m4.compose(v, q, sc); mesh.setMatrixAt(idx, m4); };
+
+    tiles.forEach((t, k) => set(tileMesh, k, t.x, 0, t.z, 1, 1, 1, t.a));
+    let ci = 0, bi = 0;
+    trees.forEach((t, k) => {
+      t.parts = [];
+      t.trunk = k;
+      t.cones = []; t.balls = [];
+      const r = t.row + t.s;
+      if (t.kind === 0) {          // sapling: a thin stem and one small leaf
+        t.cones = []; t.balls = [bi++];
+      } else if (t.kind === 1) {   // young pine
+        t.cones = [ci++];
+      } else if (t.kind === 2) {   // full pine, two tiers
+        t.cones = [ci++, ci++];
+      } else {                     // blossom tree: a crown of four pink clusters
+        t.balls = [bi++, bi++, bi++, bi++];
+      }
+      t.rot = r * 1.7;
     });
-    trees.forEach((t, k) => placeTree(t, k, 1));
-    scene.add(tileMesh, trunkMesh, coneMesh);
+    const placeTree = (t, grow) => {
+      const g = grow * (0.85 + 0.3 * (t.f || 0));
+      if (t.kind === 0) {
+        set(trunkMesh, t.trunk, t.x, 0.17 * g, t.z, 0.5 * g, 0.3 * g, 0.5 * g, t.rot);
+        set(ballMesh, t.balls[0], t.x + 0.05, 0.36 * g, t.z, 0.26 * g, 0.2 * g, 0.26 * g, t.rot);
+      } else if (t.kind === 1) {
+        set(trunkMesh, t.trunk, t.x, 0.15 * g, t.z, 0.8 * g, 0.3 * g, 0.8 * g, t.rot);
+        set(coneMesh, t.cones[0], t.x, 0.62 * g, t.z, 0.85 * g, 0.85 * g, 0.85 * g, t.rot);
+      } else if (t.kind === 2) {
+        set(trunkMesh, t.trunk, t.x, 0.2 * g, t.z, 1.1 * g, 0.4 * g, 1.1 * g, t.rot);
+        set(coneMesh, t.cones[0], t.x, 0.85 * g, t.z, 1.15 * g, 1.1 * g, 1.15 * g, t.rot);
+        set(coneMesh, t.cones[1], t.x, 1.4 * g, t.z, 0.82 * g, 0.9 * g, 0.82 * g, t.rot);
+      } else {
+        set(trunkMesh, t.trunk, t.x, 0.5 * g, t.z, 1.6 * g, 1.0 * g, 1.6 * g, t.rot);
+        const spots = [[0, 1.25, 0, 0.95], [0.3, 1.05, 0.2, 0.7], [-0.28, 1.1, -0.15, 0.72], [0.05, 1.6, -0.05, 0.62]];
+        spots.forEach(([dx, dy, dz, s], j) => set(ballMesh, t.balls[j], t.x + dx * g, dy * g, t.z + dz * g, s * g, s * g * 0.9, s * g, t.rot));
+      }
+    };
+    trees.forEach((t) => placeTree(t, 1));
+    scene.add(tileMesh, trunkMesh, coneMesh, ballMesh);
+
+    // Lookups for hover: which tree owns an instance of each mesh.
+    const ownerCone = [], ownerBall = [];
+    trees.forEach((t, k) => { t.cones.forEach((c) => (ownerCone[c] = k)); t.balls.forEach((b) => (ownerBall[b] = k)); });
 
     const color = new THREE.Color();
     let pal = this.forestPal.light, hovered = -1;
     const paintTree = (k, hot) => {
-      color.setHex(hot ? 0x1f5fe0 : pal.levels[trees[k].lv]);
-      coneMesh.setColorAt(k * 2, color); coneMesh.setColorAt(k * 2 + 1, color);
+      const t = trees[k];
+      const base = hot ? 0x1f5fe0 : pal.kinds[t.kind];
+      t.cones.forEach((c) => coneMesh.setColorAt(c, color.setHex(base)));
+      t.balls.forEach((b, j) => ballMesh.setColorAt(b, color.setHex(!hot && t.kind === 3 && j % 2 ? pal.blossom2 : base)));
+    };
+    const flush = () => {
+      [coneMesh, ballMesh].forEach((m) => { if (m.instanceColor) m.instanceColor.needsUpdate = true; m.instanceMatrix.needsUpdate = true; });
+      trunkMesh.instanceMatrix.needsUpdate = true;
     };
     const theme = (dark) => {
       pal = this.forestPal[dark ? "dark" : "light"];
@@ -3034,25 +3079,26 @@ class Component extends DCLogic {
       hemi.color.setHex(pal.hemiSky); hemi.groundColor.setHex(pal.hemiGround); hemi.intensity = pal.hemi;
       sun.intensity = pal.sun;
       trees.forEach((t, k) => paintTree(k, k === hovered));
-      if (coneMesh.instanceColor) coneMesh.instanceColor.needsUpdate = true;
+      flush();
       kick();
     };
 
-    // Travel: offset is how many weeks back the camera has moved along the ribbon.
-    let offset = 0, target = 0, raf = 0, Wd = 1, Hd = 1;
-    const MAXOFF = Math.max(0, W - 6);
+    // Travel. offset = weeks the view has moved back from the newest; the view spans
+    // about 2 * FOC weeks, centered FOC weeks back from the right edge.
+    const FOC = small ? 4.5 : 8;
+    const MAXOFF = Math.max(0, W - 1 - Math.round(FOC * 1.6));
+    let offset = 0, target = 0, raf = 0;
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const fmtFull = (d) => new Date(d + "T00:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric", year: "numeric" });
+    const btnOlder = stage.querySelector('.forest-nav [data-step="8"]'), btnNewer = stage.querySelector('.forest-nav [data-step="-8"]');
     let lastBadge = "";
     const place = () => {
-      // Camera stands just behind the focus week and to the right of the ribbon, so the
-      // nearest weeks sweep in from the bottom right and the rest curl away to the left.
-      const [fx, fz] = at(offset + (small ? 6 : 7), 1);
-      const [bx, bz, ba] = at(offset - 0.5, 3);
-      const side = small ? 4.6 : 5;
-      camera.position.set(bx + Math.cos(ba) * side, small ? 5 : 4.1, bz - Math.sin(ba) * side + 1.6);
-      camera.lookAt(fx, 0, fz);
-      const idx = Math.max(0, Math.min(days.length - 1, (W - 1 - Math.round(offset + 2)) * 7 + 3));
+      const [fx, fz, fa] = at(offset + FOC, 3);
+      const D = small ? 10.5 : 11.5, H = small ? 6.6 : 5.6;
+      camera.position.set(fx - Math.sin(fa) * D, H, fz + Math.cos(fa) * D);
+      camera.lookAt(fx, 1.1, fz);
+      const wk = Math.max(0, Math.min(W - 1, Math.round(offset + FOC)));
+      const idx = Math.min(days.length - 1, (W - 1 - wk) * 7 + 3);
       const dt = new Date(days[idx].d + "T00:00:00");
       const label = months[dt.getMonth()] + " " + dt.getFullYear();
       if (label !== lastBadge) { lastBadge = label; badge.textContent = label; }
@@ -3067,67 +3113,71 @@ class Component extends DCLogic {
       if (offset !== target) raf = requestAnimationFrame(frame);
     };
     const kick = () => { if (!raf) raf = requestAnimationFrame(frame); };
-    const go = (to) => { target = Math.max(0, Math.min(MAXOFF, to)); kick(); };
+    const go = (to) => {
+      target = Math.max(0, Math.min(MAXOFF, to));
+      if (btnOlder) btnOlder.disabled = target >= MAXOFF;
+      if (btnNewer) btnNewer.disabled = target <= 0;
+      kick();
+    };
 
     // Wheel inside the stage travels; at either end the page is allowed to scroll on.
     stage.addEventListener("wheel", (e) => {
-      const d = (Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX) * (e.deltaMode === 1 ? 16 : 1);
+      const d = (Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : -e.deltaX) * (e.deltaMode === 1 ? 16 : 1);
       const next = Math.max(0, Math.min(MAXOFF, target + d * 0.012));
       if (next === target) return;
       e.preventDefault();
       go(next);
       tip.setAttribute("data-on", "0");
     }, { passive: false });
-    // Drag (mouse) or sideways swipe (touch) also travels; vertical swipes still scroll the page.
+    // Dragging right pulls older weeks in from the left; vertical swipes still scroll the page.
     let drag = null;
     stage.addEventListener("pointerdown", (e) => { if (e.target.closest("button")) return; drag = { x: e.clientX, y: e.clientY, start: target, horiz: e.pointerType === "mouse" }; });
     window.addEventListener("pointermove", (e) => {
       if (!drag) return;
       const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
       if (!drag.horiz && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) drag.horiz = true;
-      if (drag.horiz) go(drag.start + dx * (small ? 0.05 : 0.03));
+      if (drag.horiz) go(drag.start + dx * (small ? 0.06 : 0.035));
     }, { passive: true });
     window.addEventListener("pointerup", () => { drag = null; });
     window.addEventListener("pointercancel", () => { drag = null; });
-    stage.querySelectorAll(".forest-nav button").forEach((b) => b.addEventListener("click", () => go(target + Number(b.getAttribute("data-step")))));
+    [btnOlder, btnNewer].forEach((b) => b && b.addEventListener("click", () => go(target + Number(b.getAttribute("data-step")))));
 
     // Hover: point at a tree (or an empty tile) to see that day.
     const ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
+    const setHover = (k) => {
+      if (k === hovered) return;
+      if (hovered >= 0) { paintTree(hovered, false); placeTree(trees[hovered], 1); }
+      hovered = k;
+      if (hovered >= 0) { paintTree(hovered, true); placeTree(trees[hovered], 1.18); }
+      flush();
+      kick();
+    };
     stage.addEventListener("pointermove", (e) => {
       if (drag && drag.horiz && e.buttons) return;
       const r = stage.getBoundingClientRect();
       ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       ray.setFromCamera(ndc, camera);
-      const hit = ray.intersectObjects([coneMesh, trunkMesh, tileMesh], false)[0];
+      const hit = ray.intersectObjects([ballMesh, coneMesh, trunkMesh, tileMesh], false)[0];
       let item = null, k = -1;
-      if (hit && hit.object === coneMesh) { k = Math.floor(hit.instanceId / 2); item = trees[k]; }
-      else if (hit && hit.object === trunkMesh) { k = hit.instanceId; item = trees[k]; }
+      if (hit && hit.object === coneMesh) k = ownerCone[hit.instanceId];
+      else if (hit && hit.object === ballMesh) k = ownerBall[hit.instanceId];
+      else if (hit && hit.object === trunkMesh) k = hit.instanceId;
+      if (k >= 0 && k !== undefined) item = trees[k];
       else if (hit && hit.object === tileMesh) { item = tiles[hit.instanceId]; k = trees.indexOf(item); }
-      if (k !== hovered) {
-        if (hovered >= 0) { paintTree(hovered, false); placeTree(trees[hovered], hovered, 1); }
-        hovered = k;
-        if (hovered >= 0) { paintTree(hovered, true); placeTree(trees[hovered], hovered, 1.25); }
-        if (coneMesh.instanceColor) coneMesh.instanceColor.needsUpdate = true;
-        coneMesh.instanceMatrix.needsUpdate = true; trunkMesh.instanceMatrix.needsUpdate = true;
-        kick();
-      }
+      setHover(k === undefined ? -1 : k);
       if (!item) { tip.setAttribute("data-on", "0"); return; }
       tip.innerHTML = "<b></b><small></small>";
-      tip.firstChild.textContent = item.d.n ? item.d.n + (item.d.n === 1 ? " commit" : " commits") : "No commits";
+      tip.firstChild.textContent = (item.d.n ? item.d.n + (item.d.n === 1 ? " commit" : " commits") : "No commits") + (item.kind !== undefined ? " · " + this.forestKinds[item.kind] : "");
       tip.lastChild.textContent = fmtFull(item.d.d);
       tip.style.left = (e.clientX - r.left) + "px";
       tip.style.top = (e.clientY - r.top) + "px";
       tip.setAttribute("data-on", "1");
     });
-    stage.addEventListener("pointerleave", () => {
-      tip.setAttribute("data-on", "0");
-      if (hovered >= 0) { paintTree(hovered, false); placeTree(trees[hovered], hovered, 1); hovered = -1; if (coneMesh.instanceColor) coneMesh.instanceColor.needsUpdate = true; coneMesh.instanceMatrix.needsUpdate = true; trunkMesh.instanceMatrix.needsUpdate = true; kick(); }
-    });
+    stage.addEventListener("pointerleave", () => { tip.setAttribute("data-on", "0"); setHover(-1); });
 
     const resize = () => {
-      Wd = stage.clientWidth; Hd = stage.clientHeight;
-      renderer.setSize(Wd, Hd, false);
-      camera.aspect = Wd / Math.max(1, Hd);
+      renderer.setSize(stage.clientWidth, stage.clientHeight, false);
+      camera.aspect = stage.clientWidth / Math.max(1, stage.clientHeight);
       camera.updateProjectionMatrix();
       kick();
     };
@@ -3136,6 +3186,7 @@ class Component extends DCLogic {
 
     theme(this.state.theme === "dark");
     resize();
+    go(0);
     place();
     renderer.render(scene, camera);
     return { theme };
@@ -3282,6 +3333,7 @@ class Component extends DCLogic {
         return Object.assign({}, e, {
           hrMark: !!e.hrMark,
           mono: e.mono || "",
+          logoImg: e.logoImg || "",
           open: open || extra <= 0 ? "1" : "0",
           moreLabel: extra > 0 ? (open ? "Show less" : "Show " + extra + " more") : "",
           toggle: () => this.setState((s) => ({ xpOpen: Object.assign({}, s.xpOpen, { [e.id]: !s.xpOpen[e.id] }) }))
