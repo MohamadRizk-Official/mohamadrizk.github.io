@@ -1,13 +1,13 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-12T15:19:51+00:00",
- "totalCommits": 940,
- "yearCommits": 940,
- "activeDays": 60,
+ "updated": "2026-11-13T14:38:32+00:00",
+ "totalCommits": 1195,
+ "yearCommits": 1195,
+ "activeDays": 61,
  "longestStreak": 28,
- "currentStreak": 4,
+ "currentStreak": 5,
  "publicRepos": 9,
- "privateRepos": 10,
+ "privateRepos": 11,
  "busiestDay": {
   "d": "2026-11-11",
   "n": 317
@@ -1501,7 +1501,11 @@
   },
   {
    "d": "2026-11-12",
-   "n": 4
+   "n": 170
+  },
+  {
+   "d": "2026-11-13",
+   "n": 89
   }
  ],
  "recent": [
@@ -1509,244 +1513,246 @@
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-12T02:59:32Z"
+   "date": "2026-11-13T06:48:02Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-12T02:43:58Z"
+   "date": "2026-11-13T06:37:03Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-12T02:22:52Z"
+   "date": "2026-11-13T05:48:19Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-12T02:19:56Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/2191884eb5945a9501a7670dff2d7d6d3275cc8a",
-   "message": "docs(modules): add index linking module guides to their tests [skip ci]",
-   "date": "2026-11-11T22:47:59Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e9630906a19d5292b0b7a468b64ead580bc73865",
-   "message": "docs(testing): add testing guide covering how to run, style and limits [skip ci]",
-   "date": "2026-11-11T22:47:59Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/4e2395f75540c1bf8a224d50ccd66d4cb1f95c6d",
-   "message": "docs(recovery): document password-reset session rules and one-time reset links [skip ci]",
-   "date": "2026-11-11T22:47:47Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b61f0b9f4d3d3b5964eb8005cf931954ce077d39",
-   "message": "docs(billing): document billing display helpers and why they are untested [skip ci]",
-   "date": "2026-11-11T22:47:47Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/4bad28aed84b834ae0d18ebe7e3a912c536a11ad",
-   "message": "docs(seek): document sentence anchors, seek start rules and quiet-point search [skip ci]",
-   "date": "2026-11-11T22:47:34Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b1844a25c73cd49a4775b938b650142a6c0a727f",
-   "message": "docs(preprocess): document audio quality rules and the preprocessing chain [skip ci]",
-   "date": "2026-11-11T22:47:34Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9506d4acc925e7e6bf7ceef193f8fa767275f426",
-   "message": "docs(tool-settings): document settings, cache keys and quiz length table [skip ci]",
-   "date": "2026-11-11T22:46:38Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e6282613deb7aeb799af8d816e7e17a20fb16d02",
-   "message": "docs(speaker-names): document rename map rules and where renaming is applied [skip ci]",
-   "date": "2026-11-11T22:46:38Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/4f79dc496f382fa6277cd7dd9a19bc3d32a8a8f0",
-   "message": "docs(loops): document runaway-repetition thresholds and loop cutting [skip ci]",
-   "date": "2026-11-11T22:46:38Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a25cfddff9ef645fd1e06527a671a7264e4027a4",
-   "message": "docs(merge): document how overlapping chunk transcripts are joined [skip ci]",
-   "date": "2026-11-11T22:46:22Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/06867a647b873bfbef6c5870eeccb01b06aac354",
-   "message": "docs(clean): document what the clean reading view removes and keeps [skip ci]",
-   "date": "2026-11-11T22:46:22Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/c06b94efb00ef14d3161ca2e1224cb7b808f1b6c",
-   "message": "docs(quiz): document quiz run structure, grading and retake flow [skip ci]",
-   "date": "2026-11-11T22:46:12Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/421270b81a65c80a64bc9ec2b98b9fb103e1d5ca",
-   "message": "docs(srs): document spaced-review model, storage shape and rating rules [skip ci]",
-   "date": "2026-11-11T22:46:12Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/d1d50fc9d34ec04fe729eaf8e64a418c6165901b",
-   "message": "test(seek): cover sentence anchors, seek start time and quiet-point search [skip ci]",
-   "date": "2026-11-11T22:45:51Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/3837cc75fa6097be88b71c4c48bbfd1b56a71aef",
-   "message": "test(preprocess): cover audio quality rating and conservative cleanup [skip ci]",
-   "date": "2026-11-11T22:44:47Z"
+   "date": "2026-11-13T05:43:53Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:37:05Z"
+   "date": "2026-11-13T05:36:13Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:31:47Z"
+   "date": "2026-11-13T05:32:39Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:37Z"
+   "date": "2026-11-13T05:20:10Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:18Z"
+   "date": "2026-11-13T05:17:57Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:18Z"
+   "date": "2026-11-13T05:17:36Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:18Z"
+   "date": "2026-11-13T05:17:23Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:18Z"
+   "date": "2026-11-13T05:17:02Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:18Z"
+   "date": "2026-11-13T05:16:59Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:18Z"
+   "date": "2026-11-13T05:16:46Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:17Z"
+   "date": "2026-11-13T05:16:36Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-11T22:21:17Z"
+   "date": "2026-11-13T05:16:23Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:16:11Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:15:40Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:15:32Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:15:21Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:15:08Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:14:43Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T05:14:30Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T00:28:20Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T00:17:33Z"
   },
   {
    "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/ad81e64e113fbbe4140d715811d34c37c4dce0e2",
-   "message": "Link preview: trim description to fit WhatsApp's two lines",
-   "date": "2026-11-11T14:59:25Z"
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/a62479579ffc92c8bd4660d46a99db24fcc70113",
+   "message": "Forest: fixed commit cutoffs so one record day can't demote the rest",
+   "date": "2026-11-13T00:15:03Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/19c98d13f3335375c6e5edb14886db34f2c37793",
-   "message": "Link preview: one-line description with major, school, availability, HR Studios",
-   "date": "2026-11-11T03:59:42Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-13T00:11:49Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/dfe9e101a3c688ae7721d2a0c123139da1281646",
-   "message": "Link preview: simpler card and a one-line description",
-   "date": "2026-11-11T03:54:18Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-12T23:59:34Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/2a0626c72135ff54610953fd60292d601246697f",
-   "message": "Link preview: centered card that survives WhatsApp's square crop",
-   "date": "2026-11-11T03:41:23Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-12T21:23:03Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/3255103f9db4b30ade149c0c8030c855f1a1ea5c",
-   "message": "Forest: frame the newest edge center right like the reference",
-   "date": "2026-11-11T03:19:52Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-12T21:20:12Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/75c7c2a0e17e111c9042014ecf8e7043df0efc7e",
-   "message": "Forest: centered front, gradual far bend, bluish light-mode tiles",
-   "date": "2026-11-11T03:16:36Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-12T21:18:08Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/15a48441997cc25afb059c3809d18e7479617685",
-   "message": "Forest: reference shape, diagonal sweep that rolls over and drops",
-   "date": "2026-11-11T03:07:06Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-12T21:14:45Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/31957f982ce35e983fbe9cb7a4359b947d98efba",
-   "message": "Forest: commit-driven heights, gradual far fade, fuller framing",
-   "date": "2026-11-11T03:02:12Z"
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-12T21:10:03Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/d0c541100ea3625332b2b9837b7491f421bc0977",
-   "message": "Forest: stretch the ribbon sideways and shrink the trees",
-   "date": "2026-11-11T02:56:26Z"
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/2aba93537444a6e75d63514d12502cfef13ae0fa",
+   "message": "docs(modules): index the new server and engine guides [skip ci]",
+   "date": "2026-11-12T19:26:50Z"
   },
   {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/941c75e7cd11b59fb92ce210a46f2929eff750d6",
-   "message": "Forest: reference-style curling ribbon, smooth trees, wheel stays put",
-   "date": "2026-11-11T02:53:25Z"
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/cf449df92dbc28a3a867f1cff8965ae4f5ac7904",
+   "message": "docs(diarize): explain frame energy, energy runs and subtraction [skip ci]",
+   "date": "2026-11-12T19:26:50Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/134bbc9fa5f980813dda27efd8ba191922e7b0c3",
+   "message": "docs(billing): explain payment gates, prices and allowed origins [skip ci]",
+   "date": "2026-11-12T19:26:38Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/cd10a49783b56bb290b106d0c421747dd29cd460",
+   "message": "docs(ai): explain task model selection and provider rules [skip ci]",
+   "date": "2026-11-12T19:26:38Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/6b0012a6efd731dd9c3634029915aaf17a82309b",
+   "message": "docs(entitlements): explain plan gating and failing closed [skip ci]",
+   "date": "2026-11-12T19:26:37Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a73f8243178cb5a42662225f7cef1245f003d86f",
+   "message": "test(billing): cover payment gates, price lookup and allowed origins [skip ci]",
+   "date": "2026-11-12T19:26:37Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/435f88f7bb5196df6bf8bf3f3819ff3817a0504a",
+   "message": "test(provider): cover task model config and provider selection [skip ci]",
+   "date": "2026-11-12T19:24:29Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b20cf3625cae99628e9ad5e9503f995a48bd7810",
+   "message": "test(entitlements): cover plan gating and refusal details [skip ci]",
+   "date": "2026-11-12T19:23:48Z"
   }
  ],
  "privateDays": {
+  "2026-11-13": 88,
+  "2026-11-12": 159,
   "2026-11-04": 4,
   "2026-10-30": 22,
   "2026-10-27": 7,
@@ -1781,7 +1787,6 @@
   "2026-10-06": 13,
   "2026-09-22": 10,
   "2026-09-21": 6,
-  "2026-09-15": 4,
-  "2026-11-12": 4
+  "2026-09-15": 4
  }
 }
