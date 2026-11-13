@@ -3016,7 +3016,11 @@ class Component extends DCLogic {
 
     // Four kinds of growth, each clearly bigger than the last.
     const max = Math.max(1, ...days.map((d) => d.n));
-    const kindOf = (n) => { const f = Math.sqrt(n / max); return n <= 2 ? 0 : f < 0.35 ? 1 : f < 0.65 ? 2 : 3; };
+    // Fixed commit cutoffs, so one record day never demotes every other big day.
+    const kindOf = (n) => (n <= 2 ? 0 : n <= 9 ? 1 : n <= 24 ? 2 : 3);
+    // Height on a log scale capped at 80 commits: steady growth, and an outlier day
+    // stands tallest without flattening the rest.
+    const growth = (n) => Math.min(1, Math.log(1 + n) / Math.log(81));
     const tiles = [], trees = [];
     days.forEach((d, i) => {
       const item = { d, s: W - 1 - Math.floor(i / 7), row: i % 7 };
@@ -3083,9 +3087,9 @@ class Component extends DCLogic {
         frameAt(u, t.row, pos, qBase);
         qAll.copy(qBase).multiply(qYaw.setFromAxisAngle(U, t.yaw));
         if (f <= 0) { hideAll(t); return; }
-        const hov = k === hovered ? 1.12 : 1, r = t.d.n / max;
-        const h = f * hov * (0.5 + 1.45 * Math.pow(r, 0.6));
-        const w = f * hov * (0.85 + 0.45 * Math.pow(r, 0.35));
+        const hov = k === hovered ? 1.12 : 1, r = growth(t.d.n);
+        const h = f * hov * (0.45 + 1.5 * r);
+        const w = f * hov * (0.85 + 0.45 * Math.pow(r, 0.6));
         if (t.kind === 0) {          // sapling: thin stem, one round bud
           put(trunkMesh, t.trunk, 0, 0.14 * h, 0, 0.6 * w, 0.28 * h, 0.6 * w);
           put(leafBallMesh, t.leaf[0], 0, 0.38 * h, 0, 0.36 * w, 0.34 * h, 0.36 * w);
