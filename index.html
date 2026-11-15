@@ -396,7 +396,7 @@
   .studio-rail { contain: size; display: flex; flex-direction: column; min-height: 0; border-radius: 14px; background: var(--hr-surface); border: 2px solid var(--hr-line); padding: 14px 0 0; }
   .rail-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 0 12px 10px; font: 600 11px 'IBM Plex Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hr-muted); border-bottom: 2px solid var(--hr-line); }
   .rail-head b { color: var(--hr-blue); }
-  .rail-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scroll-snap-type: y proximity; display: flex; flex-direction: column; gap: 12px; padding: 12px 12px 18px; scrollbar-width: thin; scrollbar-color: var(--hr-blue) transparent; }
+  .rail-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scroll-snap-type: y proximity; scroll-padding: 12px; display: flex; flex-direction: column; gap: 12px; padding: 12px 12px 18px; scrollbar-width: thin; scrollbar-color: var(--hr-blue) transparent; }
   .rail-scroll::-webkit-scrollbar { width: 6px; }
   .rail-scroll::-webkit-scrollbar-thumb { background: var(--hr-blue); border-radius: 6px; }
   .rail-item { scroll-snap-align: start; display: block; flex: none; text-decoration: none; color: inherit; border-radius: 10px; }
@@ -802,7 +802,7 @@
     .studio-ctas { margin-top: 16px; gap: 8px; flex-wrap: nowrap; }
     .studio-ctas .btn { flex: 1 1 0; min-width: 0; padding: 10px 8px; font-size: 13px; }
     .rail-item { width: 132px; }
-    .rail-scroll { gap: 10px; padding: 10px; }
+    .rail-scroll { gap: 10px; padding: 10px; scroll-padding: 10px; }
 
     /* Projects: compact cards; the one filling the screen pops forward */
     .pgrid { gap: 14px; margin-top: 14px; }
