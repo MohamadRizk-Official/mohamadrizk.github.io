@@ -1051,8 +1051,8 @@
           <p class="studio-copy">I started HR Studios with <strong>Hadi Salame</strong> to build, host, and maintain websites for local businesses on <strong>monthly plans</strong>. Every new client sees a <strong>working demo of their own site</strong> before they commit. I design and build every site, then own the <strong>SEO, speed, security, and release pipeline</strong> that keeps it running.</p>
 
           <div class="studio-stats">
-            <div class="studio-stat"><b data-count="9">9</b><span>projects shipped and live</span></div>
-            <div class="studio-stat"><b data-count="8">8</b><span>client businesses served</span></div>
+            <div class="studio-stat"><b data-count="10">10</b><span>projects shipped and live</span></div>
+            <div class="studio-stat"><b data-count="9">9</b><span>client businesses served</span></div>
             <div class="studio-stat"><b data-count="2">2</b><span>countries, US and Lebanon</span></div>
           </div>
 
@@ -1074,7 +1074,7 @@
         <aside class="studio-rail" aria-label="HR Studios projects">
           <div class="rail-head"><span>Our work</span><b>{{ studioCount }} sites</b></div>
           <div class="rail-scroll" tabindex="0">
-            <sc-for list="{{ studioWork }}" as="w" hint-placeholder-count="9">
+            <sc-for list="{{ studioWork }}" as="w" hint-placeholder-count="10">
               <a class="rail-item" href="{{ w.url }}" target="_blank" rel="noopener" aria-label="{{ w.name }}, {{ w.kind }} (opens the live site)">
                 <span class="rail-shot"><img src="{{ w.img }}" alt="{{ w.name }} website" loading="lazy"></span>
                 <span class="rail-meta"><b>{{ w.name }}</b><span>{{ w.kind }}</span></span>
@@ -1541,8 +1541,9 @@ class Component extends DCLogic {
   // Every site in the HR Studios portfolio, in the order hr-studios.com shows them.
   // img values are bundle asset ids for small screenshots of each live site.
   studioWork = [
-    { name: "SparkScribe", kind: "AI study app", url: "https://www.spark-scribe.com/", img: "assets/work/e832e704-7b16-5c1e-93be-6375e1f8a0e1.jpg" },
     { name: "Hamido Restaurant", kind: "Restaurant", url: "https://www.hamidorestaurant.com/", img: "assets/work/d7d0c18d-c311-5e96-b211-c7baf37d6133.jpg" },
+    { name: "A&I Complete Auto Care", kind: "Auto repair", url: "https://www.aicompleteautocare.com/", img: "assets/work/ai-complete-auto-care.jpg" },
+    { name: "SparkScribe", kind: "AI study app", url: "https://www.spark-scribe.com/", img: "assets/work/e832e704-7b16-5c1e-93be-6375e1f8a0e1.jpg" },
     { name: "Croissant House", kind: "Bakery", url: "https://croissant-house-2.vercel.app/", img: "assets/work/4a67992e-36e1-5b95-8d98-c22dc0822138.jpg" },
     { name: "Qazzaz Coffee", kind: "Café", url: "https://qazzaz-coffee-demo.vercel.app/", img: "assets/work/4fd44fce-ee06-5b70-bbf4-50d84c23d24f.jpg" },
     { name: "Homie's Donuts", kind: "Donut shop", url: "https://homies-donuts-dearborn.vercel.app/", img: "assets/work/f2474e3e-6292-5325-a9cc-63724d9126f5.jpg" },
