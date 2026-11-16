@@ -19,6 +19,7 @@ NAMES = {USER.lower(), "mohamad rizk"}
 TOKEN = os.environ["GH_TOKEN"]
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "assets", "github-stats.json")
 API = "https://api.github.com"
+DAY_CAP = 261  # the most commits any single day shows on the site
 
 
 def get(url):
@@ -92,9 +93,11 @@ def main():
         priv_repos = prev.get("privateRepos", 0)
         recent += [x for x in prev.get("recent", []) if x["repo"] is None]
 
+    priv_days = {d: min(n, DAY_CAP) for d, n in priv_days.items()}
     all_days = dict(pub_days)
     for d, n in priv_days.items():
         all_days[d] = all_days.get(d, 0) + n
+    all_days = {d: min(n, DAY_CAP) for d, n in all_days.items()}
 
     today = dt.datetime.now(dt.timezone.utc).date()
     start = today - dt.timedelta(days=364 + (today.weekday() + 1) % 7)  # calendar starts on a Sunday
