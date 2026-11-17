@@ -1,13 +1,13 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-16T15:51:55+00:00",
- "totalCommits": 1658,
- "yearCommits": 1658,
- "activeDays": 64,
+ "updated": "2026-11-17T16:04:43+00:00",
+ "totalCommits": 1888,
+ "yearCommits": 1888,
+ "activeDays": 65,
  "longestStreak": 28,
- "currentStreak": 8,
+ "currentStreak": 9,
  "publicRepos": 9,
- "privateRepos": 11,
+ "privateRepos": 12,
  "busiestDay": {
   "d": "2026-11-11",
   "n": 261
@@ -1489,7 +1489,11 @@
   },
   {
    "d": "2026-11-16",
-   "n": 59
+   "n": 177
+  },
+  {
+   "d": "2026-11-17",
+   "n": 112
   }
  ],
  "recent": [
@@ -1497,249 +1501,250 @@
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T15:38:20Z"
+   "date": "2026-11-17T14:20:51Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T15:33:47Z"
+   "date": "2026-11-17T14:20:43Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T15:15:54Z"
+   "date": "2026-11-17T14:20:27Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T15:11:18Z"
+   "date": "2026-11-17T14:20:11Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T14:58:52Z"
+   "date": "2026-11-17T14:19:43Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T14:50:39Z"
+   "date": "2026-11-17T14:19:30Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T14:44:19Z"
+   "date": "2026-11-17T14:18:59Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T14:15:26Z"
+   "date": "2026-11-17T14:18:46Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T14:01:18Z"
+   "date": "2026-11-17T14:18:20Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T13:59:44Z"
+   "date": "2026-11-17T14:18:02Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T13:55:32Z"
+   "date": "2026-11-17T14:17:51Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T13:52:05Z"
+   "date": "2026-11-17T14:17:40Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:51:22Z"
+   "date": "2026-11-17T14:17:11Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:23:18Z"
+   "date": "2026-11-17T14:16:55Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:22:50Z"
+   "date": "2026-11-17T14:16:44Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:22:50Z"
+   "date": "2026-11-17T06:42:07Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:22:36Z"
+   "date": "2026-11-17T06:18:20Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:22:19Z"
+   "date": "2026-11-17T04:25:31Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:21:58Z"
+   "date": "2026-11-17T03:03:11Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-16T04:21:33Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T04:20:59Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T04:20:44Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T04:20:10Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T04:19:58Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T04:19:45Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T04:19:31Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T03:04:48Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T02:23:56Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T02:23:45Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T02:18:45Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-16T01:01:29Z"
+   "date": "2026-11-17T03:00:17Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e79da94b16ffc97e39b791643e9705d066fd2018",
-   "message": "docs(modules): index the new engine, lib and insights guides [skip ci]",
-   "date": "2026-11-15T23:48:24Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e01d12c7212dc3edcd8cb6f1f0bf82cd3a0b0f1e",
+   "message": "docs(modules): index the new Create, server, breath and billing guides [skip ci]",
+   "date": "2026-11-16T19:38:03Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/4d943e5c52469a300d0debb141aa58aed10a2f0f",
-   "message": "docs(dashboard): describe home sections, data sources and no-invention rule [skip ci]",
-   "date": "2026-11-15T23:48:17Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/0228cfadebadb1b91784003ee5090c0c141ee0da",
+   "message": "docs(billing): note that the display helpers now have a test [skip ci]",
+   "date": "2026-11-16T19:37:55Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a524732080a3160b06cae88dac6294fe2bca2541",
-   "message": "docs(speaker-words): overview of post-transcription speaker relabelling and splits [skip ci]",
-   "date": "2026-11-15T23:48:17Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/1ee578ebab65f3ce7de3e8b07e50d5188d2b146d",
+   "message": "docs(seek): explain the loudness envelope and breath-based start points [skip ci]",
+   "date": "2026-11-16T19:37:54Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/831e3b14047e50dad2980e253af7cc4f9ca47efc",
-   "message": "docs(focus-review): explain evidence rules and stored review state [skip ci]",
-   "date": "2026-11-15T23:48:07Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/7afc9df378d290f7bc023a646ab9b58b067d1976",
+   "message": "test(study): check every study and Create-tool schema is strict [skip ci]",
+   "date": "2026-11-16T19:37:39Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/39f5d1a26091fdd06716ce493b0a25f58b9ae368",
-   "message": "docs(answer-format): document safe Markdown subset and citation numbering [skip ci]",
-   "date": "2026-11-15T23:48:07Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/691791afa4a605bbf83d2ec6331008081d9072a9",
+   "message": "test(quiz): cover the answer-sound setting and which sounds play [skip ci]",
+   "date": "2026-11-16T19:36:24Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/1fb0e0d5fd94b1e553f555a3a12a80d5dd5545e1",
-   "message": "docs(speaker-check): document load order, GPU fallback and cleanup [skip ci]",
-   "date": "2026-11-15T23:47:48Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b4cd1558cfe0b219d099373ed53dfc2d56e1c59b",
+   "message": "docs(ai): correct what the provider reports after a repeated failure [skip ci]",
+   "date": "2026-11-16T19:35:15Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/d21201e6dc30525a3de04e6026295a6749fa9909",
-   "message": "docs(pricing-catalog): document price formatting and yearly helpers [skip ci]",
-   "date": "2026-11-15T23:47:48Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/88d7816877bc3ce65b010257bb2b0ee20420c8da",
+   "message": "docs(ai): explain the Anthropic provider, retries and streaming [skip ci]",
+   "date": "2026-11-16T19:35:08Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/208893763e871ec13a741eb9eb7912293844efe3",
-   "message": "docs(metrics): describe WER/CER and speaker attribution helpers [skip ci]",
-   "date": "2026-11-15T23:47:48Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/696e0b713cfc7abff579cd5d8a5e4aa12e4c580d",
+   "message": "docs(server): explain the request and authentication helpers [skip ci]",
+   "date": "2026-11-16T19:35:08Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/ad42cbc1d8a9707fadb3565b42917d12b8ab85f2",
-   "message": "docs(timing-plan): table of device/precision plans [skip ci]",
-   "date": "2026-11-15T23:47:33Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/aa99acb5b3337ad85a5e966a9b9abf4a226e8112",
+   "message": "docs(create): tighten the wording of the short-answer note [skip ci]",
+   "date": "2026-11-16T19:33:50Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/0e0d07585d24f4d054b02e262e322117ec7e0c1b",
+   "message": "docs(create): explain the text blocks behind Copy and Export [skip ci]",
+   "date": "2026-11-16T19:33:45Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/eb0cbe0607e3a338bb5fbfab6c8fdadbf0550df8",
+   "message": "docs(create): explain instant short-answer checking [skip ci]",
+   "date": "2026-11-16T19:33:45Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/04e4c1f9aefce945e8d962d3691ddc737327114f",
+   "message": "docs(create): explain the Create-tab tool validators [skip ci]",
+   "date": "2026-11-16T19:33:26Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/8723705ebfa530e8123bbfae447df4ba710744cd",
+   "message": "test(ai): cover the Anthropic provider request, retry and stream handling [skip ci]",
+   "date": "2026-11-16T19:33:09Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b91fb71b0a9033d1666849b77d0824078a9e4bff",
+   "message": "test(billing): cover plan, allowance, usage and reset-date display text [skip ci]",
+   "date": "2026-11-16T19:31:42Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/ef8636c18f337f2ce3612c498c7ca4d41a28726e",
+   "message": "test(auth): cover the unconfigured Supabase module [skip ci]",
+   "date": "2026-11-16T19:30:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-16T19:04:11Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-16T18:44:06Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-16T18:35:41Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-16T18:35:38Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-16T18:32:07Z"
   }
  ],
  "privateDays": {
-  "2026-11-16": 59,
+  "2026-11-16": 152,
   "2026-11-15": 90,
   "2026-11-14": 218,
   "2026-11-13": 174,
   "2026-11-12": 159,
+  "2026-11-17": 112,
   "2026-11-04": 4,
   "2026-10-30": 22,
   "2026-10-27": 7,
