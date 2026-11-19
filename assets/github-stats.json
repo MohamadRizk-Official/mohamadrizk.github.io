@@ -1,11 +1,11 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-18T15:43:07+00:00",
- "totalCommits": 2009,
- "yearCommits": 2009,
- "activeDays": 66,
+ "updated": "2026-11-19T15:48:30+00:00",
+ "totalCommits": 2270,
+ "yearCommits": 2270,
+ "activeDays": 67,
  "longestStreak": 28,
- "currentStreak": 10,
+ "currentStreak": 11,
  "publicRepos": 9,
  "privateRepos": 12,
  "busiestDay": {
@@ -1497,7 +1497,11 @@
   },
   {
    "d": "2026-11-18",
-   "n": 51
+   "n": 226
+  },
+  {
+   "d": "2026-11-19",
+   "n": 86
   }
  ],
  "recent": [
@@ -1505,250 +1509,251 @@
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T07:40:33Z"
+   "date": "2026-11-19T04:24:38Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T07:25:56Z"
+   "date": "2026-11-19T04:23:37Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T07:23:33Z"
+   "date": "2026-11-19T04:07:40Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T07:21:29Z"
+   "date": "2026-11-19T04:07:27Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T07:17:10Z"
+   "date": "2026-11-19T04:07:14Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T07:15:04Z"
+   "date": "2026-11-19T04:06:49Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T06:49:44Z"
+   "date": "2026-11-19T04:06:33Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T06:19:41Z"
+   "date": "2026-11-19T04:06:21Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:45:01Z"
+   "date": "2026-11-19T04:06:10Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:44:48Z"
+   "date": "2026-11-19T04:05:55Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:44:32Z"
+   "date": "2026-11-19T04:05:36Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:44:22Z"
+   "date": "2026-11-19T04:05:23Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:44:07Z"
+   "date": "2026-11-19T04:05:12Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:43:46Z"
+   "date": "2026-11-19T04:04:49Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:43:33Z"
+   "date": "2026-11-19T04:04:37Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:43:23Z"
+   "date": "2026-11-19T04:04:25Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-18T02:43:15Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T02:42:45Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T02:42:29Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T02:42:19Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T02:42:06Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T02:41:50Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T02:41:33Z"
+   "date": "2026-11-19T04:04:11Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/27c1fbb223785e109c8e22ec0208cc39bdf052db",
-   "message": "test(engine): cover checksum-checked model downloads [skip ci]",
-   "date": "2026-11-17T17:53:29Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/872c7aa588fc6a8d6cc8820d9ee03b2d37bebbf1",
+   "message": "docs(constants): list tuned numbers and the tests that pin them [skip ci]",
+   "date": "2026-11-19T00:07:52Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/80058bb3ab9c6c9407c4846dc85d26cd737383b5",
-   "message": "test(ui): cover related-material row and logo pulse [skip ci]",
-   "date": "2026-11-17T17:52:16Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/2695e4f97301e05e5773233afedcfa6d4616e9c9",
+   "message": "test(prompts): check shared rules inside the system prompts [skip ci]",
+   "date": "2026-11-19T00:06:39Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/7c6ccecfe033fb5e000fa5e35328d370ac9620ec",
-   "message": "docs(testing): add notes on scripts, prompt builders and stubbed globals [skip ci]",
-   "date": "2026-11-17T17:51:56Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/98e5038b281a359a95fa405180e79d43c9ef544a",
+   "message": "test(study): cover fillInstructions and speakerNote wording [skip ci]",
+   "date": "2026-11-19T00:05:29Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/ecb4e1fdb20b38bf9ed4d11237c5acfedb3bc82b",
-   "message": "docs(studymap): walk through the study map pipeline steps [skip ci]",
-   "date": "2026-11-17T17:50:41Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/f2fc2115d2095f0b3606d98cb857524291f377a1",
+   "message": "docs(decoding): describe WhisperControl, logprob recorder and compression ratio [skip ci]",
+   "date": "2026-11-19T00:04:13Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/340771a7e50e94cd5e3786d48480d05b4dfc2398",
-   "message": "docs(across): explain combined guide prompt and grounding [skip ci]",
-   "date": "2026-11-17T17:50:30Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e5ff9a71071679578d4362c378f7c77cd626d5e9",
+   "message": "test(decoding): drive WhisperControl and logprob recorder with fake logits [skip ci]",
+   "date": "2026-11-19T00:03:02Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/d278051006724769dcc58e25019fb5f60c7a2804",
-   "message": "test(mascot): cover the app-to-mascot signal bus [skip ci]",
-   "date": "2026-11-17T17:50:20Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/bc8218c1efd7c48a30439aa717eb33a4428ff1da",
+   "message": "docs(combine): explain how the two speaker results are merged [skip ci]",
+   "date": "2026-11-19T00:01:40Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9325df650b73eae9ea63564bed682b22a6ff5703",
-   "message": "test(studymap): cover pipeline prompt builders and stored-map lookup [skip ci]",
-   "date": "2026-11-17T17:49:13Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/64add3f6137b93449a07f91a14296507ae8ab875",
+   "message": "test(combine): cover primaryCount and shouldCombine gate [skip ci]",
+   "date": "2026-11-19T00:00:26Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/f950bfc637ebe23cb316bba77500539ea44ed4ff",
-   "message": "test(across): cover combined guide grounding and prompt [skip ci]",
-   "date": "2026-11-17T17:48:47Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/6f0f885c78e490d7131846a253b5191c84ad1158",
+   "message": "test(focus-review): cover state sanitising, compaction and immutability [skip ci]",
+   "date": "2026-11-18T23:59:33Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/5e69c43f21f845bd21744294abbedf98e66dd69e",
-   "message": "docs(accuracy-lab): explain the speaker metrics and ground-truth readers [skip ci]",
-   "date": "2026-11-17T17:48:19Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/5b1724480c3a202eb8f6df1a53914618d426a1f2",
+   "message": "test(across): cover digestOf and mapOf currency rules [skip ci]",
+   "date": "2026-11-18T23:58:19Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b9610b88130e35e8f1995ce21c4b9873c181f574",
-   "message": "docs(study): document prompt settings and quiz validation checks [skip ci]",
-   "date": "2026-11-17T17:47:09Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/fc6a496f1ca8d153a95a21c59730a41f731155b3",
+   "message": "test(ai-service): pin analysis kinds and retrieval budgets [skip ci]",
+   "date": "2026-11-18T23:57:08Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a41b7c59bf079a0a954d4a7cdda987a5d06bc9ea",
-   "message": "docs(insights): describe the browser API client and its errors [skip ci]",
-   "date": "2026-11-17T17:46:56Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/8b77baf0f5c7ab4450577f270d52fb203430d58f",
+   "message": "test(tools): cover card and quiz question counts [skip ci]",
+   "date": "2026-11-18T23:56:09Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/2a45c83fd2920174f0a0a6ab7bcbdd2e45656a9f",
-   "message": "docs(timing): explain sentence-click timing and its fallbacks [skip ci]",
-   "date": "2026-11-17T17:46:46Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/4a7ad53dda46d237de7a0dd62e8a1d10db0cdf40",
+   "message": "test(tool-settings): check every setting's default and key [skip ci]",
+   "date": "2026-11-18T23:55:17Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b7aab69215bf595e55639ac5b666c9c18616ddc6",
-   "message": "test(timing): cover stored sentence timings and untimed fallbacks [skip ci]",
-   "date": "2026-11-17T17:45:39Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/3c8ff6fe255ee168d800f67e18d17892a31ba687",
+   "message": "test(voice-guard): pin sample and threshold constants [skip ci]",
+   "date": "2026-11-18T23:54:04Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9a49d33185caf5342d3d266a4412aeb6c74b516d",
-   "message": "test(accuracy-lab): cover span scoring and frame diagnostics [skip ci]",
-   "date": "2026-11-17T17:45:15Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e927b04a3a123f69c95d3774479497d9c99407b6",
+   "message": "test(speaker-words): cover wordsOf and tuned constants [skip ci]",
+   "date": "2026-11-18T23:53:12Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/ed9d57df664003011f69b4421c4e0d63373db6fb",
-   "message": "test(accuracy-lab): cover metric region, mapping and normalisation [skip ci]",
-   "date": "2026-11-17T17:44:58Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/269817c49286b0948f66546fcf595eebda363329",
+   "message": "test(ctc-align): cover lettersOf and alignment settings [skip ci]",
+   "date": "2026-11-18T23:52:21Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-17T06:42:07Z"
+   "date": "2026-11-18T07:44:44Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-17T06:18:20Z"
+   "date": "2026-11-18T07:44:42Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-18T07:44:40Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-18T07:44:38Z"
+  },
+  {
+   "repo": "michigan-orthopaedic-rehabilitation",
+   "url": "https://github.com/MohamadRizk-Official/michigan-orthopaedic-rehabilitation/commit/59de1c17a4a43646e71dd282d2fc966cad8c6243",
+   "message": "\"Made by HR Studios\" credit at the bottom linking to hr-studios.com, no pinch or double-tap zoom on phones, an",
+   "date": "2026-11-18T07:44:35Z"
+  },
+  {
+   "repo": "homies-donuts-dearborn",
+   "url": "https://github.com/MohamadRizk-Official/homies-donuts-dearborn/commit/c4548349bb0202071b0f8a5f567c3aa8784bdf52",
+   "message": "\"Made by HR Studios\" credit at the bottom linking to hr-studios.com, no pinch or double-tap zoom on phones, an",
+   "date": "2026-11-18T07:44:33Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-18T07:44:31Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-18T07:44:29Z"
   }
  ],
  "privateDays": {
+  "2026-11-18": 215,
   "2026-11-16": 152,
   "2026-11-15": 90,
   "2026-11-14": 218,
   "2026-11-13": 174,
   "2026-11-12": 159,
-  "2026-11-18": 51,
+  "2026-11-19": 79,
   "2026-11-17": 158,
   "2026-11-04": 4,
   "2026-10-30": 22,
