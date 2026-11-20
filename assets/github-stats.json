@@ -1,11 +1,11 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-19T15:48:30+00:00",
- "totalCommits": 2270,
- "yearCommits": 2270,
- "activeDays": 67,
+ "updated": "2026-11-20T15:30:25+00:00",
+ "totalCommits": 2363,
+ "yearCommits": 2363,
+ "activeDays": 68,
  "longestStreak": 28,
- "currentStreak": 11,
+ "currentStreak": 12,
  "publicRepos": 9,
  "privateRepos": 12,
  "busiestDay": {
@@ -1501,10 +1501,170 @@
   },
   {
    "d": "2026-11-19",
-   "n": 86
+   "n": 123
+  },
+  {
+   "d": "2026-11-20",
+   "n": 56
   }
  ],
  "recent": [
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:14:45Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:14:44Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:14:33Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:14:11Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:13:56Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:13:33Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:13:24Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:13:05Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:12:43Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:12:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:11:53Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:11:12Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:10:29Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:10:20Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-20T14:07:48Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-19T23:08:13Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a7f7b469e2f9ab369a118951219187a4280929a2",
+   "message": "docs(modules): move new guide rows inside the module table [skip ci]",
+   "date": "2026-11-19T19:16:51Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/1b59a97d7036e633eb8453f618b3d1dac126a8b4",
+   "message": "docs(modules): index the captcha, prefs, quiz-sound and related-material guides [skip ci]",
+   "date": "2026-11-19T19:16:41Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/bf19fccbf4dd50215bc8d59ad29953afea3a9ddc",
+   "message": "docs(related-material): document the Coming-soon related material entry [skip ci]",
+   "date": "2026-11-19T19:16:35Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9c485ed8ecc71c129dd4df34ed21279d8be38b6c",
+   "message": "docs(quiz-sound): document quiz answer sounds [skip ci]",
+   "date": "2026-11-19T19:16:35Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a3a547099c28e14a95c58cf825e19f73dfa6b345",
+   "message": "docs(prefs): document preferences storage and account sync [skip ci]",
+   "date": "2026-11-19T19:16:35Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/3adaf41f1f32d50d9f9bb65cb9d8ffdd4875c7fa",
+   "message": "docs(captcha): explain the Turnstile widget states and API [skip ci]",
+   "date": "2026-11-19T19:16:35Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-19T19:15:05Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-19T18:39:49Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-19T17:58:16Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-19T17:54:13Z"
+  },
   {
    "repo": null,
    "url": null,
@@ -1516,96 +1676,6 @@
    "url": null,
    "message": null,
    "date": "2026-11-19T04:23:37Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:07:40Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:07:27Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:07:14Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:06:49Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:06:33Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:06:21Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:06:10Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:05:55Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:05:36Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:05:23Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:05:12Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:04:49Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:04:37Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:04:25Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-19T04:04:11Z"
   },
   {
    "repo": "sparkscribe",
@@ -1662,42 +1732,6 @@
    "date": "2026-11-18T23:58:19Z"
   },
   {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/fc6a496f1ca8d153a95a21c59730a41f731155b3",
-   "message": "test(ai-service): pin analysis kinds and retrieval budgets [skip ci]",
-   "date": "2026-11-18T23:57:08Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/8b77baf0f5c7ab4450577f270d52fb203430d58f",
-   "message": "test(tools): cover card and quiz question counts [skip ci]",
-   "date": "2026-11-18T23:56:09Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/4a7ad53dda46d237de7a0dd62e8a1d10db0cdf40",
-   "message": "test(tool-settings): check every setting's default and key [skip ci]",
-   "date": "2026-11-18T23:55:17Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/3c8ff6fe255ee168d800f67e18d17892a31ba687",
-   "message": "test(voice-guard): pin sample and threshold constants [skip ci]",
-   "date": "2026-11-18T23:54:04Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e927b04a3a123f69c95d3774479497d9c99407b6",
-   "message": "test(speaker-words): cover wordsOf and tuned constants [skip ci]",
-   "date": "2026-11-18T23:53:12Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/269817c49286b0948f66546fcf595eebda363329",
-   "message": "test(ctc-align): cover lettersOf and alignment settings [skip ci]",
-   "date": "2026-11-18T23:52:21Z"
-  },
-  {
    "repo": null,
    "url": null,
    "message": null,
@@ -1714,36 +1748,6 @@
    "url": null,
    "message": null,
    "date": "2026-11-18T07:44:40Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T07:44:38Z"
-  },
-  {
-   "repo": "michigan-orthopaedic-rehabilitation",
-   "url": "https://github.com/MohamadRizk-Official/michigan-orthopaedic-rehabilitation/commit/59de1c17a4a43646e71dd282d2fc966cad8c6243",
-   "message": "\"Made by HR Studios\" credit at the bottom linking to hr-studios.com, no pinch or double-tap zoom on phones, an",
-   "date": "2026-11-18T07:44:35Z"
-  },
-  {
-   "repo": "homies-donuts-dearborn",
-   "url": "https://github.com/MohamadRizk-Official/homies-donuts-dearborn/commit/c4548349bb0202071b0f8a5f567c3aa8784bdf52",
-   "message": "\"Made by HR Studios\" credit at the bottom linking to hr-studios.com, no pinch or double-tap zoom on phones, an",
-   "date": "2026-11-18T07:44:33Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T07:44:31Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T07:44:29Z"
   }
  ],
  "privateDays": {
@@ -1753,7 +1757,7 @@
   "2026-11-14": 218,
   "2026-11-13": 174,
   "2026-11-12": 159,
-  "2026-11-19": 79,
+  "2026-11-19": 110,
   "2026-11-17": 158,
   "2026-11-04": 4,
   "2026-10-30": 22,
@@ -1789,6 +1793,7 @@
   "2026-10-06": 13,
   "2026-09-22": 10,
   "2026-09-21": 6,
-  "2026-09-15": 4
+  "2026-09-15": 4,
+  "2026-11-20": 56
  }
 }
