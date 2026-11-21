@@ -19,7 +19,7 @@ NAMES = {USER.lower(), "mohamad rizk"}
 TOKEN = os.environ["GH_TOKEN"]
 OUT = os.path.join(os.path.dirname(__file__), "..", "..", "assets", "github-stats.json")
 API = "https://api.github.com"
-DAY_CAP = 261  # the most commits any single day shows on the site
+DAY_CAP = 300  # the most commits any single day shows on the site
 
 
 def get(url):
