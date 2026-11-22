@@ -239,7 +239,22 @@
      a visitor can touch. Theme tokens are set on the root by applyTheme().
      ============================================================ */
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; overflow-anchor: none; }
+  html { scroll-behavior: smooth; overflow-anchor: none; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+  /* Sideways-scrolling rows: the content fades out on whichever side has more, and a
+     nudging chevron there scrolls it (same language as the header's link row). */
+  [data-hs="1"] { --hl: 0px; --hr: 0px; --hl0: 0px; --hr0: 0px; -webkit-mask-image: linear-gradient(90deg, transparent var(--hl0), #000 var(--hl), #000 calc(100% - var(--hr)), transparent calc(100% - var(--hr0))); mask-image: linear-gradient(90deg, transparent var(--hl0), #000 var(--hl), #000 calc(100% - var(--hr)), transparent calc(100% - var(--hr0))); }
+  [data-hs="1"][data-hl="1"] { --hl0: 18px; --hl: 64px; }
+  [data-hs="1"][data-hr="1"] { --hr0: 18px; --hr: 64px; }
+  .hs-edge { position: absolute; z-index: 6; top: 0; width: 40px; display: flex; align-items: center; padding: 0 6px; margin: 0; border: none; background: none; color: var(--hs-c, var(--accent)); cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.25s; -webkit-tap-highlight-color: transparent; }
+  .hs-edge[data-side="l"] { justify-content: flex-start; }
+  .hs-edge[data-side="r"] { justify-content: flex-end; }
+  .hs-edge[data-on="1"] { opacity: 1; pointer-events: auto; }
+  .hs-edge i { flex: none; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; border-radius: 7px; background: var(--surface); border: 2px solid var(--border-strong); box-shadow: 0 4px 12px -4px rgba(10,20,40,0.28); transition: transform 0.25s cubic-bezier(0.2,0.9,0.3,1.4), border-color 0.2s; }
+  .hs-edge:hover i { border-color: currentColor; transform: scale(1.08); }
+  .hs-edge[data-side="r"] svg { animation: nudgeR 1.5s ease-in-out infinite; }
+  .hs-edge[data-side="l"] svg { animation: nudgeL 1.5s ease-in-out infinite; }
+  .studio .hs-edge { --hs-c: var(--hr-blue); }
   body { margin: 0; background: #eef2f8; color: #0b1220; transition: background 0.3s ease, color 0.3s ease; }
   ::selection { background: var(--accent, #1f5fe0); color: var(--accent-ink, #ffffff); }
   a { -webkit-tap-highlight-color: transparent; }
@@ -799,8 +814,9 @@
     .studio-services { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin: 14px -16px 0; padding: 0 16px; }
     .studio-services::-webkit-scrollbar { display: none; }
     .studio-services span { flex: none; font-size: 11px; padding: 5px 8px; }
-    .studio-ctas { margin-top: 16px; gap: 8px; flex-wrap: nowrap; }
-    .studio-ctas .btn { flex: 1 1 0; min-width: 0; padding: 10px 8px; font-size: 13px; }
+    /* Side by side when both labels fit with room to spare, otherwise one per row. */
+    .studio-ctas { margin-top: 16px; gap: 8px; flex-wrap: wrap; }
+    .studio-ctas .btn { flex: 1 1 150px; min-width: fit-content; padding: 11px 16px; font-size: 13px; }
     .rail-item { width: 132px; }
     .rail-scroll { gap: 10px; padding: 10px; scroll-padding: 10px; }
 
@@ -2493,6 +2509,9 @@ class Component extends DCLogic {
     // Called directly, not inside rAF: a page opened in a background tab has
     // rAF paused, and content must not stay invisible until it is focused.
     this.observeReveals();
+    this.setupHScroll();
+    [300, 1500].forEach((ms) => setTimeout(() => this.setupHScroll(), ms));
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => this.setupHScroll());
 
     // Subtle parallax: star layer drifts slower than foreground content.
     this._onScroll = () => {
@@ -2641,6 +2660,65 @@ class Component extends DCLogic {
     this.measureTree();
     this.lightPath(this._stHover || this.currentSkill());
     this.mountForest();
+    this.setupHScroll();
+  }
+
+  // Every row that scrolls sideways (service chips, the studio rail on phones, filters,
+  // tags, the cert deck) gets edge chevrons and a fade on the side that has more. The
+  // chevrons are siblings placed over the row; rows the runtime replaces get new ones.
+  setupHScroll() {
+    const root = this.rootRef.current;
+    if (!root) return;
+    if (!this._hsRows) {
+      this._hsRows = new Set();
+      window.addEventListener("resize", () => this._hsRows.forEach((s) => s._hsUpd && s._hsUpd()), { passive: true });
+    }
+    this._hsRows.forEach((s) => {
+      if (!s.isConnected) { s._hsEdges.forEach((b) => b.remove()); this._hsRows.delete(s); }
+    });
+    const SEL = ".studio-services, .rail-scroll, .pc-tags, .xp-tags, .deck, .ftabs, .mitm-steps";
+    root.querySelectorAll(SEL).forEach((s) => {
+      if (s._hsUpd) { s._hsUpd(); return; }
+      const mk = (side) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "hs-edge";
+        b.tabIndex = -1;
+        b.setAttribute("data-side", side);
+        b.setAttribute("aria-label", side === "l" ? "Scroll left" : "Scroll right");
+        b.innerHTML = '<i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="' + (side === "l" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6") + '"></path></svg></i>';
+        b.addEventListener("click", () => s.scrollBy({ left: (side === "l" ? -1 : 1) * s.clientWidth * 0.7, behavior: "smooth" }));
+        return b;
+      };
+      const l = mk("l"), r = mk("r");
+      s._hsEdges = [l, r];
+      s._hsUpd = () => {
+        const p = s.parentNode;
+        if (!s.isConnected || !p) return;
+        const ox = getComputedStyle(s).overflowX;
+        const max = s.scrollWidth - s.clientWidth;
+        const on = (ox === "auto" || ox === "scroll") && max > 2;
+        if (on && l.parentNode !== p) { p.insertBefore(l, s.nextSibling); p.insertBefore(r, l.nextSibling); }
+        if (on && getComputedStyle(p).position === "static") p.style.position = "relative";
+        const L = on && s.scrollLeft > 4, R = on && s.scrollLeft < max - 4;
+        s.setAttribute("data-hs", on ? "1" : "0");
+        s.setAttribute("data-hl", L ? "1" : "0");
+        s.setAttribute("data-hr", R ? "1" : "0");
+        l.setAttribute("data-on", L ? "1" : "0");
+        r.setAttribute("data-on", R ? "1" : "0");
+        if (on) {
+          const t = s.offsetTop, h = s.offsetHeight, x = s.offsetLeft, w = s.offsetWidth;
+          l.style.top = r.style.top = t + "px";
+          l.style.height = r.style.height = h + "px";
+          l.style.left = x + "px";
+          r.style.left = (x + w - 40) + "px";
+        }
+      };
+      s.addEventListener("scroll", s._hsUpd, { passive: true });
+      if ("ResizeObserver" in window) new ResizeObserver(s._hsUpd).observe(s);
+      this._hsRows.add(s);
+      s._hsUpd();
+    });
   }
 
   navItems = [
