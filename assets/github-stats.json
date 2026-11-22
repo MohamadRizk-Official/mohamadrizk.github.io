@@ -1,13 +1,13 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-21T14:42:12+00:00",
- "totalCommits": 2502,
- "yearCommits": 2502,
- "activeDays": 69,
+ "updated": "2026-11-22T14:38:27+00:00",
+ "totalCommits": 2634,
+ "yearCommits": 2634,
+ "activeDays": 70,
  "longestStreak": 28,
- "currentStreak": 13,
+ "currentStreak": 14,
  "publicRepos": 9,
- "privateRepos": 12,
+ "privateRepos": 13,
  "busiestDay": {
   "d": "2026-11-11",
   "n": 300
@@ -27,34 +27,6 @@
   ]
  ],
  "year": [
-  {
-   "d": "2025-11-16",
-   "n": 0
-  },
-  {
-   "d": "2025-11-17",
-   "n": 0
-  },
-  {
-   "d": "2025-11-18",
-   "n": 0
-  },
-  {
-   "d": "2025-11-19",
-   "n": 0
-  },
-  {
-   "d": "2025-11-20",
-   "n": 0
-  },
-  {
-   "d": "2025-11-21",
-   "n": 0
-  },
-  {
-   "d": "2025-11-22",
-   "n": 0
-  },
   {
    "d": "2025-11-23",
    "n": 0
@@ -1509,7 +1481,11 @@
   },
   {
    "d": "2026-11-21",
-   "n": 59
+   "n": 133
+  },
+  {
+   "d": "2026-11-22",
+   "n": 58
   }
  ],
  "recent": [
@@ -1517,91 +1493,121 @@
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:11:54Z"
+   "date": "2026-11-22T13:46:48Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:11:46Z"
+   "date": "2026-11-22T13:46:40Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:11:41Z"
+   "date": "2026-11-22T13:46:26Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:11:33Z"
+   "date": "2026-11-22T13:46:09Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:11:21Z"
+   "date": "2026-11-22T13:45:59Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:11:00Z"
+   "date": "2026-11-22T13:45:47Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:10:57Z"
+   "date": "2026-11-22T13:44:49Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:10:46Z"
+   "date": "2026-11-22T13:44:41Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:10:40Z"
+   "date": "2026-11-22T13:44:21Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:10:31Z"
+   "date": "2026-11-22T13:44:08Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:10:22Z"
+   "date": "2026-11-22T13:43:56Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:10:00Z"
+   "date": "2026-11-22T13:43:34Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:09:52Z"
+   "date": "2026-11-22T13:43:17Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:09:43Z"
+   "date": "2026-11-22T13:43:00Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-21T05:09:35Z"
+   "date": "2026-11-22T13:42:36Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-22T06:31:06Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-22T06:14:04Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-22T06:13:36Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-22T06:12:31Z"
+  },
+  {
+   "repo": "mohamadrizk.github.io",
+   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/f5ccf3eb39cdd2668707e17f6155c17de77a69d4",
+   "message": "Stats: raise the daily cap to 300 commits",
+   "date": "2026-11-21T02:04:29Z"
   },
   {
    "repo": null,
@@ -1722,36 +1728,6 @@
    "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/64add3f6137b93449a07f91a14296507ae8ab875",
    "message": "test(combine): cover primaryCount and shouldCombine gate [skip ci]",
    "date": "2026-11-19T00:00:26Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/6f0f885c78e490d7131846a253b5191c84ad1158",
-   "message": "test(focus-review): cover state sanitising, compaction and immutability [skip ci]",
-   "date": "2026-11-18T23:59:33Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/5b1724480c3a202eb8f6df1a53914618d426a1f2",
-   "message": "test(across): cover digestOf and mapOf currency rules [skip ci]",
-   "date": "2026-11-18T23:58:19Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T07:44:44Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T07:44:42Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-18T07:44:40Z"
   }
  ],
  "privateDays": {
@@ -1794,11 +1770,12 @@
   "2026-09-26": 8,
   "2026-09-25": 1,
   "2026-10-21": 1,
+  "2026-11-22": 58,
   "2026-10-06": 13,
   "2026-09-22": 10,
   "2026-09-21": 6,
   "2026-09-15": 4,
-  "2026-11-21": 59,
+  "2026-11-21": 132,
   "2026-11-20": 97
  }
 }
