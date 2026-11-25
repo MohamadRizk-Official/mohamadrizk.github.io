@@ -1,11 +1,11 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-24T17:50:36+00:00",
- "totalCommits": 3031,
- "yearCommits": 3031,
- "activeDays": 72,
+ "updated": "2026-11-25T17:17:47+00:00",
+ "totalCommits": 3177,
+ "yearCommits": 3177,
+ "activeDays": 73,
  "longestStreak": 28,
- "currentStreak": 16,
+ "currentStreak": 17,
  "publicRepos": 9,
  "privateRepos": 14,
  "busiestDay": {
@@ -1493,10 +1493,164 @@
   },
   {
    "d": "2026-11-24",
-   "n": 157
+   "n": 182
+  },
+  {
+   "d": "2026-11-25",
+   "n": 121
   }
  ],
  "recent": [
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:50:06Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:49:53Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:49:35Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:49:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:49:24Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:49:04Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:48:50Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:48:38Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:48:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:48:19Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:47:31Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:46:50Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:46:39Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:46:29Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T16:46:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T07:00:45Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T06:58:58Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T06:55:13Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-25T06:50:46Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a93fdf048098d5d6bd513505b8d56127a3e0e828",
+   "message": "docs(testing): document test stand-ins and edge-case test files [skip ci]",
+   "date": "2026-11-24T17:51:56Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9b146236236b1a633f6f3c3e7f2baf95cef6bc95",
+   "message": "test(across): cover token rendering for unknown and unfinished references [skip ci]",
+   "date": "2026-11-24T17:51:47Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e0dcd18e029bf9c69464b61fc8f4df1f3422f369",
+   "message": "test(seek): cover quietPoint window limits, clamping and scaling [skip ci]",
+   "date": "2026-11-24T17:51:26Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/968396cd7f725e27fe08e47d41f58f323b1daf46",
+   "message": "docs(across): add a module guide for the across recordings page [skip ci]",
+   "date": "2026-11-24T17:51:12Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b971c915515f6fabe4fb5508ed1d6417772e0102",
+   "message": "docs(library): add a module guide for the library data layer [skip ci]",
+   "date": "2026-11-24T17:50:50Z"
+  },
+  {
+   "repo": "sparkscribe",
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b42e4210d13311b87c7a9316527078df17c74be5",
+   "message": "docs(library): add a module guide for the library page [skip ci]",
+   "date": "2026-11-24T17:50:31Z"
+  },
   {
    "repo": "sparkscribe",
    "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/53012ad43505594786e426bb270b70ae62a60a40",
@@ -1558,42 +1712,6 @@
    "date": "2026-11-24T17:46:02Z"
   },
   {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9d06a0dd36adf95424624364a60d75ea00c4d036",
-   "message": "test(segments): cover citation parsing and question classifier edges [skip ci]",
-   "date": "2026-11-24T17:45:30Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/95ede6a755224afe8fe39cfc2830352e92fe3b0a",
-   "message": "test(srs): cover stored-schedule reading and rating ladder edges [skip ci]",
-   "date": "2026-11-24T17:45:29Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/24334a131cf975248b6b85fdb0306bf5cba95133",
-   "message": "test(transcripts): cover duration formatting and txt parsing edges [skip ci]",
-   "date": "2026-11-24T17:44:59Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e3993c338908a117dbcffff472b7cb00b7bd0bcf",
-   "message": "test(account): cover redirect guard and consent helpers on hostile input [skip ci]",
-   "date": "2026-11-24T17:44:58Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a1064bebbf0b7704d3fb1ea692424e1f2535be7f",
-   "message": "test(billing): cover usage and duration display boundaries [skip ci]",
-   "date": "2026-11-24T17:43:43Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/1eac1ac1256625f6a101e8abd84f97a945779c95",
-   "message": "test(pricing): cover yearly savings and price-line edge cases [skip ci]",
-   "date": "2026-11-24T17:43:43Z"
-  },
-  {
    "repo": null,
    "url": null,
    "message": null,
@@ -1621,125 +1739,12 @@
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-24T16:13:47Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:13:40Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:13:40Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:13:16Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:13:03Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:13:03Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:12:49Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:12:38Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:12:25Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:12:15Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:11:43Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:11:36Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:11:27Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:11:26Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:11:12Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
    "date": "2026-11-24T16:07:15Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T15:56:56Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T15:07:50Z"
-  },
-  {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/64c39b260f4c88121010687f0745f3b554138603",
-   "message": "HR Studios: add Beirut Grill (11 sites); always open in dark mode",
-   "date": "2026-11-23T06:53:09Z"
-  },
-  {
-   "repo": "mohamadrizk.github.io",
-   "url": "https://github.com/MohamadRizk-Official/mohamadrizk.github.io/commit/d3aef17503da3673d952e7a76a926c53b3c68eb3",
-   "message": "Phone: scroll arrows and edge fades on sideways rows; studio buttons no longer clip their text",
-   "date": "2026-11-22T19:31:59Z"
   }
  ],
  "privateDays": {
-  "2026-11-24": 137,
+  "2026-11-25": 121,
+  "2026-11-24": 156,
   "2026-11-18": 215,
   "2026-11-16": 152,
   "2026-11-15": 90,
