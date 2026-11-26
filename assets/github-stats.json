@@ -1,13 +1,13 @@
 {
  "user": "MohamadRizk-Official",
- "updated": "2026-11-25T17:17:47+00:00",
- "totalCommits": 3177,
- "yearCommits": 3177,
- "activeDays": 73,
+ "updated": "2026-11-26T16:57:37+00:00",
+ "totalCommits": 3385,
+ "yearCommits": 3385,
+ "activeDays": 74,
  "longestStreak": 28,
- "currentStreak": 17,
+ "currentStreak": 18,
  "publicRepos": 9,
- "privateRepos": 14,
+ "privateRepos": 15,
  "busiestDay": {
   "d": "2026-11-11",
   "n": 300
@@ -1497,7 +1497,11 @@
   },
   {
    "d": "2026-11-25",
-   "n": 121
+   "n": 218
+  },
+  {
+   "d": "2026-11-26",
+   "n": 111
   }
  ],
  "recent": [
@@ -1505,245 +1509,245 @@
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:50:06Z"
+   "date": "2026-11-26T06:29:56Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:49:53Z"
+   "date": "2026-11-26T06:24:03Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:49:35Z"
+   "date": "2026-11-26T06:00:43Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:49:26Z"
+   "date": "2026-11-26T05:57:44Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:49:24Z"
+   "date": "2026-11-26T05:56:47Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:49:04Z"
+   "date": "2026-11-26T05:44:59Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:48:50Z"
+   "date": "2026-11-26T05:34:44Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:48:38Z"
+   "date": "2026-11-26T05:21:43Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:48:26Z"
+   "date": "2026-11-26T04:49:04Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:48:19Z"
+   "date": "2026-11-26T04:48:26Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:47:31Z"
+   "date": "2026-11-26T04:48:01Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:46:50Z"
+   "date": "2026-11-26T04:43:30Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:46:39Z"
+   "date": "2026-11-26T04:41:31Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:46:29Z"
+   "date": "2026-11-26T04:30:41Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T16:46:26Z"
+   "date": "2026-11-26T04:19:00Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T07:00:45Z"
+   "date": "2026-11-26T04:18:19Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T06:58:58Z"
+   "date": "2026-11-26T04:16:31Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T06:55:13Z"
+   "date": "2026-11-26T04:16:19Z"
   },
   {
    "repo": null,
    "url": null,
    "message": null,
-   "date": "2026-11-25T06:50:46Z"
+   "date": "2026-11-26T04:15:59Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:15:38Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:15:10Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:14:11Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:13:50Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:13:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:13:09Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:13:07Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:12:27Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:12:09Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:11:26Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:10:47Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:10:16Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:10:00Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T04:05:09Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T03:52:45Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T03:37:18Z"
+  },
+  {
+   "repo": null,
+   "url": null,
+   "message": null,
+   "date": "2026-11-26T03:08:18Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a93fdf048098d5d6bd513505b8d56127a3e0e828",
-   "message": "docs(testing): document test stand-ins and edge-case test files [skip ci]",
-   "date": "2026-11-24T17:51:56Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/466e3253b362941cc11ac4191e8dfd23d51aaf1c",
+   "message": "docs(study): spell out when a stored study map is reused [skip ci]",
+   "date": "2026-11-26T00:05:48Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/9b146236236b1a633f6f3c3e7f2baf95cef6bc95",
-   "message": "test(across): cover token rendering for unknown and unfinished references [skip ci]",
-   "date": "2026-11-24T17:51:47Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/ed89b5986cc0e52252293e5150a93c82da2764cd",
+   "message": "test(study): cover stored study map reuse, waiting and guide instructions [skip ci]",
+   "date": "2026-11-26T00:05:37Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e0dcd18e029bf9c69464b61fc8f4df1f3422f369",
-   "message": "test(seek): cover quietPoint window limits, clamping and scaling [skip ci]",
-   "date": "2026-11-24T17:51:26Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a139210a62fc48c5f5a9d92c8151ccd3e8d73689",
+   "message": "test(db): cover insight and tool bookkeeping, claims and follow-up appends [skip ci]",
+   "date": "2026-11-26T00:04:15Z"
   },
   {
    "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/968396cd7f725e27fe08e47d41f58f323b1daf46",
-   "message": "docs(across): add a module guide for the across recordings page [skip ci]",
-   "date": "2026-11-24T17:51:12Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b971c915515f6fabe4fb5508ed1d6417772e0102",
-   "message": "docs(library): add a module guide for the library data layer [skip ci]",
-   "date": "2026-11-24T17:50:50Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/b42e4210d13311b87c7a9316527078df17c74be5",
-   "message": "docs(library): add a module guide for the library page [skip ci]",
-   "date": "2026-11-24T17:50:31Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/53012ad43505594786e426bb270b70ae62a60a40",
-   "message": "docs(export): add a module guide for export builders and the dialog [skip ci]",
-   "date": "2026-11-24T17:49:10Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/3f2bb046ba6fdb36e6311abd147811b207ee97cb",
-   "message": "docs(mascot): add a module guide for the 3D stage renderer [skip ci]",
-   "date": "2026-11-24T17:48:47Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/6473915a84877b3ed113800e9cfb2817c2982a04",
-   "message": "test(tool-settings): cover cache keys, instruction fingerprints and quiz length [skip ci]",
-   "date": "2026-11-24T17:48:29Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/e49a0e42d30251e16769d91526e9f8708b019427",
-   "message": "test(speaker-names): cover rename mapping threshold and whole-name matching [skip ci]",
-   "date": "2026-11-24T17:48:07Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/f64c0eb7473134cab207c5c2eea38cc2e84e16a7",
-   "message": "test(quiz): cover run building, scoring and summary edges [skip ci]",
-   "date": "2026-11-24T17:48:07Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T17:47:40Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/1ef9e063d1677f44bce00bac748776c9bf839943",
-   "message": "docs(eval): add a module guide for the accuracy lab page [skip ci]",
-   "date": "2026-11-24T17:46:49Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/545d6883053a1e767f562e463a7beecfb0167d07",
-   "message": "docs(account): add a module guide for the account page [skip ci]",
-   "date": "2026-11-24T17:46:30Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/a1a1ce27914605cb2ff469847b5881dce37bbe1f",
-   "message": "docs(settings): add a module guide for the settings page [skip ci]",
-   "date": "2026-11-24T17:46:14Z"
-  },
-  {
-   "repo": "sparkscribe",
-   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/251704129675cf731db12d777ae52edb4ab1e8f4",
-   "message": "docs(pricing): add a module guide for the pricing page [skip ci]",
-   "date": "2026-11-24T17:46:02Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T17:14:52Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:50:39Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:48:11Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:26:05Z"
-  },
-  {
-   "repo": null,
-   "url": null,
-   "message": null,
-   "date": "2026-11-24T16:07:15Z"
+   "url": "https://github.com/MohamadRizk-Official/sparkscribe/commit/771411a560e31da0ca15cfe17d137e5ff7b0e2db",
+   "message": "docs(modules): add a guide to account actions and the deletion flow [skip ci]",
+   "date": "2026-11-26T00:01:51Z"
   }
  ],
  "privateDays": {
-  "2026-11-25": 121,
+  "2026-11-25": 210,
   "2026-11-24": 156,
   "2026-11-18": 215,
   "2026-11-16": 152,
@@ -1785,6 +1789,7 @@
   "2026-09-26": 8,
   "2026-09-25": 1,
   "2026-10-21": 1,
+  "2026-11-26": 104,
   "2026-10-06": 13,
   "2026-09-22": 10,
   "2026-09-21": 6,
